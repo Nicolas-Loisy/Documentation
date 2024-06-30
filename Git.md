@@ -1,8 +1,8 @@
-# Aide-m√©moire Git
+# Aide-mÈmoire Git
 
-## √âtapes
+## …tapes
 
-**1. R√©cup√©rer les derni√®res modifications**
+**1. RÈcupÈrer les derniËres modifications**
 
 Sur la branche locale "master":
 
@@ -10,7 +10,7 @@ Sur la branche locale "master":
 git pull origin master
 ```
 
-**2. Cr√©er une nouvelle branche**
+**2. CrÈer une nouvelle branche**
 
 Depuis la branche "master":
 
@@ -18,9 +18,9 @@ Depuis la branche "master":
 git checkout -b laNewBranch
 ```
 
-**3. D√©velopper sur la nouvelle branche**
+**3. DÈvelopper sur la nouvelle branche**
 
-Ajouter les fichiers modifi√©s:
+Ajouter les fichiers modifiÈs:
 
 ```
 git add --all
@@ -32,82 +32,83 @@ Committer les modifications:
 git commit -m "Description du commit"
 ```
 
-R√©p√©ter les √©tapes `git add` et `git commit` pour chaque √©tape de d√©veloppement.
+RÈpÈter les Ètapes `git add` et `git commit` pour chaque Ètape de dÈveloppement.
 
 **4. Pousser les modifications**
 
-Pousser la nouvelle branche vers le d√©p√¥t distant:
+Pousser la nouvelle branche vers le dÈpÙt distant:
 
 ```
 git push origin laNewBranch
 ```
 
-Si n√©cessaire, cr√©er une pull request pour soumettre vos modifications.
+Si nÈcessaire, crÈer une pull request pour soumettre vos modifications.
 
-**Retourner √† l'√©tape 3**
+**Retourner ‡ l'Ètape 3**
 
-Continuer le d√©veloppement sur la nouvelle branche en r√©p√©tant les √©tapes 3 et 4.
+Continuer le dÈveloppement sur la nouvelle branche en rÈpÈtant les Ètapes 3 et 4.
 
-**Si nouvelle t√¢che:**
+**Si nouvelle t‚che:**
 
-**Retourner √† l'√©tape 1**
+**Retourner ‡ l'Ètape 1**
 
 ## Dico
 
 * `git branch`: Lister les branches
-* `git add --all`: Ajouter tous les fichiers modifi√©s (y compris les suppressions)
+* `git add --all`: Ajouter tous les fichiers modifiÈs (y compris les suppressions)
 * `git branch -m newBranchName`: Renommer la branche actuelle
-* `git branch -d nomDeLaBranche`: Supprimer la branche indiqu√©e
-* `git checkout -b develop origin/develop`: R√©cup√©rer une branche distante (ex: develop)
+* `git branch -d nomDeLaBranche`: Supprimer la branche indiquÈe
+* `git checkout -b develop origin/develop`: RÈcupÈrer une branche distante (ex: develop)
 
-**Mises √† jour**
+**Mises ‡ jour**
 
-* `git fetch --all`: Mettre √† jour les branches de suivi √† distance
+* `git fetch --all`: Mettre ‡ jour les branches de suivi ‡ distance
 
 **Fusionner des branches**
 
-* `git pull origin labranch`: Mettre √† jour la branche locale avec les commits distants (r√©soudre les conflits si n√©cessaire)
-* `git merge labranch`: V√©rifier si la branche est compatible avec la branche actuelle
+* `git pull origin labranch`: Mettre ‡ jour la branche locale avec les commits distants (rÈsoudre les conflits si nÈcessaire)
+* `git merge labranch`: VÈrifier si la branche est compatible avec la branche actuelle
 
-**G√©rer les modifications non commit**
+**GÈrer les modifications non commit**
 
 * `git stash`: Sauvegarder les modifications non commit
-* `git stash pop`: Restaurer les modifications sauvegard√©es
+* `git stash pop`: Restaurer les modifications sauvegardÈes
 
-**Int√©grer un commit sp√©cifique**
+**IntÈgrer un commit spÈcifique**
 
-* `git cherry-pick NUMduCOMMIT`: Int√©grer un commit particulier dans la branche actuelle
+* `git cherry-pick NUMduCOMMIT`: IntÈgrer un commit particulier dans la branche actuelle
 
 **Historique des commits**
 
 * `git log`: Afficher l'historique des commits (q pour quitter)
 
-**R√©soudre des conflits**
+**RÈsoudre des conflits**
 
-Si des modifications ont √©t√© faites dans la branche master (remote) avant de push:
+Si des modifications ont ÈtÈ faites dans la branche master (remote) avant de push:
 
 1. `git checkout master`
 2. `git pull origin master`
 3. `git checkout maBranche`
-4. `git merge master` (r√©soudre les conflits)
-5. Commiter les r√©solutions et push
+4. `git merge master` (rÈsoudre les conflits)
+5. Commiter les rÈsolutions et push
 
 **Corriger un commit**
 
-Si le dernier commit en local est erron√©:
+Si le dernier commit en local est erronÈ:
 
-* `git commit --amend --no-edit`: "√âcraser" le dernier commit
-* `git commit -f --amend --no-edit`: "√âcraser" le dernier commit si d√©j√† push (attention √† l'historique)
-* `git commit --amend -m "le new message"`: "√âcraser" le dernier commit avec un nouveau message
+* `git commit --amend --no-edit`: "…craser" le dernier commit
+* `git commit -f --amend --no-edit`: "…craser" le dernier commit si dÈj‡ push (attention ‡ l'historique)
+* `git commit --amend -m "le new message"`: "…craser" le dernier commit avec un nouveau message
 
 **Modifier la date d'un commit**
 
 * `GIT_COMMITTER_DATE="$(date)" git commit --amend --no-edit --date "$(date)"`: Remplacer la date du dernier commit par la date du jour
 
-**Probl√®me Zone.Identifier**
+**ProblËme Zone.Identifier**
 
 * `git config core.protectNTFS false`
 
-**Informations compl√©mentaires**
+**Informations complÈmentaires**
 
 * Pour plus d'informations, consultez la documentation officielle Git: [https://git-scm.com/book/en/v2](https://git-scm.com/book/en/v2)
+v666
