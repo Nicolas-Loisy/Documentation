@@ -111,4 +111,3 @@ Si le dernier commit en local est erroné:
 **Informations complémentaires**
 
 * Pour plus d'informations, consultez la documentation officielle Git: [https://git-scm.com/book/en/v2](https://git-scm.com/book/en/v2)
-v666
