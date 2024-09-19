@@ -1,5 +1,17 @@
 # Python
 
+## VS Code
+### Problème : Navigation dans les imports non fonctionnelle (Ctrl + Click) sous VS Code
+
+Ajoutez cette ligne dans `settings.json` (**Ctrl+Shift+P** > `Settings`)  :
+
+```json
+"python.analysis.extraPaths": ["./src"]
+```
+
+Ensuite, rechargez la fenêtre avec **Ctrl+Shift+P** > `Reload Window` pour appliquer. Cela rétablit la navigation entre les fichiers.
+
+
 ## Types de données
 
 **Chaînes de caractères (str):**
