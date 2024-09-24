@@ -355,6 +355,36 @@ print(now_in_montreal)  # Affiche la date et l'heure à Montréal
 print(now_in_paris)    # Affiche la date et l'heure à Paris (convertie)
 ```
 
+## Sérialisation en Python
+
+La sérialisation est le processus de conversion d'un objet Python en un format qui peut être facilement stocké ou transmis, comme JSON. Cela est particulièrement utile lors de l'envoi de données à travers des API ou le stockage d'objets dans des bases de données.
+
+### Fonction `serialize_object`
+
+```python
+def serialize_object(obj: Any) -> Any:
+    """Convertit les objets non sérialisables en JSON en types sérialisables."""
+    if isinstance(obj, ObjectId):
+        return str(obj)  # Convertir ObjectId en string
+    elif isinstance(obj, dict):
+        return {k: serialize_object(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        return [serialize_object(i) for i in obj]
+    return obj  # Retourner l'objet tel quel s'il est sérialisable
+```
+
+#### Description
+
+- **ObjectId** : Si l'objet est de type `ObjectId`, il est converti en chaîne de caractères pour être compatible avec JSON.
+- **Dictionnaires** : Si l'objet est un dictionnaire, chaque clé et valeur est sérialisée récursivement.
+- **Listes** : Si l'objet est une liste, chaque élément est également sérialisé récursivement.
+- **Autres types** : Les objets déjà sérialisables (comme les chaînes, nombres, booléens) sont retournés sans modification.
+
+### Utilisation
+
+Cette fonction peut être utilisée dans des applications web pour préparer des réponses JSON à partir d'objets complexes, garantissant que tous les types de données sont correctement formatés pour la transmission.
+
+
 ## Fichiers
 
 **Ouverture et fermeture:**
