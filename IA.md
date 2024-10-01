@@ -88,6 +88,7 @@
 ## Analyse et Prétraitement
 
 * **Parsers:**
+    * Un parser structure et interprète les contenus textuelles en formats utilisables (ex: Récupérer les textes d’un PDF).
     * Syntaxe du texte dans un format structuré, tel qu'un arbre ou un graphe.
 
 * **Document Transformer:**
