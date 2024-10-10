@@ -12,3 +12,7 @@ ITM : Article
 
 - R.A.Z : Rien A Zignalé
 - R.A.Z : Remise à zéro
+
+### Tables
+
+Clé primaire : 3 premieres lettres et 0
