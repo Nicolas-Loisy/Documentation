@@ -16,3 +16,5 @@ ITM : Article
 ### Tables
 
 Clé primaire : 3 premieres lettres et 0
+
+Toujours cliqué sur VALIDATION, permet de lancer la req : `create TABLE ...`
