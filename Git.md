@@ -1,6 +1,5 @@
 # Aide-mémoire Git
 
-## Hello
 
 ## Étapes
 
