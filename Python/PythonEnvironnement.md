@@ -19,7 +19,7 @@
 - Ce fichier sert de marqueur pour indiquer qu'un répertoire contient un package ou un module Python.
 - Lorsque vous importez un package ou un module, Python charge automatiquement ce fichier.
 
-**Commandes essentielles dans le terminal:**
+## Commandes essentielles dans le terminal:
 
 - **Lister les versions Python installées:** `py --list` (si applicable)
 - **Vérifier la version Python actuelle:** `python --version` ou `python3 --version`
@@ -32,7 +32,7 @@
 - **Installer des packages à partir d'un fichier requirements:** `pip install -r requirements.txt`
 - **Vérifier l'installation d'un package:** `python -c "import <nom_paquet>; print(<nom_paquet>)"`
 
-**Installer Python 3.11.3 avec pyenv dans WSL:**
+## Installer Python 3.11.3 avec pyenv dans WSL:
 
 **Prérequis:**
 
