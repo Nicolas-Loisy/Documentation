@@ -1,28 +1,24 @@
-# X3 Sage
+# **Sage X3**
 
-## Annotations
-P : 
+## **Annotations**
+- **P** : Champ spécifique de type numérique ou texte.
 
-## Types
-A : Alpha Numérique
-ITM : Article
+## **Types de Champs**
+- **A** : Alpha Numérique
+- **ITM** : Article
 
+## **Gestion des Tables**
+- **Annulation** : Politique de suppression d'une table.
+- **R.A.Z** (Remise à Zéro) :
+  - Signification : **Rien À Zignaler**. (*Humour*)
+  - Signification alternative : **Remise à Zéro**.
 
-### Annulation : Politique de suppression de la table
+## **Création des Tables**
+- La clé primaire doit être composée des 3 premières lettres suivies d'un 0.
+- Toujours cliquer sur le bouton **VALIDATION** pour exécuter la requête `CREATE TABLE ...`.
 
-- R.A.Z : Rien A Zignalé
-- R.A.Z : Remise à zéro
-
-### Tables
-
-Clé primaire : 3 premieres lettres et 0
-
-Toujours cliqué sur VALIDATION, permet de lancer la req : `create TABLE ...`
-
-
-Requeteur graphique
-
-Egal => [F:XX] chanffiltre=valeur
-Dif => [F:XX] chanffiltre<>valeur
-
-Ajouter aux criteres : le logo B
+## **Requêteur Graphique**
+- Pour filtrer les données :
+  - **Egal** : Utiliser la syntaxe `[F:XX] champfiltre=valeur`.
+  - **Différent** : Utiliser la syntaxe `[F:XX] champfiltre<>valeur`.
+- Pour ajouter des critères : Utiliser le bouton avec le logo **B**.
