@@ -22,3 +22,9 @@
   - **Egal** : Utiliser la syntaxe `[F:XX] champfiltre=valeur`.
   - **Différent** : Utiliser la syntaxe `[F:XX] champfiltre<>valeur`.
 - Pour ajouter des critères : Utiliser le bouton avec le logo **B**.
+
+
+## Les droits utilisateurs
+
+- Droits sur les fonctions (ex: création de commandes)
+- Droits sur la visibilité dans la fonction
