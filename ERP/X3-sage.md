@@ -2,6 +2,7 @@
 
 ## **Annotations**
 - **P** : Champ spécifique de type numérique ou texte.
+- **SQH** : Fonction des devis
 
 ## **Types de Champs**
 - **A** : Alpha Numérique
