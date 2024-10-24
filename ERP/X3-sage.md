@@ -28,3 +28,4 @@
 
 - Droits sur les fonctions (ex: création de commandes)
 - Droits sur la visibilité dans la fonction
+- Le filtre est fin
