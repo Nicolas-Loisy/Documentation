@@ -32,3 +32,5 @@
 - Le filtre est fin
 
 Dans Paramétrage -> Utilisateurs : Profil fonction
+
+Dans Habilitation fonctionnelle : Filtre des droits => Regroupement pour filtrer les sites 
