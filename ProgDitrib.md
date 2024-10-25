@@ -1,4 +1,4 @@
 # ProgDistrib
 
-CI : Continuous Integration
-CD : Continuous Deployment
+- CI : Continuous Integration
+- CD : Continuous Deployment
