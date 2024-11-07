@@ -1,5 +1,15 @@
 # **Sage X3**
 
+## **Fonctions**
+- **Société** : GESCPY
+- **Site** : GESFCY
+- **Article** : GESITM
+- **Site Article** : GESITF
+- **Client** : GESBPC
+- **Devis** : GESSQH
+- **Commande** : GESPOH
+- **Facture** : GESPIH
+
 ## **Annotations**
 - **P** : Champ spécifique de type numérique ou texte.
 - **SQH** : Fonction des devis
