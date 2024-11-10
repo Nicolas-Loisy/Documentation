@@ -136,6 +136,20 @@ php bin/console make:repository
 - **Vider la base de données** : `php bin/console doctrine:schema:drop --force`
 - **Synchroniser la base de données sans migration** : `php bin/console doctrine:schema:update --force`
 
+### Exécuter une Migration Spécifique
+Depuis Symfony 6, la commande `doctrine:migrations:exec` permet d'exécuter une migration spécifique :
+```bash
+php bin/console doctrine:migrations:exec "Migrations\Versionxxxxxxxxxxxxxxx"
+php bin/console doctrine:migrations:exec "DoctrineMigrations\Versionxxxxxxxxxxxxxxx"
+```
+
+### Mettre à Jour la Base de Données
+Pour mettre à jour la base de données complètement (sans utiliser les migrations), vous pouvez utiliser :
+```bash
+php bin/console doctrine:schema:update --dump-sql  # Affiche les SQL à exécuter
+php bin/console doctrine:schema:update --force     # Applique les changements directement
+```
+
 ---
 
 ## 6. Exemples de Requêtes SQL Personnalisées
