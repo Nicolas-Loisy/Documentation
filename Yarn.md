@@ -1,6 +1,6 @@
 # Yarn
 
-Yarn est un gestionnaire de paquets JavaScript qui permet de gérer les dépendances de votre projet de manière rapide et fiable. Voici un guide sur l'installation et l'utilisation de Yarn dans un projet.
+Yarn est un gestionnaire de paquets JavaScript qui permet de gérer les dépendances de votre projet.
 
 ---
 
