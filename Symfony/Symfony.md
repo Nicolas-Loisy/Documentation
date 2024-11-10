@@ -1,5 +1,39 @@
 # Symfony
 
+
+## La "Sainte Trinité" pour Résoudre les Problèmes dans Symfony
+
+En cas de comportement étrange, suivez ces trois étapes clés pour corriger la majorité des problèmes :
+
+---
+
+### 1. Vider le Cache
+
+Effacer le cache peut résoudre des erreurs de configuration ou de cache obsolète.
+
+```bash
+php bin/console cache:clear
+```
+
+### 2. Réinstaller les Dépendances
+
+Réinstalle les packages et corrige les fichiers manquants ou corrompus.
+
+```bash
+composer install
+```
+
+### 3. Mettre à Jour la Base de Données
+
+Assurez-vous que la base de données est synchronisée avec les entités :
+
+```bash
+php bin/console make:migration
+php bin/console doctrine:migrations:migrate
+```
+
+
+
 ## Gestion des Routes avec Symfony
 
 ### Exemple de Routes Structurées et Non Structurées
