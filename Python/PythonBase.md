@@ -851,6 +851,12 @@ for titre in titres:
 
 Le texte présenté compare deux approches pour définir des structures de données en Python : les classes et les dataclasses (introduites en Python 3.7).
 
+### self vs cls
+
+- Utilisez toujours self comme premier argument des méthodes d'instance.
+
+- Utilisez toujours cls comme premier argument des méthodes de classe.
+
 ### Classe :
 
 La définition d'une classe utilise le mot-clé `class`. Voici un exemple :
