@@ -29,7 +29,7 @@ Les 4 perspectives de l'urbanisme :
 S'articule sur 3 axes clés qui s'alimentent mutuellement.
 ...
 
-#### Le PLU
+### Le PLU
 
 **Plan Local d'Urbanisme** : Document d'urbanisme qui construit un projet : 
    
@@ -38,5 +38,14 @@ S'articule sur 3 axes clés qui s'alimentent mutuellement.
     - Où ?
     - Quand ?
     - Comment ?
+
+### Cartographer le SI (PLU)
+
+Découpage du SI en blocs : 
+- Zones : découpage du SI
+- Quartiers : Activite
+- Ilots : Approche modulaire
+- Blocs et briques : fonctionnels
+
 
 
