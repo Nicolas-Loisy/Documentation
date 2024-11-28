@@ -1,7 +1,5 @@
 # Node.js
 
----
-
 ## 1. Installation de Node.js
 
 ### A. Installer `curl`
