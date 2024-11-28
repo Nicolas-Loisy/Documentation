@@ -13,7 +13,7 @@
     - redeploiement des fonctions de back et front office
     - ...
 
-Urbaniste : Central dans l'évolution du SI
+**Urbaniste** : Central dans l'évolution du SI
 
 Les 4 perspectives de l'urbanisme : 
 
@@ -24,5 +24,19 @@ Les 4 perspectives de l'urbanisme :
 | Eléments applicatifs| Les applications | Comment ? |
 | Eléments techniques | - | Avec quoi ? |
 
+### Démarche d'urbanisation
+
+S'articule sur 3 axes clés qui s'alimentent mutuellement.
+...
+
+#### Le PLU
+
+**Plan Local d'Urbanisme** : Document d'urbanisme qui construit un projet : 
+   
+- Caractéristiques
+- 3 axes : 
+    - Où ?
+    - Quand ?
+    - Comment ?
 
 
