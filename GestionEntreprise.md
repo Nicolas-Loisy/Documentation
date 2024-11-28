@@ -11,5 +11,18 @@
     - nouveaux modes de canaux de distribution, partenariats
     - réorgnanisation, externalisation
     - redeploiement des fonctions de back et front office
+    - ...
 
 Urbaniste : Central dans l'évolution du SI
+
+Les 4 perspectives de l'urbanisme : 
+
+| Couche | Description | Question |
+|--------|--------|--------|
+| Processus | Suite d'actions / de tâches | Pourquoi ? |
+| Eléments fonctionnels | - | Quoi ? |
+| Eléments applicatifs| Les applications | Comment ? |
+| Eléments techniques | - | Avec quoi ? |
+
+
+
