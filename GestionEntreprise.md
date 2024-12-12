@@ -48,5 +48,19 @@ Découpage du SI en blocs :
 - Blocs et briques : fonctionnels
 
 
+### Objet métier
 
 
+### La couche métier
+
+Le SI est un outil pour : 
+- Les processus
+- Les activités
+- Les procédures
+Couche de l'impact stratégique
+
+Le SI est un outil qui : 
+- Zone/Quartier/Bloc
+- Fonction
+- Intermédiaire entre le métier et l'informatique
+- 
