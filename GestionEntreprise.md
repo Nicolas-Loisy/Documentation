@@ -39,7 +39,7 @@ S'articule sur 3 axes clés qui s'alimentent mutuellement.
     - Quand ?
     - Comment ?
 
-### Cartographer le SI (PLU)
+### Cartographier le SI (PLU)
 
 Découpage du SI en blocs : 
 - Zones : découpage du SI
@@ -64,3 +64,29 @@ Le SI est un outil qui :
 - Fonction
 - Intermédiaire entre le métier et l'informatique
 - 
+
+### Couche métier à Fonctionnelle
+Couche métier : Macro processus, Processus métier, Activité, Procédure
+Couche fonctionnelle : Zone, Quartier, Bloc, Fonction
+Couches transverses :  Entité, Domaine métier, Acteur, Objet métier
+Lien couche métier <--> fonctionnelle
+
+En quoi le Bloc est structurant ?
+Granularité du Bloc.
+
+### Couche applicative à Technique
+
+
+### Les pivots
+
+#### Pourquoi la cohérence ?
+
+- Lier la gouvernance de l'ensemble des couches
+- L'urbanisation tour de contrôle du SI
+
+#### Comment le mettre en place ?
+- Outillage et vocabulaire commun
+- Pivots pour lier les concepts de chaque couche
+
+Cartographier les couches (Outils : modélio, canva, ...), permet aussi de cartographier les processus, objet métier, tout de l'entreprise, ...
+Dans la cartographie on retrouve Bloc, Quartier, ...
