@@ -9,7 +9,7 @@
 - container docker
 - kubernetes minikube
 - API gateway avec istio
-- mesh
+- Service Mesh
 - 
 - 
 - 
