@@ -135,10 +135,3 @@ pip install torch torchvision torchaudio --index-url https://download.pytorch.or
 python -c "import torch; print(torch.cuda.is_available())"
 ```
 
-Avec ce guide, vous devriez être en mesure d’installer et de configurer PyTorch avec CUDA 12.4 sans problème. Si vous rencontrez d'autres difficultés, n'hésitez pas à demander de l'aide !
-
---- 
-
-Le lien pour télécharger CUDA 12.4 pour Windows a bien été ajouté dans la section d'installation de CUDA Toolkit.
-
-
