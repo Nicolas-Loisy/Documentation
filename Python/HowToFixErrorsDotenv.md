@@ -18,8 +18,9 @@ Par exemple :
 
   ```
   mon_projet/
-  |-- .env
-  |-- main.py
+  |-- backend/
+      |-- main.py
+      |-- .env
   |-- venv/
       |-- lib/
           |-- pythonX.X/
