@@ -96,3 +96,7 @@ Dans la cartographie on retrouve Bloc, Quartier, ...
 
 1 - Le modèle classique
     Henderson-Venkatraman
+    - On commence par la strategie de l'entreprise
+    - Puis 
+
+La strategie de l'E evolue => strategie SI (strat de developpement) => impact sur l'infra des app
