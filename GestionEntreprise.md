@@ -92,11 +92,15 @@ Cartographier les couches (Outils : modélio, canva, ...), permet aussi de carto
 Dans la cartographie on retrouve Bloc, Quartier, ...
 
 
-## Les modèles
+## Les modèles d'alignement des SI
 
 1 - Le modèle classique
     Henderson-Venkatraman
     - On commence par la strategie de l'entreprise
     - Puis 
 
-La strategie de l'E evolue => strategie SI (strat de developpement) => impact sur l'infra des app
+    La strategie de l'E evolue => strategie SI (strat de developpement) => impact sur l'infra des app
+
+2 - Le modèle PDCA (complementaire a la 1)
+    
+- S'assurer que la gouvernance insufle    
