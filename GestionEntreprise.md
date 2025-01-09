@@ -90,3 +90,9 @@ Granularité du Bloc.
 
 Cartographier les couches (Outils : modélio, canva, ...), permet aussi de cartographier les processus, objet métier, tout de l'entreprise, ...
 Dans la cartographie on retrouve Bloc, Quartier, ...
+
+
+## Les modèles
+
+1 - Le modèle classique
+    Henderson-Venkatraman
