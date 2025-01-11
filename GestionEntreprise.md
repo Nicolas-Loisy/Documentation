@@ -104,3 +104,6 @@ Dans la cartographie on retrouve Bloc, Quartier, ...
 2 - Le modèle PDCA (complementaire a la 1)
     
 - S'assurer que la gouvernance insufle    
+
+
+3 - Le modèle projectif
