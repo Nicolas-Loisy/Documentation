@@ -16,3 +16,20 @@
 - un deployemen par microservice + gateway
 - 
 - miageGR2/blob/main/deployment.yml
+
+
+
+# Step by step
+
+1. Le serveur
+2. Faire une image Docker : Dockerfile, build (attention mac), push
+3. 
+
+
+
+
+
+
+
+
+
