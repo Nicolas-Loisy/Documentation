@@ -23,10 +23,9 @@
 
 1. Le serveur
 2. Faire une image Docker : Dockerfile, build (attention mac), push
-3. 
-
-
-
+3. kubernetes minikube
+        kubectl get pods
+4. KaaS : Kubernetes as a Service
 
 
 
