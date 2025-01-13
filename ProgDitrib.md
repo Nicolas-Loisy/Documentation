@@ -17,6 +17,7 @@
 - 
 - miageGR2/blob/main/deployment.yml
 
+KaaS : Kubernetes as a Service
 
 
 # Step by step
@@ -25,8 +26,9 @@
 2. Faire une image Docker : Dockerfile, build (attention mac), push
 3. kubernetes minikube
         kubectl get pods
-4. KaaS : Kubernetes as a Service
-
+4. kubectl create deployment devops-test --image=user/image
+5. kubectl expose deployment devops-test --type=NodePort --port=3000
+6. kubectl get services devops-test
 
 
 
