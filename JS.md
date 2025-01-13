@@ -560,9 +560,7 @@ if ('geolocation' in navigator) {
 
 ---
 
-## **Modules (Import/Export
-
-)**
+## **Modules (Import/Export)**
 
 #### Importation d'un module :
 ```javascript
