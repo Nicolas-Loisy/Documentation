@@ -4,7 +4,7 @@
 
 L'initialisation de Flask donne un app qui instancie un logger python (librairie standard logging), flask vient juste determiner 
 
-- `app.logger` : L'initialisation de Flask donne un app qui instancie un logger python (librairie standard logging).
+- `app.logger` : L'initialisation de Flask donne une app qui instancie un logger python (librairie standard logging).
 - Il est pré-configuré pour enregistrer les messages selon le niveau défini (par défaut DEBUG en mode debug=True et WARNING en mode production).
 
 
