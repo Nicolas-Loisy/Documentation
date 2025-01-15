@@ -1,6 +1,81 @@
 # Logger
 
-## Flask
+## Introduction aux Logs en Python
+
+Le module `logging` de Python permet de générer des logs.
+
+### Niveaux de Logs
+
+Les logs sont classés par niveaux en fonction de leur importance :
+- **DEBUG** : Informations détaillées pour le débogage.
+- **INFO** : Informations générales sur le fonctionnement du programme.
+- **WARNING** : Indications de problèmes.
+- **ERROR** : Erreurs empêchant une partie du programme de fonctionner.
+- **CRITICAL** : Erreurs graves.
+
+### Exemple simple de Logging
+
+```python
+import logging
+
+# Configurer le niveau de log
+logging.basicConfig(level=logging.DEBUG)
+
+# Générer des messages de log
+logging.debug("Message de debug")
+logging.info("Message d'information")
+logging.warning("Message d'avertissement")
+logging.error("Message d'erreur")
+logging.critical("Message critique")
+```
+
+### Configuration des Logs avec un Fichier `.ini`
+
+Le fichier `logging.ini` permet de centraliser la configuration des logs. 
+
+Les points importants :
+1. **Loggers** : Identifient les sources de messages (ex. `root`, `flask.app`, etc.).
+    - Chaque logger est nommé avec un `qualname`.
+    - Le `qualname` correspond généralement au nom du module ou du projet.
+2. **Handlers** : Définissent où les logs sont envoyés (console, fichier, etc.).
+3. **Formatters** : Contrôlent le format des messages (date, niveau, nom du logger, etc.).
+
+#### Structure d'un fichier `logging.ini`
+
+```ini
+[loggers]
+keys=root,exampleLogger
+
+[handlers]
+keys=consoleHandler
+
+[formatters]
+keys=simpleFormatter
+
+[logger_root]
+level=WARNING
+handlers=consoleHandler
+
+[logger_exampleLogger]
+level=DEBUG
+handlers=consoleHandler
+qualname=exampleLogger
+
+[handler_consoleHandler]
+class=StreamHandler
+level=DEBUG
+formatter=simpleFormatter
+args=(sys.stdout,)
+
+[formatter_simpleFormatter]
+format=%(asctime)s - %(name)s - %(levelname)s - %(message)s
+datefmt=%Y-%m-%d %H:%M:%S
+```
+
+Ce fichier configure un logger nommé `exampleLogger` pour afficher des messages de niveau `DEBUG` ou supérieur, avec un format clair, vers la console.
+
+---
+## Logger avec Flask
 
 - **`app.logger`** : Flask fournit un logger intégré basé sur la librairie standard `logging` de Python.  
 - Par défaut, le niveau de log est `DEBUG` en mode développement (`debug=True`) et `WARNING` en mode production.  
@@ -30,8 +105,6 @@ def create_app():
     return app
 ```
 
----
-
 ## Bibliothèque avec Logging
 
 Si vous développez une bibliothèque utilisée dans une application Flask, vous pouvez utiliser `logging.config.fileConfig` pour assurer que la bibliothèque partage la même configuration de logging.
@@ -50,8 +123,6 @@ logger.debug("Logger de la bibliothèque initialisé avec succès.")
 ```
 
 Cela garantit que les messages de la bibliothèque suivent les mêmes règles que ceux de Flask.
-
----
 
 ## Exemple de `logging.ini` pour Flask et la Bibliothèque
 
