@@ -44,8 +44,7 @@
 
 - **RSA** : Utilisé pour les signatures numériques, garantissant l’authenticité et l’intégrité d’un message. Il repose sur la factorisation de grands nombres premiers. La sécurité du RSA dépend de la génération de deux nombres premiers très grands et bien éloignés l’un de l’autre, avec des tests de primalité pour assurer leur qualité.
 
-    - 
-
+    - **Clé RSA** : La taille minimale recommandée pour une clé RSA est de 1024 bits, mais il est fortement conseillé d'utiliser des tailles de 2048 bits ou 4096 bits pour assurer une sécurité.
 
 
 
