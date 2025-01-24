@@ -40,6 +40,17 @@
 
 ---
 
+### Cryptographie asymétrique
+
+- **RSA** : Utilisé pour les signatures numériques, garantissant l’authenticité et l’intégrité d’un message. Il repose sur la factorisation de grands nombres premiers. La sécurité du RSA dépend de la génération de deux nombres premiers très grands et bien éloignés l’un de l’autre, avec des tests de primalité pour assurer leur qualité.
+
+    - 
+
+
+
+
+
+
 ## Projet : Émulateur Enigma
 
 ### Fonctionnalités
