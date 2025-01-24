@@ -46,6 +46,25 @@
 
     - **Clé RSA** : La taille minimale recommandée pour une clé RSA est de 1024 bits, mais il est fortement conseillé d'utiliser des tailles de 2048 bits ou 4096 bits pour assurer une sécurité.
 
+---
+
+### Cryptographie hybride
+
+- **Modèle OSI**
+    - Couche physique
+    - Couche de liaison de données
+    - Couche réseau
+    - Couche de transport
+    - Couche de session
+    - Couche de présentation
+    - Couche application
+
+- **TLS** : 
+    - Utilisé dans : messagerie, voix ip, https
+
+
+
+
 
 ## À savoir
 
@@ -59,6 +78,21 @@ Le fonctionnement d'Enigma et d'AES :
 - **Tailles de clé recommandées** :  
   - **Enigma** : La sécurité dépend de la configuration des rotors, généralement 3 rotors pour les configurations de base.  
   - **AES** : Les tailles de clé recommandées sont de 128 bits (minimum), 192 bits et 256 bits pour une sécurité optimale contre les attaques par force brute.
+
+
+**Différence entre codage et cryptographie** : 
+- **Codage** = Transformation pour compatibilité (pas de sécurité), pas un but de sécurité.
+- **Cryptographie** = Transformation pour sécurité (confidentialité et intégrité).
+
+**Différence entre permutation et substitution** : 
+La substitution consiste à remplacer un élément (comme une lettre ou un chiffre) par un autre selon une règle fixe, tandis que la permutation implique un échange de positions entre les éléments sans modification de leur valeur.
+
+**Asymétrique** : Utilise une paire de clés (publique et privée) où la clé publique est dérivée de grands nombres premiers, avec des tests de primalité pour assurer leur sécurité. La clé publique chiffre les données, et la clé privée les déchiffre.
+
+**Handshake** : Premier échange entre deux parties pour établir une connexion sécurisée, incluant la transmission des paramètres nécessaires (clés, algorithmes, etc.) pour initier la communication.
+
+**Partie commune entre TLS et SSH** : Les deux protocoles utilisent de la cryptographie asymétrique pour l'échange de clés, le processus de vérification de l'identité des parties et l'établissement d'une connexion sécurisée via un échange initial (handshake). Les deux sont sur la couche application.
+
 
 
 
