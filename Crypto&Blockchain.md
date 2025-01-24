@@ -93,7 +93,8 @@ La substitution consiste à remplacer un élément (comme une lettre ou un chiff
 
 **Partie commune entre TLS et SSH** : Les deux protocoles utilisent de la cryptographie asymétrique pour l'échange de clés, le processus de vérification de l'identité des parties et l'établissement d'une connexion sécurisée via un échange initial (handshake). Les deux sont sur la couche application.
 
-Différence entre **Connexion à distance** et **Tunneling** :
+
+**Différence entre Connexion à distance et Tunneling** :
 - **Connexion à distance** = Accès direct à un système distant, prise de contrôle du PC.
 - **Tunneling** = Création d'un tunnel sécurisé pour le transfert de données.
 
