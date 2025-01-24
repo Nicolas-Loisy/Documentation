@@ -34,6 +34,12 @@
 
 ---
 
+### Chiffrement symétrique
+- **Homomorphique** : Permet d'effectuer des calculs directement sur des données chiffrées sans les déchiffrer, produisant un résultat qui, une fois déchiffré, correspond au résultat des mêmes calculs sur les données en clair.
+    - Permet de poser une question sur les données chiffrées mais sans accès au contenu.
+
+---
+
 ## Projet : Émulateur Enigma
 
 ### Fonctionnalités
