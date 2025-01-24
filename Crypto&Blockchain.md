@@ -1,54 +1,53 @@
 # Crypto & Blockchain
 
+## Définitions
+
+- **Stochastic** : Processus intégrant du hasard ou de la probabilité, souvent utilisé pour modéliser des phénomènes non déterministes.
+
 ## Cryptographie
 
-- Chiffrement par substitution
-    - César
-    - Enigma (polyalphabétique) 
-- Symétrique
-- Asymétrique
-
-**Définition :**
-
-
-
-### Cryptographie Quantique
-
-- Quantique
-    - Protocole BB84
-
-- Post-quantique
-    - NTRU
-    - McEliece
-
-### Cryptographie symétrique
-
-- AES
-- Bloc : 128 bits
-
-Confusion et diffusion
-Confusion : rendre complexe la relation entre la clé de chiffrement et le texte crypté.
-
-
+### Types de chiffrement
+- **Substitution** : Méthode où chaque lettre ou groupe de lettres est remplacé par un autre selon une règle définie.  
+  - **César** : Décalage fixe des lettres de l’alphabet.  
+  - **Enigma** : Chiffrement polyalphabétique utilisant des rotors pour changer dynamiquement les substitutions.  
+- **Symétrique** : Utilise une seule clé pour chiffrer et déchiffrer les données.  
+- **Asymétrique** : Utilise une paire de clés (publique et privée) où la clé publique chiffre et la clé privée déchiffre (ou inversement).  
 
 ---
 
-## TODO projet
+### Cryptographie quantique
+- **Quantique** : Exploite les propriétés de la mécanique quantique pour sécuriser les communications.  
+  - *Protocole BB84* : Méthode d’échange de clés basée sur les états quantiques, garantissant la détection d’une interception.  
+- **Post-quantique** : Algorithmes conçus pour résister aux attaques des ordinateurs quantiques.  
+  - *NTRU* : Basé sur les polynômes et les réseaux.  
+  - *McEliece* : Basé sur les codes correcteurs d’erreurs.  
 
-Faire emulateur enigma :
+---
 
-texte a chiffre
-cle  secrette
-config des rotors
-permet de chiffrer et dechiffrer
-clavier et affichage
-facage des 10 couples
-- 3 rotor
+### Cryptographie symétrique
+- **AES (Advanced Encryption Standard)** : Algorithme de chiffrement par blocs utilisé pour sécuriser les données.  
+  - Bloc : 128 bits.  
+  - Tours : Nombre de cycles de transformation (10, 12 ou 14 selon la taille de la clé).  
+- **Confusion et diffusion** (concepts fondamentaux de la cryptographie) :  
+  - *Confusion* : Rend la relation entre la clé et le texte chiffré difficile à comprendre.  
+  - *Diffusion* : Répartit l’information sur tout le texte chiffré pour rendre les motifs indiscernables.  
 
-avec reflecteur
-config standrad de enigma
+---
 
-interface en option
+## Projet : Émulateur Enigma
 
-travail indiv
-langauage au choix
+### Fonctionnalités
+- Chiffrement et déchiffrement :  
+  - Texte à chiffrer.  
+  - Clé secrète.  
+  - Configuration des rotors (position initiale et ordre).  
+  - Support des couples clavier/affichage.  
+- Configuration standard d’Enigma :  
+  - 3 rotors avec réflecteur intégré.  
+
+### Options supplémentaires
+- Interface utilisateur (facultative).  
+
+### Contraintes
+- Travail individuel.  
+- Langage au choix.  
