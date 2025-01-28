@@ -178,3 +178,8 @@ datefmt=%Y-%m-%d %H:%M:%S
 
 1. **Chargement de la configuration** : Chargez `logging.ini` avant toute utilisation des loggers pour garantir une configuration cohérente.
 2. **Utilisation de noms explicites** : Identifiez chaque logger avec un `qualname` distinct (`flask.app`, `bibliotheque`).
+
+
+## Note importante :  
+
+Même si un logger (ex : `app_logger`) est configuré sur `DEBUG` dans le `.ini`, les messages `DEBUG` ne s’afficheront pas si ses handlers ont un niveau plus élevé (ex. `INFO`). Assurez-vous que **les niveaux du logger et des handlers soient alignés** pour afficher tous les messages souhaités.
