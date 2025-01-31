@@ -98,6 +98,7 @@ La substitution consiste à remplacer un élément (comme une lettre ou un chiff
 - **Connexion à distance** = Accès direct à un système distant, prise de contrôle du PC.
 - **Tunneling** = Création d'un tunnel sécurisé pour le transfert de données.
 
+Hashage : 
 
 ## Projet : Émulateur Enigma
 
