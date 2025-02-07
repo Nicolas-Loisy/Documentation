@@ -17,3 +17,9 @@ Stocker des données sans pouvoir les modifier.
 ### Contrats intelligents
 
 Programme informatique ou protocole de transaction destiné à exécuter, contrôler ou documenter automatiquement des événements et des actions juridiquement pertinents conformément aux termes d'un contrat ou d'un accord.
+
+**Objectifs** :
+- Réduction du besoin d'intermediaire de confiance
+- Réduction du coûts d'arbitrage et d'execution
+- Réduction des pertes dues à la fraude
+- Réduction des exceptions malveillantes et accidentelles
