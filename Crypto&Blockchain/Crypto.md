@@ -30,6 +30,7 @@
 
 ### Cryptographie symétrique
 - **AES (Advanced Encryption Standard)** : Algorithme de chiffrement par blocs utilisé pour sécuriser les données.  
+  - **Objectif d'AES** : Algorithme simple, rapide que l'on peut réitérer un grand nombre de fois et qui fourni une très grande complexité calculatoire.
   - Bloc : 128 bits.  
   - Tours : Nombre de cycles de transformation (10, 12 ou 14 selon la taille de la clé).  
 - **Confusion et diffusion** (concepts fondamentaux de la cryptographie) :  
@@ -78,7 +79,7 @@ Le fonctionnement d'Enigma et d'AES :
   - **AES** : Basé sur des transformations de blocs de données avec plusieurs tours, la sécurité repose sur la taille de la clé et l'absence de vulnérabilités connues dans l'algorithme.  
 - **Cas d'usage** :  
   - **Enigma** : Principalement utilisé pendant la Seconde Guerre mondiale pour la communication militaire secrète.  
-  - **AES** : Utilisé dans des applications modernes telles que le chiffrement de données sensibles (transactions bancaires, communications sécurisées, stockage de données).  
+  - **AES** : Utilisé dans des applications modernes telles que le chiffrement de données sensibles (VPN, WI-FI, TLS, SSH, transactions bancaires, communications sécurisées, stockage de données).  
 - **Tailles de clé recommandées** :  
   - **Enigma** : La sécurité dépend de la configuration des rotors, généralement 3 rotors pour les configurations de base.  
   - **AES** : Les tailles de clé recommandées sont de 128 bits (minimum), 192 bits et 256 bits pour une sécurité optimale contre les attaques par force brute.
