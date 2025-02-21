@@ -6,3 +6,10 @@
     - on fabrique la clé d'après (chaque tour) à partir de la precedente
 - Utilisation d'AES
 - Modèle OSI (pas du par coeur)
+- SSH et buts
+    - exploiter des services reseaux en tt securtie sur un reseau non securise
+        - connexion a distance
+        - tunneling
+        - SFTP
+        - exec ligne de cmd
+- difference entre co a distance et tunneling
