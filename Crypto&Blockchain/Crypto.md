@@ -16,7 +16,7 @@
 ---
 
 ### Cryptographie quantique
-- **Quantique** : Exploite les propriétés de la mécanique quantique pour sécuriser les communications.  
+- **Quantique** : Exploite les propriétés de la mécanique quantique pour sécuriser les communications ou casser plus rapidement les chiffrements grace à sa puissance de calcul.  
   - *Protocole BB84* : Méthode d’échange de clés basée sur les états quantiques, garantissant la détection d’une interception.  
 - **Post-quantique** : Algorithmes conçus pour résister aux attaques des ordinateurs quantiques.  
   - *NTRU* : Basé sur les polynômes et les réseaux.  
