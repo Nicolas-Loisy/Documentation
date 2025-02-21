@@ -56,14 +56,14 @@
 
 ### Cryptographie hybride
 
-- **Modèle OSI**
-    - Couche physique
-    - Couche de liaison de données
-    - Couche réseau
-    - Couche de transport
-    - Couche de session
-    - Couche de présentation
-    - Couche application
+- **Modèle OSI** : Permet de modéliser les différentes couches lors d'un fonctionnement d'un réseau.
+    - **Couche physique**
+    - **Couche de liaison de données** : Qui communique avec qui (cartes réseaux)
+    - **Couche réseau**
+    - **Couche de transport**
+    - **Couche de session**
+    - **Couche de présentation**
+    - **Couche application**
 
 - **TLS** : 
     - Utilisé dans : messagerie, voix ip, https
