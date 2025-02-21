@@ -13,3 +13,10 @@
         - SFTP
         - exec ligne de cmd
 - difference entre co a distance et tunneling
+- def : registre, numerique, centralise, decentralise
+- arbre de merckle
+- blockchain et hard fork
+- def : contrat intelligent
+- iimuable / distribue
+- applications des contrats intelligents
+- NFT : droit de propriete, pas un asset numerique mais un droit a un asset numerique
