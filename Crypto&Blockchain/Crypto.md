@@ -30,7 +30,7 @@
 
 ### Cryptographie symétrique
 - **AES (Advanced Encryption Standard)** : Algorithme de chiffrement par blocs utilisé pour sécuriser les données.  
-  - **Objectif d'AES** : Algorithme simple, rapide que l'on peut réitérer un grand nombre de fois et qui fourni une très grande complexité calculatoire.
+  - **Objectif d'AES** : Algorithme simple, rapide (temps quasi réel) que l'on peut réitérer un grand nombre de fois et qui fourni une très grande complexité calculatoire.
   - Bloc : 128 bits.  
   - Tours : Nombre de cycles de transformation (10, 12 ou 14 selon la taille de la clé).  
 - **Confusion et diffusion** (concepts fondamentaux de la cryptographie) :  
@@ -42,6 +42,7 @@
 ### Chiffrement symétrique
 - **Homomorphique** : Permet d'effectuer des calculs directement sur des données chiffrées sans les déchiffrer, produisant un résultat qui, une fois déchiffré, correspond au résultat des mêmes calculs sur les données en clair.
     - Permet de poser une question sur les données chiffrées mais sans accès au contenu.
+    - Avantage : Pas obligé de tout déchiffrer.
 
 ---
 
