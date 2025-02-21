@@ -20,3 +20,5 @@
 - iimuable / distribue
 - applications des contrats intelligents
 - NFT : droit de propriete, pas un asset numerique mais un droit a un asset numerique
+
+
