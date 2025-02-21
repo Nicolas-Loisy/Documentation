@@ -83,6 +83,8 @@ Le fonctionnement d'Enigma et d'AES :
 **Différence entre codage et cryptographie** : 
 - **Codage** = Transformation pour compatibilité (pas de sécurité), pas un but de sécurité.
 - **Cryptographie** = Transformation pour sécurité (confidentialité et intégrité).
+- **Cryptologie** = Science de casser le contenu (illégitime)
+- **Stéganographie** = Science de la dissimulation de l'information 
 
 **Différence entre permutation et substitution** : 
 La substitution consiste à remplacer un élément (comme une lettre ou un chiffre) par un autre selon une règle fixe, tandis que la permutation implique un échange de positions entre les éléments sans modification de leur valeur.
