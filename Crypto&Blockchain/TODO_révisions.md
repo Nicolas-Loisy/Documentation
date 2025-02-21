@@ -1,0 +1,8 @@
+- Les defs
+- Objectif AES
+- Logique fonctionnement AES
+    - subword : substitution de chaque octets
+    - rcon : change a chaque tour (on fait un xor dans le rcon)
+    - on fabrique la clé d'après (chaque tour) à partir de la precedente
+- Utilisation d'AES
+- Modèle OSI 
