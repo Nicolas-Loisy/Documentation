@@ -33,8 +33,8 @@
   - Bloc : 128 bits.  
   - Tours : Nombre de cycles de transformation (10, 12 ou 14 selon la taille de la clé).  
 - **Confusion et diffusion** (concepts fondamentaux de la cryptographie) :  
-  - *Confusion* (Table de substitution) : Rend la relation entre la clé et le texte chiffré difficile à comprendre.  
-  - *Diffusion* (Table de permutation) : Répartit l’information sur tout le texte chiffré pour rendre les motifs indiscernables.
+  - *Confusion* (Table de substitution : S-box) : Rend la relation entre la clé et le texte chiffré difficile à comprendre.  
+  - *Diffusion* (Table de permutation : P-box) : Répartit l’information sur tout le texte chiffré pour rendre les motifs indiscernables.
 
 ---
 
