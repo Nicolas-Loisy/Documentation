@@ -3,6 +3,10 @@
 ## Définitions
 
 - **Stochastic** : Processus intégrant du hasard ou de la probabilité, souvent utilisé pour modéliser des phénomènes non déterministes.
+- **Confidentialité** : 
+- **Intégrité de la donnée** :
+- **Authenticité** : 
+- **Moyens d'implémentation des méthodes** : 
 
 ## Cryptographie
 
