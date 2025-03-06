@@ -7,6 +7,9 @@
 - **Intégrité de la donnée** :
 - **Authenticité** : 
 - **Moyens d'implémentation des méthodes** : 
+- **Chiffrage** : 
+- **Cryptographie** : 
+- 
 
 ## Cryptographie
 
