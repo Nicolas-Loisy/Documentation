@@ -8,8 +8,6 @@
 - **Authenticité** : 
 - **Moyens d'implémentation des méthodes** : 
 - **Chiffrage** : 
-- **Cryptographie** : 
-- 
 - **Codage** : Transformation pour compatibilité (pas de sécurité), pas un but de sécurité.
 - **Cryptographie** : Transformation pour sécurité (confidentialité et intégrité).
 - **Cryptanalyse** : Science de casser le chiffrement (illégitime)
