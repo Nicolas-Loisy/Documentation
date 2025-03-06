@@ -10,6 +10,11 @@
 - **Chiffrage** : 
 - **Cryptographie** : 
 - 
+- **Codage** : Transformation pour compatibilité (pas de sécurité), pas un but de sécurité.
+- **Cryptographie** : Transformation pour sécurité (confidentialité et intégrité).
+- **Cryptanalyse** : Science de casser le chiffrement (illégitime)
+- **Cryptologie** : Ensemble de la Cryptographie et de la Cryptanalyse
+- **Stéganographie** : Science de la dissimulation de l'information
 
 ## Cryptographie
 
