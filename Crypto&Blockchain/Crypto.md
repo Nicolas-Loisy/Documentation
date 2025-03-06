@@ -3,11 +3,8 @@
 ## Définitions
 
 - **Stochastic** : Processus intégrant du hasard ou de la probabilité, souvent utilisé pour modéliser des phénomènes non déterministes.
-- **Confidentialité** : 
 - **Intégrité de la donnée** :
-- **Authenticité** : 
 - **Moyens d'implémentation des méthodes** : 
-- **Chiffrage** : 
 - **Codage** : Transformation pour compatibilité (pas de sécurité), pas un but de sécurité.
 - **Cryptographie** : Transformation pour sécurité (confidentialité et intégrité).
 - **Cryptanalyse** : Science de casser le chiffrement (illégitime)
