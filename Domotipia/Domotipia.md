@@ -11,7 +11,7 @@ Approche structurée qui combine l'utilisation de conteneurs, de dashboards, de 
   - **Serv API Python (avec Enigma)** : Créez une image Docker pour cette API.
 
 ### 2. Dashboard de Gestion
-- **Portainer** : Un outil de gestion Docker qui offre une interface utilisateur pour gérer vos conteneurs.
+- **Portainer** : Un outil de gestion Docker qui offre une interface utilisateur pour gérer vos conteneurs. [Portainer with Pi](https://www.portainer.io/blog/installing-portainer-to-the-raspberry-pi-piday-raspberrypi-raspberry_pi)
 - **Home Assistant** : Peut également servir de dashboard centralisé pour contrôler divers aspects de votre réseau domestique.
 
 ### 3. Reverse Proxy
