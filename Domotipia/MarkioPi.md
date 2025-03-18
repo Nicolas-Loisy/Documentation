@@ -66,10 +66,16 @@ Voici un guide détaillé, étape par étape, pour configurer votre Raspberry Pi
      ```bash
      docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
      ```
+    - Par mesure de sécurité, il faut :
+    ```bash
+    docker stop portainer
+    docker start portainer
+    ```
 
 3. **Accéder à Portainer** :
    - Ouvrez votre navigateur et accédez à `http://<IP_DE_VOTRE_PI>:9000`.
    - Suivez les instructions pour configurer Portainer.
+
 
 ### Étape 4 : Configuration de Tailscale
 
