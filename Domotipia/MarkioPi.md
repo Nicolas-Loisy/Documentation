@@ -79,14 +79,34 @@ Voici un guide détaillé, étape par étape, pour configurer votre Raspberry Pi
 
 ### Étape 4 : Configuration de Tailscale
 
-1. **Installer Tailscale** :
-   - Suivez les instructions d'installation de Tailscale pour Raspberry Pi sur le site officiel de Tailscale.
-   - Exemple de commande d'installation :
-     ```bash
-     curl -fsSL https://tailscale.com/install.sh | sh
-     sudo tailscale up
-     ```
-   - Connectez-vous à votre compte Tailscale pour authentifier votre Raspberry Pi.
+Tailscale peut fonctionner sur les cartes Raspberry Pi exécutant Raspbian. Les packages sont disponibles en versions 32 et 64 bits.
+
+1. **Installer le `apt-transport-https` plugin :**
+```bash
+sudo apt-get install apt-transport-https
+```
+
+2. **Ajoutez la clé de signature du package et le référentiel de Tailscale :**
+```bash
+curl -fsSL https://pkgs.tailscale.com/stable/raspbian/bullseye.noarmor.gpg | sudo tee /usr/share/keyrings/tailscale-archive-keyring.gpg > /dev/null
+curl -fsSL https://pkgs.tailscale.com/stable/raspbian/bullseye.tailscale-keyring.list | sudo tee /etc/apt/sources.list.d/tailscale.list
+```
+
+3. **Installer Tailscale :**
+```bash
+sudo apt-get update
+sudo apt-get install tailscale
+```
+
+4. **Connectez votre machine à votre réseau Tailscale et authentifiez-vous dans votre navigateur :**
+```bash
+sudo tailscale up
+```
+5. **Vous pouvez trouver votre adresse IPv4 Tailscale en exécutant :**
+```bash
+tailscale ip -4
+```
+Connectez-vous à votre compte Tailscale pour authentifier votre Raspberry Pi.
 
 ### Étape 5 : Déploiement des Projets avec Docker
 
