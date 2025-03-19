@@ -81,7 +81,7 @@ Voici un guide détaillé, étape par étape, pour configurer votre Raspberry Pi
 
 Tailscale peut fonctionner sur les cartes Raspberry Pi exécutant Raspbian. Les packages sont disponibles en versions 32 et 64 bits.
 
-1. **Installer le `apt-transport-https` plugin :**
+1. **Installer le `lsb-release & curl` plugin :**
 ```bash
 sudo apt install lsb-release curl
 ```
