@@ -110,18 +110,38 @@ Connectez-vous à votre compte Tailscale pour authentifier votre Raspberry Pi.
 
 ### Étape 5 : Déploiement des Projets avec Docker
 
-1. **Créer des Conteneurs pour Chaque Projet** :
+**Créer des Conteneurs pour Chaque Projet** :
    - Utilisez Portainer pour créer des conteneurs pour chaque projet.
-   - Par exemple, pour **Home Assistant** :
-     - Allez dans "Containers" puis "Add container".
-     - Utilisez l'image `homeassistant/raspberrypi4-homeassistant:stable`.
-     - Configurez les ports (par exemple, 8123 pour l'interface web).
-     - Ajoutez des volumes pour persister les données (par exemple, `/path/to/config:/config`).
 
-2. **Exemple de Configuration pour Home Assistant** :
-   - Dans Portainer, configurez les volumes et les ports comme suit :
-     - **Volumes** : `/home/pi/homeassistant:/config`
-     - **Ports** : `8123:8123`
+#### Étape 5.1 : Home Assistant
+
+Lancer Home Assistant en Docker.
+
+Dans **Portainer**, crée un nouveau **conteneur** avec ces paramètres :  
+
+- **Nom** : `homeassistant`  
+- **Image** : `ghcr.io/home-assistant/home-assistant:stable`  
+- **Ports** : `8123:8123`  
+- **Volumes** :  
+  - `/home/pi/homeassistant:/config`  
+  - `/etc/localtime:/etc/localtime:ro`  
+- **Redémarrage** : `Always`  
+
+Ou en ligne de commande :  
+```bash
+docker run -d \
+  --name homeassistant \
+  --restart always \
+  -v /home/pi/homeassistant:/config \
+  -v /etc/localtime:/etc/localtime:ro \
+  --network=host \
+  ghcr.io/home-assistant/home-assistant:stable
+```
+
+Accède à Home Assistant via :  
+```
+http://<IP_DE_TON_PI>:8123
+```
 
 ### Étape 6 : Configuration de Nginx Proxy Manager
 
