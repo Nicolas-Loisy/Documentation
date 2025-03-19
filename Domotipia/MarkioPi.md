@@ -83,7 +83,7 @@ Tailscale peut fonctionner sur les cartes Raspberry Pi exécutant Raspbian. Les 
 
 1. **Installer le `apt-transport-https` plugin :**
 ```bash
-sudo apt-get install apt-transport-https
+sudo apt install lsb-release curl
 ```
 
 2. **Ajoutez la clé de signature du package et le référentiel de Tailscale :**
