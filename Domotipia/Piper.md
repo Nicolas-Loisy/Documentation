@@ -68,3 +68,10 @@ Pour configurer Piper comme assistant vocal sur votre Raspberry Pi 5 avec Docker
 
 - Assurez-vous que les ports ne sont pas bloqués par un pare-feu.
 - Vous pouvez ajuster les paramètres de voix (`PIPER_VOICE`, `PIPER_LENGTH`, etc.) selon vos préférences.
+
+
+
+
+wget https://raw.githubusercontent.com/TazzerMAN/piper-voice-glados-fr/main/models/fr_FR-glados-medium.tar.gz -O /home/pi5-markio/piper_models/fr_FR-glados-medium.tar.gz
+
+tar -xzvf /home/pi5-markio/piper_models/fr_FR-glados-medium.tar.gz -C /home/pi5-markio/piper_models/
