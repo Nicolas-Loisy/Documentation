@@ -128,6 +128,7 @@ Dans **Portainer**, crée un nouveau **conteneur** avec ces paramètres :
   - `/etc/localtime:/etc/localtime:ro`  
   - `/run/dbus:/run/dbus:ro`
 - **Redémarrage** : `Always`  
+- **Devices** : `/dev/snd:/dev/snd`
 
 Ou en ligne de commande :  
 ```bash
