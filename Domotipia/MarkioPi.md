@@ -121,7 +121,7 @@ Dans **Portainer**, crée un nouveau **conteneur** avec ces paramètres :
 
 - **Nom** : `homeassistant`  
 - **Image** : `ghcr.io/home-assistant/home-assistant:stable`  
-- **Network **: `host` (très important pour détecter les appareils)
+- **Network** : `host` (très important pour détecter les appareils)
 - **Ports** : `8123:8123`  
 - **Volumes** :  
   - `/home/pi/homeassistant:/config`  
