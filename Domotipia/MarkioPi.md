@@ -126,6 +126,7 @@ Dans **Portainer**, crée un nouveau **conteneur** avec ces paramètres :
 - **Volumes** :  
   - `/home/pi/homeassistant:/config`  
   - `/etc/localtime:/etc/localtime:ro`  
+  - `/run/dbus:/run/dbus:ro`
 - **Redémarrage** : `Always`  
 
 Ou en ligne de commande :  
