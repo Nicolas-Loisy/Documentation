@@ -18,3 +18,6 @@ audio_output {
     mixer_type      "software"
 }
 ```
+
+
+Dans HA, ajouter l'integration MPD (localhost, 6600), un new mediaplayer apparaitra.
