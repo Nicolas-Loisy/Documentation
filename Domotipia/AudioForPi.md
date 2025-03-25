@@ -21,3 +21,40 @@ audio_output {
 
 
 Dans HA, ajouter l'integration MPD (localhost, 6600), un new mediaplayer apparaitra.
+
+
+
+
+
+---
+
+Rhaspy
+
+
+Configurer le conteneur Rhasspy
+
+Dans l'interface de création du conteneur, configurez comme suit :
+
+Name : rhasspy
+
+Image : rhasspy/rhasspy
+
+Ports : Mappez le port 12101 pour l'interface web de Rhasspy (si vous utilisez ce port par défaut).
+
+12101 sur l'hôte → 12101 dans le conteneur.
+
+Pour permettre l'accès au microphone du Raspberry Pi, assurez-vous que le périphérique audio est mappé correctement dans le conteneur. Ajoutez une section Devices dans la configuration du conteneur :
+
+/dev/snd : /dev/snd (Cela permet à Rhasspy d'utiliser le microphone de votre Raspberry Pi).
+
+Commande, overide : `--profile fr`
+
+
+
+Démarrer le conteneur Rhasspy
+
+Une fois le conteneur configuré, cliquez sur Deploy the container pour lancer Rhasspy dans Docker via Portainer.
+
+Accéder à Rhasspy
+
+Vous pouvez maintenant accéder à l'interface web de Rhasspy en vous rendant sur http://<votre-ip>:12101 dans votre navigateur.
