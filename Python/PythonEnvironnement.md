@@ -23,7 +23,7 @@
 
 - **Lister les versions Python installées:** `py --list` (si applicable)
 - **Vérifier la version Python actuelle:** `python --version` ou `python3 --version`
-- **Créer un environnement virtuel:** `python -m venv <nom_environnement>`
+- **Créer un environnement virtuel:** `python -m venv <nom_environnement>` ex: `python -m venv .venv`
 - **Activer un environnement virtuel:** `source <nom_environnement>/bin/activate` (Windows : `<nom_environnement>\Scripts\activate`)
 - **Désactiver un environnement virtuel:** `deactivate`
 - **Installer des packages:** `pip install <nom_paquet>`
