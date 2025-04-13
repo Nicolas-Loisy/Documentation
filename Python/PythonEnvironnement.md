@@ -87,6 +87,5 @@ Cela devrait afficher `Python 3.11.3` (ou similaire) si l'installation a réussi
 **Dépannage:**
 
 - Si vous rencontrez des erreurs de permission, utilisez `sudo` avant les commandes nécessitant des privilèges élevés.
-- Pour un dépannage plus avancé, envisagez de rechercher de l'aide sur des forums en ligne ou dans des communautés.
 
 **N'oubliez pas d'activer l'environnement virtuel approprié avant de travailler sur des projets spécifiques pour éviter les conflits.**
