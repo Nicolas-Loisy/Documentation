@@ -10,10 +10,10 @@ Le **DNS (Domain Name System)** permet de faire correspondre des noms de domaine
 
 
 #### 2. Enregistrement AAAA (Quad A Record)
-- **Fonction** : Similaire à un enregistrement A, mais associe un nom de domaine à une adresse IP **IPv6** (par exemple, `2001:0db8:85a3:0000:0000:8a2e:0370:7334`).
+- **Fonction** : Similaire à un enregistrement A, mais associe un nom de domaine à une adresse IP **IPv6** (par exemple, `2001:0db2:85a3:0000:0000:8a2e:0370:7434`).
 - **Utilisation** : Utilisé pour les domaines qui doivent être accessibles via IPv6.
 - **Exemple** :
-  - `www.exemple.com` → `2001:0db8:85a3:0000:0000:8a2e:0370:7334`
+  - `www.exemple.com` → `2001:0db2:85a3:0000:0000:8a2e:0370:7434`
 
 #### 3. Enregistrement CNAME (Canonical Name Record)
 - **Fonction** : Fait pointer un nom de domaine vers un autre nom de domaine, plutôt que directement vers une adresse IP.
