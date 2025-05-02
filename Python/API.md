@@ -1,5 +1,5 @@
 **Openai**
-```
+```Python
 import json
 import requests
 
@@ -24,9 +24,42 @@ response = requests.post(
 print(response.json()['choices'][0]['message']['content'])
 
 ```
+**Avec historique :**
+```Python
+import json, requests
+from pathlib import Path
+
+API_KEY = "sk-************"
+MODEL = "gpt-4"      # ou "gpt-3.5-turbo"
+HISTORY_FILE = Path("chat_openai.json")
+URL = "https://api.openai.com/v1/chat/completions"
+
+def chat(msg):
+    history = json.loads(HISTORY_FILE.read_text()) if HISTORY_FILE.exists() else []
+    history.append({"role": "user", "content": msg})
+    data = {
+        "model": MODEL,
+        "messages": history,
+        "temperature": 0.7
+    }
+    headers = {
+        "Authorization": f"Bearer {API_KEY}",
+        "Content-Type": "application/json"
+    }
+    r = requests.post(URL, headers=headers, json=data)
+    reply = r.json()["choices"][0]["message"]["content"]
+    history.append({"role": "assistant", "content": reply})
+    HISTORY_FILE.write_text(json.dumps(history, indent=2))
+    return reply
+
+
+print(chat("Peux-tu expliquer la gravité quantique simplement ?"))
+print(chat("Redonne la derniere question"))
+
+```
 
 **LeChat**
-```
+```Python
 import requests
 
 headers = {
@@ -44,8 +77,8 @@ data = {
 response = requests.post("https://api.mistral.ai/v1/chat/completions", headers=headers, json=data)
 print(response.json()["choices"][0]["message"]["content"])
 ```
-**Avec historique : **
-```
+**Avec historique :**
+```Python
 import json, requests
 from pathlib import Path
 
