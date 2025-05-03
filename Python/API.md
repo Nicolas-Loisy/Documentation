@@ -85,7 +85,7 @@ headers = {
 }
 
 data = {
-    "model": "mistral-medium",
+    "model": "ministral-8b-latest",
     "messages": [
         {"role": "user", "content": "Bonjour, peux-tu m'expliquer la relativité restreinte ?"}
     ]
@@ -101,7 +101,7 @@ from pathlib import Path
 
 API_KEY = "**********"  # Remplace par ta clé
 HISTORY_FILE = Path("chat.json")
-MODEL = "mistral-medium"
+MODEL = "ministral-8b-latest" # codestral-latest / ministral-8b-latest / mistral-medium
 
 headers = {
     "Authorization": f"Bearer {API_KEY}",
