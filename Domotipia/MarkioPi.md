@@ -171,14 +171,131 @@ https://<IPADDRESS>:9090
 > Note : Vous verrez un avertissement dû au certificat auto-signé.
 
 
+### Etape 6 : Installer File Browser sur Raspberry Pi avec Portainer
+
+#### 1. Préparer le Raspberry Pi
+
+Mettre à jour le système :
+
+```bash
+sudo apt update && sudo apt upgrade -y
+```
+
+Installer **Docker** et **Portainer** :
+
+```bash
+# Installer Docker
+curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh
+
+# Installer Portainer
+docker volume create portainer_data
+docker run -d -p 9000:9000 -p 8000:8000 \
+  --name=portainer \
+  --restart=always \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v portainer_data:/data \
+  portainer/portainer-ce
+```
+
+Accéder à Portainer depuis le navigateur :
+
+```
+http://<IP_RASPBERRY>:9000
+```
 
 
-### Étape 5 : Déploiement des Projets avec Docker
+#### 2. Préparer les fichiers pour File Browser
+
+Créer les dossiers et fichiers nécessaires :
+
+```bash
+sudo mkdir -p /opt/stacks/filebrowser/{data,config}
+sudo touch /opt/stacks/filebrowser/data/database.db
+sudo chown -R $USER:$USER /opt/stacks/filebrowser
+```
+
+Créer le fichier de configuration `/opt/stacks/filebrowser/config/filebrowser.json` :
+
+```json
+{
+  "port": 80,
+  "baseURL": "",
+  "address": "",
+  "log": "stdout",
+  "database": "/database.db",
+  "root": "/srv"
+}
+```
+
+* **baseURL** : laisser vide pour accès direct
+* **address** : laisser vide pour écouter toutes les interfaces
+
+
+#### 3. Déployer File Browser via Portainer
+
+#### Option A : via Stack (recommandé)
+
+1. Dans Portainer : **Stacks → Add Stack**
+2. Nom : `filebrowser`
+3. Colle ce contenu `docker-compose.yaml` :
+
+```yaml
+services:
+  filebrowser:
+    image: filebrowser/filebrowser
+    container_name: filebrowser
+    user: "1000:1000"  # UID:GID du user pi
+    ports:
+      - 8080:80         # Host:Container → 8080 sur le Pi redirige vers 80 du container
+    volumes:
+      - /:/srv
+      - /opt/stacks/filebrowser/data/database.db:/database.db
+      - /opt/stacks/filebrowser/config/filebrowser.json:/.filebrowser.json
+    restart: always
+```
+
+4. Clique **Deploy the stack**.
+
+#### Option B : via Container
+
+1. **Containers → Add container**
+2. Nom : `filebrowser`
+3. Image : `filebrowser/filebrowser`
+4. Ports : `8080 → 80`
+5. Volumes :
+
+   * `/ → /srv`
+   * `/opt/stacks/filebrowser/data/database.db → /database.db`
+   * `/opt/stacks/filebrowser/config/filebrowser.json → /.filebrowser.json`
+6. User : `1000:1000`
+7. Restart policy : `Always`
+8. Déployer le container.
+
+#### 4. Accéder à File Browser
+
+* URL : `http://<IP_RASPBERRY>:8080`
+* Identifiant : `admin`
+* Mot de passe : généré lors du premier lancement (visible dans les logs du container Portainer).
+
+#### 5. Sécuriser
+
+* Change le mot de passe par défaut dans **Settings → Change Password**.
+* Si exposé à Internet, utiliser **reverse proxy + HTTPS**.
+
+#### 6. Mettre à jour File Browser
+
+1. Dans Portainer : **Stacks → filebrowser → Recreate → Pull latest image**
+2. Docker téléchargera la dernière version et relancera le container.
+
+
+
+### Étape 6 : Déploiement des Projets avec Docker
 
 **Créer des Conteneurs pour Chaque Projet** :
    - Utilisez Portainer pour créer des conteneurs pour chaque projet.
 
-#### Étape 5.1 : Home Assistant
+#### Étape 6.1 : Home Assistant
 
 Lancer Home Assistant en Docker.
 
@@ -211,7 +328,7 @@ Accède à Home Assistant via :
 http://<IP_DE_TON_PI>:8123
 ```
 
-### Étape 6 : Configuration de Nginx Proxy Manager
+### Étape 7 : Configuration de Nginx Proxy Manager
 
 1. **Créer un Répertoire pour Nginx Proxy Manager** :
    - Créez un répertoire pour stocker les données de Nginx Proxy Manager :
@@ -247,7 +364,7 @@ http://<IP_DE_TON_PI>:8123
    - Ouvrez votre navigateur et accédez à `http://<IP_DE_VOTRE_PI>:81`.
    - Configurez les proxys pour chaque service.
 
-### Étape 7 : Surveillance et Maintenance
+### Étape 8 : Surveillance et Maintenance
 
 1. **Surveillance** :
    - Utilisez Portainer pour surveiller l'état et les performances des conteneurs.
