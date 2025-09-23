@@ -108,6 +108,71 @@ tailscale ip -4
 ```
 Connectez-vous à votre compte Tailscale pour authentifier votre Raspberry Pi.
 
+
+### Etape 5 : Cockpit
+
+Installation de Cockpit sur Raspberry Pi
+
+1. Mise à jour du système
+```bash
+sudo apt update
+sudo apt upgrade -y
+````
+
+2. Configuration réseau
+
+Il est recommandé d’utiliser une **IP statique** (idéalement via réservation DHCP dans le routeur).
+Sinon, configurez manuellement l’IP fixe sur le Raspberry Pi.
+
+
+3. Ajout du dépôt Debian Backports
+
+Récupérer le nom de code du système :
+
+```bash
+. /etc/os-release
+```
+
+Ajouter le dépôt :
+
+```bash
+echo "deb http://deb.debian.org/debian ${VERSION_CODENAME}-backports main" | \
+sudo tee /etc/apt/sources.list.d/backports.list
+```
+
+Mettre à jour la liste des paquets :
+
+```bash
+sudo apt update
+```
+
+4. Installation de Cockpit
+
+Installer Cockpit depuis le dépôt backports :
+
+```bash
+sudo apt install -t ${VERSION_CODENAME}-backports cockpit
+```
+
+5. Accès à l’interface web
+
+Récupérer l’adresse IP du Raspberry Pi :
+
+```bash
+hostname -I
+```
+
+Accéder depuis un navigateur à :
+
+```
+https://<IPADDRESS>:9090
+```
+
+> Note : Vous verrez un avertissement dû au certificat auto-signé.
+
+
+
+
 ### Étape 5 : Déploiement des Projets avec Docker
 
 **Créer des Conteneurs pour Chaque Projet** :
