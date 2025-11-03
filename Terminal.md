@@ -110,17 +110,20 @@ screen -r ma_session
 ```
 
 ## Alternative : bg + disown / nohup
+
+### La commande est déjà lancée
+
 bg + disown (commande déjà lancée)
-### Suspendre la commande en cours
+#### Suspendre la commande en cours
 Ctrl+Z
 
-### La relancer en arrière-plan
+#### La relancer en arrière-plan
 bg
 
-### Détacher de la session SSH
+#### Détacher de la session SSH
 disown
 
-## La commande n'est pas encore start
+### La commande n'est pas encore start
 nohup (commande à lancer)
 nohup ./ma_commande > sortie.log 2>&1 &
 
