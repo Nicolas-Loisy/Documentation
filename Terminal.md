@@ -44,3 +44,90 @@ npx command --config ./config-file-1.yaml || echo "Erreur sur config-file-1" >> 
 - `set -e` : Stoppe l'exécution au premier échec.
 
 
+___
+
+# Cheat Sheet `screen` - Ubuntu
+
+## Installer screen
+```bash
+sudo apt update
+sudo apt install screen
+````
+
+## Créer une session
+
+```bash
+screen -S nom_session
+```
+
+## Détacher la session
+
+```text
+Ctrl+a, d          # raccourci clavier
+Ctrl+a : detach    # commande interne
+```
+
+## Lister les sessions
+
+```bash
+screen -ls
+```
+
+## Reprendre une session
+
+```bash
+screen -r nom_session
+screen -r ID_session
+```
+
+## Commandes utiles dans screen
+
+| Raccourci       | Action                        |
+| --------------- | ----------------------------- |
+| Ctrl+a c        | Nouvelle fenêtre              |
+| Ctrl+a n        | Fenêtre suivante              |
+| Ctrl+a p        | Fenêtre précédente            |
+| Ctrl+a d        | Détacher session              |
+| Ctrl+a : detach | Détacher via commande interne |
+
+> ⚠️ “No other window” signifie qu’il n’y a qu’une seule fenêtre. Normal.
+
+## Comparaison rapide
+
+| Méthode       | Survie déconnexion | Visualisation sortie |
+| ------------- | ------------------ | -------------------- |
+| bg + disown   | Oui                | Non (fichier)        |
+| nohup         | Oui                | Non (fichier)        |
+| screen / tmux | Oui                | Oui                  |
+
+## Exemple complet
+
+```bash
+screen -S ma_session
+./ma_commande
+Ctrl+A D
+screen -r ma_session
+```
+
+## Alternative : bg + disown / nohup
+bg + disown (commande déjà lancée)
+### Suspendre la commande en cours
+Ctrl+Z
+
+### La relancer en arrière-plan
+bg
+
+### Détacher de la session SSH
+disown
+
+## La commande n'est pas encore start
+nohup (commande à lancer)
+nohup ./ma_commande > sortie.log 2>&1 &
+
+
+nohup empêche la commande d’être tuée à la fermeture de SSH
+
+> sortie.log 2>&1 redirige la sortie standard et les erreurs vers un fichier
+
+& lance la commande en arrière-plan
+
