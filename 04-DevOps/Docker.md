@@ -61,6 +61,35 @@ docker save -o mysql8 mysql:8
 docker build -t nom-image:latest .
 ```
 
+
 ---
 
-Avec ces commandes, vous pouvez facilement gérer vos containers et images Docker.
+## Erreurs
+
+### Erreur  "network not found"
+
+```
+Error response from daemon: failed to set up container networking:
+network <id> not found
+```
+
+1. Nettoyer l’environnement
+
+```bash
+docker compose -f etc/docker/docker-compose.yml down --remove-orphans
+docker network prune -f
+```
+
+2. Recréer les conteneurs
+
+```bash
+make docker-start
+# ou
+docker compose -f etc/docker/docker-compose.yml up -d --build
+```
+
+3. Vérifier le statut
+
+```bash
+docker ps
+```
