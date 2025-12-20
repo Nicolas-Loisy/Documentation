@@ -20,7 +20,7 @@
 ## **Gestion des Tables**
 - **Annulation** : Politique de suppression d'une table.
 - **R.A.Z** (Remise à Zéro) :
-  - Signification : **Rien À Signaler**. (*Humour*)
+  - Signification : **Rien À Zignaler**. (*Humour*)
   - Signification alternative : **Remise à Zéro**.
 
 ## **Création des Tables**
