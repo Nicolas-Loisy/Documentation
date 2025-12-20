@@ -1,6 +1,7 @@
 # Module 3 : Théorie des Probabilités pour le Machine Learning
 
 ## 📋 Table des Matières
+
 1. [Introduction](#introduction)
 2. [Pourquoi les Probabilités en ML ?](#pourquoi-les-probabilités-en-ml-)
 3. [Fondements Mathématiques](#fondements-mathématiques)
@@ -23,6 +24,7 @@
 La **théorie des probabilités** est le langage mathématique de l'incertitude et du hasard. Elle constitue le fondement théorique du Machine Learning, permettant de modéliser l'incertitude inhérente aux données et aux prédictions.
 
 **Domaines d'application** :
+
 - Modélisation de l'incertitude dans les données
 - Inférence statistique
 - Apprentissage bayésien
@@ -124,16 +126,19 @@ $$
 ### Propriétés Fondamentales
 
 **Complémentaire** :
+
 $$
 \mathbb{P}(A^c) = 1 - \mathbb{P}(A)
 $$
 
 **Union (formule d'inclusion-exclusion)** :
+
 $$
 \mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B)
 $$
 
 **Monotonie** :
+
 $$
 A \subseteq B \Rightarrow \mathbb{P}(A) \leq \mathbb{P}(B)
 $$
@@ -189,6 +194,7 @@ $$
 **Interprétation** : Probabilité que $A$ se produise sachant que $B$ s'est produit.
 
 **Formule des probabilités composées** :
+
 $$
 \mathbb{P}(A \cap B) = \mathbb{P}(A|B) \cdot \mathbb{P}(B) = \mathbb{P}(B|A) \cdot \mathbb{P}(A)
 $$
@@ -284,6 +290,7 @@ X : \Omega \to E
 $$
 
 **Notations** :
+
 - $\mathbb{P}(X = x)$ désigne $\mathbb{P}(\{\omega \in \Omega : X(\omega) = x\})$
 - $\mathbb{P}(X \in I)$ désigne $\mathbb{P}(\{\omega \in \Omega : X(\omega) \in I\})$
 
@@ -296,6 +303,7 @@ F_X(t) = \mathbb{P}(X \leq t)
 $$
 
 **Propriétés** :
+
 - $F_X$ est croissante
 - $\lim_{t \to -\infty} F_X(t) = 0$ et $\lim_{t \to +\infty} F_X(t) = 1$
 - $F_X$ est continue à droite
@@ -353,6 +361,7 @@ $$
 **Paramètres** : $p \in [0, 1]$ (probabilité de succès)
 
 **Propriétés** :
+
 - **Espérance** : $\mathbb{E}[X] = p$
 - **Variance** : $\mathbb{V}[X] = p(1-p)$
 
@@ -402,10 +411,12 @@ $$
 où $\binom{n}{k} = \frac{n!}{k!(n-k)!}$ est le coefficient binomial.
 
 **Paramètres** :
+
 - $n \in \mathbb{N}$ : nombre d'essais
 - $p \in [0, 1]$ : probabilité de succès
 
 **Propriétés** :
+
 - **Espérance** : $\mathbb{E}[X] = np$
 - **Variance** : $\mathbb{V}[X] = np(1-p)$
 
@@ -455,6 +466,7 @@ $$
 **Paramètres** : $p \in ]0, 1]$ (probabilité de succès)
 
 **Propriétés** :
+
 - **Espérance** : $\mathbb{E}[X] = \frac{1}{p}$
 - **Variance** : $\mathbb{V}[X] = \frac{1-p}{p^2}$
 
@@ -503,6 +515,7 @@ $$
 **Paramètres** : $\lambda > 0$ (taux moyen d'occurrence)
 
 **Propriétés** :
+
 - **Espérance** : $\mathbb{E}[X] = \lambda$
 - **Variance** : $\mathbb{V}[X] = \lambda$
 
@@ -585,6 +598,7 @@ $$
 **Définition** : Tous les points de l'intervalle $[a, b]$ ont la même "densité de probabilité".
 
 **Densité** :
+
 $$
 f(x) = \begin{cases}
 \frac{1}{b-a} & \text{si } x \in [a, b] \\
@@ -593,6 +607,7 @@ f(x) = \begin{cases}
 $$
 
 **Fonction de répartition** :
+
 $$
 F_X(t) = \begin{cases}
 0 & \text{si } t < a \\
@@ -602,6 +617,7 @@ F_X(t) = \begin{cases}
 $$
 
 **Propriétés** :
+
 - **Espérance** : $\mathbb{E}[X] = \frac{a+b}{2}$
 - **Variance** : $\mathbb{V}[X] = \frac{(b-a)^2}{12}$
 
@@ -656,16 +672,19 @@ print(f"Variance empirique: {echantillon.var():.4f}")
 **Définition** : Temps d'attente avant le premier événement dans un processus de Poisson.
 
 **Densité** :
+
 $$
 f(x) = \lambda e^{-\lambda x}, \quad x \geq 0
 $$
 
 **Fonction de répartition** :
+
 $$
 F_X(t) = 1 - e^{-\lambda t}, \quad t \geq 0
 $$
 
 **Propriétés** :
+
 - **Espérance** : $\mathbb{E}[X] = \frac{1}{\lambda}$
 - **Variance** : $\mathbb{V}[X] = \frac{1}{\lambda^2}$
 
@@ -728,11 +747,13 @@ print(f"P(X > {s+t} | X > {s}) = {prob_conditionnelle:.4f}")
 **Définition** : Distribution la plus importante en statistiques (Théorème Central Limite).
 
 **Densité** :
+
 $$
 f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
 $$
 
 **Propriétés** :
+
 - **Espérance** : $\mathbb{E}[X] = \mu$
 - **Variance** : $\mathbb{V}[X] = \sigma^2$
 - **Symétrie** : Symétrique autour de $\mu$
@@ -743,6 +764,7 @@ $$
 Si $X \sim \mathcal{N}(\mu, \sigma^2)$, alors $Z = \frac{X - \mu}{\sigma} \sim \mathcal{N}(0, 1)$
 
 **Règle empirique (68-95-99.7)** :
+
 - 68% des valeurs dans $[\mu - \sigma, \mu + \sigma]$
 - 95% des valeurs dans $[\mu - 2\sigma, \mu + 2\sigma]$
 - 99.7% des valeurs dans $[\mu - 3\sigma, \mu + 3\sigma]$
@@ -869,11 +891,13 @@ plt.show()
 ### Espérance (Valeur Moyenne)
 
 **Variable discrète** :
+
 $$
 \mathbb{E}[X] = \sum_{x \in E} x \cdot \mathbb{P}(X = x)
 $$
 
 **Variable continue** :
+
 $$
 \mathbb{E}[X] = \int_{-\infty}^{+\infty} x \cdot f(x) \, dx
 $$
@@ -889,6 +913,7 @@ $$
 5. **Monotonie** : Si $X \geq Y$ alors $\mathbb{E}[X] \geq \mathbb{E}[Y]$
 
 **Si $X$ et $Y$ sont indépendantes** :
+
 $$
 \mathbb{E}[XY] = \mathbb{E}[X] \cdot \mathbb{E}[Y]
 $$
@@ -909,6 +934,7 @@ $$
 4. **Nullité** : $\mathbb{V}[X] = 0 \Leftrightarrow X$ est constante
 
 **Si $X$ et $Y$ sont indépendantes** :
+
 $$
 \mathbb{V}[X + Y] = \mathbb{V}[X] + \mathbb{V}[Y]
 $$
@@ -1011,6 +1037,7 @@ f_{\mathbf{X}}(x_1, \ldots, x_n) = \prod_{i=1}^{n} f_{X_i}(x_i)
 $$
 
 **Conséquence** : Si $X_1, \ldots, X_n$ indépendantes alors :
+
 $$
 \forall i \neq j, \quad \text{Cov}(X_i, X_j) = 0
 $$
@@ -1022,11 +1049,13 @@ $$
 $$
 
 **Densité** :
+
 $$
 f(\mathbf{x}) = \frac{1}{\sqrt{(2\pi)^d \det(\boldsymbol{\Sigma})}} e^{-\frac{1}{2}(\mathbf{x}-\boldsymbol{\mu})^T \boldsymbol{\Sigma}^{-1} (\mathbf{x}-\boldsymbol{\mu})}
 $$
 
 où :
+
 - $\boldsymbol{\mu} \in \mathbb{R}^d$ : vecteur des moyennes
 - $\boldsymbol{\Sigma} \in \mathbb{R}^{d \times d}$ : matrice de covariance (symétrique définie positive)
 
@@ -1101,6 +1130,7 @@ $$
 $$
 
 **Interprétation** :
+
 - $\text{Cov}(X, Y) > 0$ : $X$ et $Y$ varient dans le même sens
 - $\text{Cov}(X, Y) < 0$ : $X$ et $Y$ varient en sens opposé
 - $\text{Cov}(X, Y) = 0$ : $X$ et $Y$ ne sont pas linéairement liées
@@ -1119,11 +1149,13 @@ $$
 $$
 
 **Propriétés** :
+
 - $\rho(X, Y) \in [-1, 1]$
 - $|\rho(X, Y)| = 1$ : relation linéaire parfaite
 - $\rho(X, Y) = 0$ : variables non corrélées (mais pas nécessairement indépendantes !)
 
 **Interprétation** :
+
 - $\rho = 1$ : corrélation positive parfaite ($Y = aX + b$ avec $a > 0$)
 - $\rho = -1$ : corrélation négative parfaite ($Y = aX + b$ avec $a < 0$)
 - $\rho = 0$ : pas de corrélation linéaire
@@ -1137,6 +1169,7 @@ $$
 $$
 
 **Propriétés** :
+
 - $\boldsymbol{\Sigma}$ est **symétrique** : $\boldsymbol{\Sigma}^T = \boldsymbol{\Sigma}$
 - $\boldsymbol{\Sigma}$ est **semi-définie positive**
 
@@ -1260,6 +1293,7 @@ $$
 $$
 
 **Terminologie** :
+
 - $\mathbb{P}(A_i)$ : **Probabilité a priori** (avant observation de $B$)
 - $\mathbb{P}(A_i|B)$ : **Probabilité a posteriori** (après observation de $B$)
 - $\mathbb{P}(B|A_i)$ : **Vraisemblance** (likelihood)
@@ -1274,6 +1308,7 @@ f(\theta | x) = \frac{f(x|\theta) \cdot f(\theta)}{\int f(x|\theta') \cdot f(\th
 $$
 
 où :
+
 - $f(\theta)$ : **distribution a priori**
 - $f(x|\theta)$ : **vraisemblance**
 - $f(\theta|x)$ : **distribution a posteriori**
@@ -1599,29 +1634,35 @@ plt.show()
 ### Points Clés à Retenir
 
 1. **Fondements** :
+
    - Espace probabilisé $(\Omega, \mathcal{A}, \mathbb{P})$
    - Axiomes de Kolmogorov
    - Probabilités conditionnelles
 
 2. **Variables Aléatoires** :
+
    - **Discrètes** : PMF $\mathbb{P}(X = x)$
    - **Continues** : PDF $f(x)$, CDF $F_X(t)$
 
 3. **Lois Discrètes Importantes** :
+
    - **Bernoulli** $\mathcal{B}(p)$ : $\mathbb{E}=p$, $\mathbb{V}=p(1-p)$
    - **Binomiale** $\mathcal{B}(n,p)$ : $\mathbb{E}=np$, $\mathbb{V}=np(1-p)$
    - **Poisson** $\mathcal{P}(\lambda)$ : $\mathbb{E}=\mathbb{V}=\lambda$
 
 4. **Lois Continues Importantes** :
+
    - **Uniforme** $\mathcal{U}([a,b])$ : $\mathbb{E}=\frac{a+b}{2}$
    - **Exponentielle** $\mathcal{E}(\lambda)$ : $\mathbb{E}=\frac{1}{\lambda}$
    - **Normale** $\mathcal{N}(\mu, \sigma^2)$ : $\mathbb{E}=\mu$, $\mathbb{V}=\sigma^2$
 
 5. **Moments** :
+
    - **Espérance** : $\mathbb{E}[X]$ (valeur moyenne)
    - **Variance** : $\mathbb{V}[X] = \mathbb{E}[X^2] - (\mathbb{E}[X])^2$
 
 6. **Vecteurs Aléatoires** :
+
    - **Covariance** : $\text{Cov}(X,Y) = \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y]$
    - **Corrélation** : $\rho(X,Y) = \frac{\text{Cov}(X,Y)}{\sigma_X \sigma_Y} \in [-1,1]$
    - **Matrice de covariance** : symétrique, semi-définie positive
@@ -1634,15 +1675,15 @@ $$
 
 ### Applications ML Essentielles
 
-| Concept | Application ML |
-|---------|---------------|
-| Loi Normale | Hypothèse dans de nombreux modèles (régression) |
-| Bernoulli/Binomiale | Classification binaire |
-| Poisson | Modélisation d'événements rares |
-| Théorème de Bayes | Classificateurs bayésiens, filtres spam |
-| Covariance | PCA, analyse de corrélation |
-| Maximum de vraisemblance | Estimation de paramètres |
-| Loi normale multivariée | Modèles génératifs gaussiens |
+| Concept                  | Application ML                                  |
+| ------------------------ | ----------------------------------------------- |
+| Loi Normale              | Hypothèse dans de nombreux modèles (régression) |
+| Bernoulli/Binomiale      | Classification binaire                          |
+| Poisson                  | Modélisation d'événements rares                 |
+| Théorème de Bayes        | Classificateurs bayésiens, filtres spam         |
+| Covariance               | PCA, analyse de corrélation                     |
+| Maximum de vraisemblance | Estimation de paramètres                        |
+| Loi normale multivariée  | Modèles génératifs gaussiens                    |
 
 ### Checklist de Compétences
 
@@ -1687,6 +1728,7 @@ from sklearn.naive_bayes import *  # Classificateurs bayésiens
 ---
 
 **Navigation :**
+
 - [⬅️ Module 2 : Algèbre Linéaire](02_Algebre_Lineaire.md)
-- [🏠 Retour au Sommaire](README.md)
+- [🏠 Retour au Sommaire](README_ML.md)
 - [➡️ Module 4 : Statistiques Descriptives](04_Statistiques_Descriptives.md)

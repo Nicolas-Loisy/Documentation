@@ -990,5 +990,5 @@ model = Sequential([
 **Navigation :**
 
 - [⬅️ Module 7 : Réseaux de Neurones Profonds](07_Reseaux_Neurones_Profonds.md)
-- [🏠 Retour au Sommaire](README.md)
+- [🏠 Retour au Sommaire](README_ML.md)
 - [➡️ Module 9 : Apprentissage Non Supervisé](09_Apprentissage_Non_Supervise.md)

@@ -1,6 +1,7 @@
 # Workflows ML : Construire, Optimiser, Valider et Tester
 
 ## 📋 Table des Matières
+
 1. [Workflow Complet d'un Projet ML](#workflow-complet-dun-projet-ml)
 2. [Workflow de Construction d'un Modèle](#workflow-de-construction-dun-modèle)
 3. [Workflow d'Optimisation](#workflow-doptimisation)
@@ -1204,6 +1205,7 @@ UNDERFITTING DÉTECTÉ (train et val faibles)
 ---
 
 **Navigation :**
+
 - [⬅️ Guide de Décision ML](00_Guide_Decision_ML.md)
-- [➡️ Notebooks Tutoriels](README.md)
-- [🏠 Retour au Sommaire](README.md)
+- [➡️ Notebooks Tutoriels](README_ML.md)
+- [🏠 Retour au Sommaire](README_ML.md)

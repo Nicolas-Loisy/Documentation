@@ -1,6 +1,7 @@
 # Module 7 : Réseaux de Neurones Profonds
 
 ## 📋 Table des Matières
+
 1. [Introduction](#introduction)
 2. [Le Perceptron](#le-perceptron)
 3. [Perceptron Multicouche (MLP)](#perceptron-multicouche-mlp)
@@ -22,24 +23,26 @@ Les **réseaux de neurones artificiels** (Artificial Neural Networks, ANN) sont 
 ### Pourquoi les Réseaux de Neurones ?
 
 **Limitations des modèles classiques** :
+
 - Nécessitent feature engineering manuel
 - Difficulté avec données non-structurées (images, texte, audio)
 - Relations non-linéaires complexes
 
 **Avantages des réseaux de neurones** :
+
 - **Apprentissage de représentations** : Extraction automatique de features
 - **Universalité** : Peuvent approximer n'importe quelle fonction continue
 - **Performance** : État de l'art sur vision, NLP, jeux, etc.
 
 ### Applications
 
-| Domaine | Tâche | Exemple |
-|---------|-------|---------|
+| Domaine    | Tâche                     | Exemple                                    |
+| ---------- | ------------------------- | ------------------------------------------ |
 | **Vision** | Classification, détection | Reconnaissance faciale, voitures autonomes |
-| **NLP** | Traduction, génération | Google Translate, ChatGPT |
-| **Audio** | Reconnaissance vocale | Siri, Alexa |
-| **Jeux** | IA | AlphaGo, OpenAI Five |
-| **Santé** | Diagnostic | Détection de cancer |
+| **NLP**    | Traduction, génération    | Google Translate, ChatGPT                  |
+| **Audio**  | Reconnaissance vocale     | Siri, Alexa                                |
+| **Jeux**   | IA                        | AlphaGo, OpenAI Five                       |
+| **Santé**  | Diagnostic                | Détection de cancer                        |
 
 ```python
 import numpy as np
@@ -64,6 +67,7 @@ y = f\left(\sum_{i=1}^{n} w_i x_i + b\right) = f(\mathbf{w}^T \mathbf{x} + b)
 $$
 
 où :
+
 - $\mathbf{x} = (x_1, \ldots, x_n)$ : entrées
 - $\mathbf{w} = (w_1, \ldots, w_n)$ : poids
 - $b$ : biais
@@ -72,6 +76,7 @@ où :
 ### Fonction d'Activation
 
 **Perceptron classique** : fonction signe
+
 $$
 f(z) = \begin{cases}
 1 & \text{si } z \geq 0 \\
@@ -168,6 +173,7 @@ Entrée (X)  →  Couche Cachée 1  →  Couche Cachée 2  →  ...  →  Sortie
 ```
 
 **Composantes** :
+
 - **Couche d'entrée** : Features brutes
 - **Couches cachées** : Extraction de représentations
 - **Couche de sortie** : Prédictions
@@ -184,6 +190,7 @@ $$
 $$
 
 où :
+
 - $\mathbf{W}^{[l]}$ : matrice de poids
 - $\mathbf{b}^{[l]}$ : vecteur de biais
 - $g^{[l]}$ : fonction d'activation
@@ -255,6 +262,7 @@ $$
 $$
 
 **Propriétés** :
+
 - Output : $(0, 1)$
 - Dérivée : $\sigma'(z) = \sigma(z)(1 - \sigma(z))$
 - **Usage** : Couche de sortie (classification binaire)
@@ -267,6 +275,7 @@ $$
 $$
 
 **Propriétés** :
+
 - Output : $(-1, 1)$
 - Dérivée : $\tanh'(z) = 1 - \tanh^2(z)$
 - **Avantage** : Centré sur 0
@@ -279,6 +288,7 @@ $$
 $$
 
 **Propriétés** :
+
 - Output : $[0, +\infty)$
 - Dérivée :
   $$
@@ -310,6 +320,7 @@ $$
 $$
 
 **Propriétés** :
+
 - Output : Probabilités $\in [0, 1]$, $\sum_i = 1$
 - **Usage** : Classification multiclasse
 
@@ -376,12 +387,12 @@ plt.show()
 
 **Choix de l'activation** :
 
-| Usage | Activation Recommandée |
-|-------|------------------------|
-| Couches cachées | ReLU ou Leaky ReLU |
-| Sortie binaire | Sigmoïde |
-| Sortie multiclasse | Softmax |
-| Régression | Linéaire (pas d'activation) |
+| Usage              | Activation Recommandée      |
+| ------------------ | --------------------------- |
+| Couches cachées    | ReLU ou Leaky ReLU          |
+| Sortie binaire     | Sigmoïde                    |
+| Sortie multiclasse | Softmax                     |
+| Régression         | Linéaire (pas d'activation) |
 
 ---
 
@@ -398,16 +409,19 @@ La **backpropagation** (rétropropagation) est l'algorithme pour calculer effica
 ### Formules (Gradient de la Loss)
 
 **Sortie** :
+
 $$
 \delta^{[L]} = \frac{\partial \mathcal{L}}{\partial \mathbf{z}^{[L]}}
 $$
 
 **Couche $l$** :
+
 $$
 \delta^{[l]} = (\mathbf{W}^{[l+1]})^T \delta^{[l+1]} \odot g'^{[l]}(\mathbf{z}^{[l]})
 $$
 
 **Gradients des paramètres** :
+
 $$
 \begin{align}
 \frac{\partial \mathcal{L}}{\partial \mathbf{W}^{[l]}} &= \delta^{[l]} (\mathbf{a}^{[l-1]})^T \\
@@ -531,11 +545,13 @@ La **régularisation** prévient l'overfitting.
 Ajouter pénalité sur les poids :
 
 **L2 (Ridge)** :
+
 $$
 \mathcal{L}_{\text{total}} = \mathcal{L} + \lambda \sum_{i} w_i^2
 $$
 
 **L1 (Lasso)** :
+
 $$
 \mathcal{L}_{\text{total}} = \mathcal{L} + \lambda \sum_{i} |w_i|
 $$
@@ -571,6 +587,7 @@ model = Sequential([
 ```
 
 **Avantages** :
+
 - Réduit l'overfitting
 - Force le réseau à apprendre des représentations robustes
 
@@ -623,6 +640,7 @@ $$
 $$
 
 **Avantages** :
+
 - Accélère l'entraînement
 - Permet des learning rates plus élevés
 - Réduit la sensibilité à l'initialisation
@@ -644,6 +662,7 @@ model = Sequential([
 ### 2. Initialisation des Poids
 
 **Méthodes** :
+
 - **Xavier/Glorot** : $W \sim \mathcal{N}(0, \frac{2}{n_{\text{in}} + n_{\text{out}}})$
 - **He** : $W \sim \mathcal{N}(0, \frac{2}{n_{\text{in}}})$ (mieux pour ReLU)
 
@@ -875,29 +894,29 @@ plt.show()
 
 #### Architecture
 
-| Élément | Description |
-|---------|-------------|
-| **Couches** | Input → Hidden layers → Output |
-| **Neurone** | $a = g(w^T x + b)$ |
-| **Forward** | Calcul des activations |
-| **Backward** | Backpropagation des gradients |
+| Élément      | Description                    |
+| ------------ | ------------------------------ |
+| **Couches**  | Input → Hidden layers → Output |
+| **Neurone**  | $a = g(w^T x + b)$             |
+| **Forward**  | Calcul des activations         |
+| **Backward** | Backpropagation des gradients  |
 
 #### Fonctions d'Activation
 
-| Fonction | Usage | Formule |
-|----------|-------|---------|
-| **ReLU** | Couches cachées | $\max(0, z)$ |
-| **Sigmoid** | Sortie binaire | $1/(1+e^{-z})$ |
+| Fonction    | Usage              | Formule                |
+| ----------- | ------------------ | ---------------------- |
+| **ReLU**    | Couches cachées    | $\max(0, z)$           |
+| **Sigmoid** | Sortie binaire     | $1/(1+e^{-z})$         |
 | **Softmax** | Sortie multiclasse | $e^{z_i}/\sum e^{z_j}$ |
 
 #### Régularisation
 
-| Technique | Principe |
-|-----------|----------|
-| **Dropout** | Désactiver neurones aléatoirement |
-| **L2** | Pénaliser gros poids |
+| Technique          | Principe                          |
+| ------------------ | --------------------------------- |
+| **Dropout**        | Désactiver neurones aléatoirement |
+| **L2**             | Pénaliser gros poids              |
 | **Early Stopping** | Arrêter si val ne s'améliore plus |
-| **Batch Norm** | Normaliser activations |
+| **Batch Norm**     | Normaliser activations            |
 
 #### Optimiseurs
 
@@ -944,6 +963,7 @@ model.fit(X_train, y_train, validation_data=(X_val, y_val),
 ---
 
 **Navigation :**
+
 - [⬅️ Module 6 : Apprentissage Supervisé](06_Apprentissage_Supervise.md)
-- [🏠 Retour au Sommaire](README.md)
+- [🏠 Retour au Sommaire](README_ML.md)
 - [➡️ Module 8 : Réseaux de Neurones Convolutifs (CNN)](08_CNN.md)

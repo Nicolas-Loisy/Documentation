@@ -1,6 +1,7 @@
 # Guide de Décision : Quel Modèle ML pour Quel Problème ?
 
 ## 📋 Table des Matières
+
 1. [Arbre de Décision Global](#arbre-de-décision-global)
 2. [Classification](#classification)
 3. [Régression](#régression)
@@ -80,24 +81,25 @@ Vous avez un problème de CLASSIFICATION
 
 ### 📋 Tableau de Décision Classification
 
-| Critère | Modèle Recommandé | Raison |
-|---------|-------------------|--------|
-| **Données linéairement séparables** | Logistic Regression, Linear SVM | Simple, rapide, interprétable |
-| **Données non-linéaires, petites** | SVM (RBF kernel), Decision Tree | Capture non-linéarité, peu de données |
-| **Données non-linéaires, moyennes** | Random Forest, XGBoost | Meilleure performance, robuste |
-| **Données non-linéaires, grandes** | XGBoost, LightGBM, Neural Networks | Scalable, haute performance |
-| **Classes déséquilibrées** | XGBoost + scale_pos_weight, Random Forest + class_weight | Gère déséquilibre nativement |
-| **Interprétabilité critique** | Logistic Regression, Decision Tree | Coefficients/règles clairs |
-| **Haute dimensionnalité** | Linear SVM, Logistic Regression + régularisation | Évite overfitting |
-| **Données catégorielles** | CatBoost, LightGBM | Gestion native des catégories |
-| **Temps d'entraînement court** | Naive Bayes, Logistic Regression | Très rapides |
-| **Temps d'inférence court** | Linear models, small trees | Prédictions instantanées |
+| Critère                             | Modèle Recommandé                                        | Raison                                |
+| ----------------------------------- | -------------------------------------------------------- | ------------------------------------- |
+| **Données linéairement séparables** | Logistic Regression, Linear SVM                          | Simple, rapide, interprétable         |
+| **Données non-linéaires, petites**  | SVM (RBF kernel), Decision Tree                          | Capture non-linéarité, peu de données |
+| **Données non-linéaires, moyennes** | Random Forest, XGBoost                                   | Meilleure performance, robuste        |
+| **Données non-linéaires, grandes**  | XGBoost, LightGBM, Neural Networks                       | Scalable, haute performance           |
+| **Classes déséquilibrées**          | XGBoost + scale_pos_weight, Random Forest + class_weight | Gère déséquilibre nativement          |
+| **Interprétabilité critique**       | Logistic Regression, Decision Tree                       | Coefficients/règles clairs            |
+| **Haute dimensionnalité**           | Linear SVM, Logistic Regression + régularisation         | Évite overfitting                     |
+| **Données catégorielles**           | CatBoost, LightGBM                                       | Gestion native des catégories         |
+| **Temps d'entraînement court**      | Naive Bayes, Logistic Regression                         | Très rapides                          |
+| **Temps d'inférence court**         | Linear models, small trees                               | Prédictions instantanées              |
 
 ### 🔍 Détail des Modèles de Classification
 
 #### 1. Logistic Regression
 
 **Quand l'utiliser ?**
+
 - ✅ Classes linéairement séparables
 - ✅ Besoin d'interprétabilité (coefficients)
 - ✅ Baseline rapide
@@ -105,11 +107,13 @@ Vous avez un problème de CLASSIFICATION
 - ✅ Haute dimensionnalité (avec régularisation)
 
 **Quand ne PAS l'utiliser ?**
+
 - ❌ Relations fortement non-linéaires
 - ❌ Interactions complexes entre features
 - ❌ Besoin de performance maximale sur données complexes
 
 **Exemple d'usage :**
+
 ```python
 from sklearn.linear_model import LogisticRegression
 
@@ -129,6 +133,7 @@ model = LogisticRegression(class_weight='balanced')
 #### 2. Decision Tree
 
 **Quand l'utiliser ?**
+
 - ✅ Besoin d'interprétabilité visuelle
 - ✅ Relations non-linéaires
 - ✅ Pas besoin de normalisation
@@ -136,11 +141,13 @@ model = LogisticRegression(class_weight='balanced')
 - ✅ Variables catégorielles et continues mélangées
 
 **Quand ne PAS l'utiliser ?**
+
 - ❌ Données bruitées (overfitting facile)
 - ❌ Besoin de performance maximale
 - ❌ Extrapolation nécessaire
 
 **Exemple d'usage :**
+
 ```python
 from sklearn.tree import DecisionTreeClassifier
 
@@ -159,6 +166,7 @@ model = DecisionTreeClassifier(
 #### 3. Random Forest
 
 **Quand l'utiliser ?**
+
 - ✅ Données non-linéaires
 - ✅ Peu de preprocessing nécessaire
 - ✅ Importance des features requise
@@ -166,12 +174,14 @@ model = DecisionTreeClassifier(
 - ✅ Taille moyenne à grande
 
 **Quand ne PAS l'utiliser ?**
+
 - ❌ Très grandes données (préférer LightGBM)
 - ❌ Temps d'inférence critique
 - ❌ Mémoire limitée
 - ❌ Interprétabilité au niveau individuel requise
 
 **Exemple d'usage :**
+
 ```python
 from sklearn.ensemble import RandomForestClassifier
 
@@ -205,6 +215,7 @@ model = RandomForestClassifier(
 #### 4. XGBoost / LightGBM / CatBoost
 
 **Quand l'utiliser ?**
+
 - ✅ Performance maximale requise
 - ✅ Données tabulaires
 - ✅ Compétitions Kaggle
@@ -212,11 +223,13 @@ model = RandomForestClassifier(
 - ✅ Tuning d'hyperparamètres possible
 
 **Différences :**
+
 - **XGBoost** : Standard, très performant, bien documenté
 - **LightGBM** : Plus rapide, gère grandes données, économe en mémoire
 - **CatBoost** : Gère catégories nativement, peu de tuning nécessaire
 
 **Exemple d'usage :**
+
 ```python
 from xgboost import XGBClassifier
 from lightgbm import LGBMClassifier
@@ -258,17 +271,20 @@ catboost = CatBoostClassifier(
 #### 5. Support Vector Machine (SVM)
 
 **Quand l'utiliser ?**
+
 - ✅ Haute dimensionnalité (features >> samples)
 - ✅ Données non-linéaires (kernel RBF)
 - ✅ Classes bien séparées
 - ✅ Petites/moyennes données
 
 **Quand ne PAS l'utiliser ?**
+
 - ❌ Très grandes données (lent, O(n²))
 - ❌ Classes déséquilibrées (nécessite tuning)
 - ❌ Besoin de probabilités calibrées
 
 **Exemple d'usage :**
+
 ```python
 from sklearn.svm import SVC
 
@@ -288,6 +304,7 @@ model = SVC(kernel='rbf', class_weight='balanced')
 #### 6. Naive Bayes
 
 **Quand l'utiliser ?**
+
 - ✅ Données texte (NLP)
 - ✅ Besoin de rapidité
 - ✅ Baseline simple
@@ -295,10 +312,12 @@ model = SVC(kernel='rbf', class_weight='balanced')
 - ✅ Streaming/online learning
 
 **Quand ne PAS l'utiliser ?**
+
 - ❌ Features corrélées
 - ❌ Besoin de performance maximale
 
 **Exemple d'usage :**
+
 ```python
 from sklearn.naive_bayes import GaussianNB, MultinomialNB, BernoulliNB
 
@@ -315,17 +334,20 @@ model = BernoulliNB(alpha=1.0)
 #### 7. K-Nearest Neighbors (KNN)
 
 **Quand l'utiliser ?**
+
 - ✅ Patterns locaux importants
 - ✅ Données peu volumineuses
 - ✅ Pas de phase d'entraînement nécessaire
 - ✅ Données non-linéaires
 
 **Quand ne PAS l'utiliser ?**
+
 - ❌ Grandes données (lent à prédire)
 - ❌ Haute dimensionnalité (curse of dimensionality)
 - ❌ Features de différentes échelles (nécessite normalisation)
 
 **Exemple d'usage :**
+
 ```python
 from sklearn.neighbors import KNeighborsClassifier
 
@@ -381,22 +403,23 @@ Vous avez un problème de RÉGRESSION
 
 ### 📋 Tableau de Décision Régression
 
-| Critère | Modèle Recommandé | Raison |
-|---------|-------------------|--------|
-| **Relation linéaire** | Linear Regression | Simple, interprétable |
-| **Relation linéaire + multicollinéarité** | Ridge Regression | Stabilise les coefficients |
-| **Relation linéaire + beaucoup de features** | Lasso, ElasticNet | Sélection de features |
-| **Relation non-linéaire, petites données** | SVR, Decision Tree | Capture non-linéarité |
-| **Relation non-linéaire, moyennes données** | Random Forest, XGBoost | Performance, robustesse |
-| **Relation non-linéaire, grandes données** | XGBoost, LightGBM | Scalable, performant |
-| **Outliers présents** | Huber Regression, Random Forest | Robuste aux outliers |
-| **Interprétabilité** | Linear Regression, Decision Tree | Coefficients/règles clairs |
+| Critère                                      | Modèle Recommandé                | Raison                     |
+| -------------------------------------------- | -------------------------------- | -------------------------- |
+| **Relation linéaire**                        | Linear Regression                | Simple, interprétable      |
+| **Relation linéaire + multicollinéarité**    | Ridge Regression                 | Stabilise les coefficients |
+| **Relation linéaire + beaucoup de features** | Lasso, ElasticNet                | Sélection de features      |
+| **Relation non-linéaire, petites données**   | SVR, Decision Tree               | Capture non-linéarité      |
+| **Relation non-linéaire, moyennes données**  | Random Forest, XGBoost           | Performance, robustesse    |
+| **Relation non-linéaire, grandes données**   | XGBoost, LightGBM                | Scalable, performant       |
+| **Outliers présents**                        | Huber Regression, Random Forest  | Robuste aux outliers       |
+| **Interprétabilité**                         | Linear Regression, Decision Tree | Coefficients/règles clairs |
 
 ### 🔍 Détail des Modèles de Régression
 
 #### 1. Linear Regression
 
 **Quand l'utiliser ?**
+
 - ✅ Relation linéaire claire
 - ✅ Besoin d'interprétabilité
 - ✅ Baseline rapide
@@ -404,11 +427,13 @@ Vous avez un problème de RÉGRESSION
 - ✅ Pas de multicollinéarité
 
 **Quand ne PAS l'utiliser ?**
+
 - ❌ Relation non-linéaire
 - ❌ Multicollinéarité forte
 - ❌ Beaucoup de features inutiles
 
 **Exemple d'usage :**
+
 ```python
 from sklearn.linear_model import LinearRegression
 
@@ -423,16 +448,19 @@ print("Intercept:", model.intercept_)
 #### 2. Ridge Regression (L2)
 
 **Quand l'utiliser ?**
+
 - ✅ Multicollinéarité présente
 - ✅ Beaucoup de features
 - ✅ Prévention de l'overfitting
 - ✅ Garder toutes les features
 
 **Paramètre clé :** `alpha` (force de régularisation)
+
 - Petit alpha → proche Linear Regression
 - Grand alpha → coefficients plus petits
 
 **Exemple d'usage :**
+
 ```python
 from sklearn.linear_model import Ridge
 from sklearn.model_selection import RidgeCV
@@ -449,6 +477,7 @@ print(f"Best alpha: {model.alpha_}")
 #### 3. Lasso Regression (L1)
 
 **Quand l'utiliser ?**
+
 - ✅ Beaucoup de features inutiles
 - ✅ Sélection automatique de features
 - ✅ Features parcimonieuses souhaitées
@@ -457,6 +486,7 @@ print(f"Best alpha: {model.alpha_}")
 **Avantage :** Met certains coefficients à 0 (sélection de features)
 
 **Exemple d'usage :**
+
 ```python
 from sklearn.linear_model import Lasso, LassoCV
 
@@ -475,15 +505,18 @@ print(f"Features sélectionnées: {len(selected_features)}/{len(X_train.columns)
 #### 4. ElasticNet (L1 + L2)
 
 **Quand l'utiliser ?**
+
 - ✅ Compromis entre Ridge et Lasso
 - ✅ Beaucoup de features corrélées
 - ✅ Sélection de groupes de features corrélées
 
 **Paramètres :**
+
 - `alpha` : Force de régularisation
 - `l1_ratio` : Mix L1/L2 (0=Ridge, 1=Lasso, 0.5=équilibre)
 
 **Exemple d'usage :**
+
 ```python
 from sklearn.linear_model import ElasticNet, ElasticNetCV
 
@@ -499,12 +532,14 @@ print(f"Best l1_ratio: {model.l1_ratio_}, Best alpha: {model.alpha_}")
 #### 5. Decision Tree / Random Forest / XGBoost
 
 **Quand l'utiliser ?** (même logique que classification)
+
 - ✅ Relation non-linéaire
 - ✅ Interactions complexes
 - ✅ Pas besoin de normalisation
 - ✅ Performance maximale (XGBoost)
 
 **Exemple d'usage :**
+
 ```python
 from sklearn.ensemble import RandomForestRegressor
 from xgboost import XGBRegressor
@@ -567,31 +602,34 @@ Vous voulez faire du CLUSTERING
 
 ### 📋 Comparaison des Algorithmes de Clustering
 
-| Algorithme | Avantages | Inconvénients | Usage |
-|------------|-----------|---------------|-------|
-| **K-Means** | Rapide, scalable | K fixe, clusters sphériques | Grandes données, clusters bien définis |
-| **DBSCAN** | Détecte outliers, K automatique | Sensible à eps et min_samples | Densité variable, outliers |
-| **HDBSCAN** | DBSCAN + hiérarchie | Lent sur grandes données | Meilleure alternative à DBSCAN |
-| **Hierarchical** | Dendrogramme, K flexible | Lent O(n²), pas scalable | Petites données, hiérarchie |
-| **Gaussian Mixture** | Clusters probabilistes | K fixe, suppose Gaussiennes | Clusters ellipsoïdes, incertitude |
-| **Spectral** | Formes complexes | Lent, K fixe | Clusters non-convexes |
+| Algorithme           | Avantages                       | Inconvénients                 | Usage                                  |
+| -------------------- | ------------------------------- | ----------------------------- | -------------------------------------- |
+| **K-Means**          | Rapide, scalable                | K fixe, clusters sphériques   | Grandes données, clusters bien définis |
+| **DBSCAN**           | Détecte outliers, K automatique | Sensible à eps et min_samples | Densité variable, outliers             |
+| **HDBSCAN**          | DBSCAN + hiérarchie             | Lent sur grandes données      | Meilleure alternative à DBSCAN         |
+| **Hierarchical**     | Dendrogramme, K flexible        | Lent O(n²), pas scalable      | Petites données, hiérarchie            |
+| **Gaussian Mixture** | Clusters probabilistes          | K fixe, suppose Gaussiennes   | Clusters ellipsoïdes, incertitude      |
+| **Spectral**         | Formes complexes                | Lent, K fixe                  | Clusters non-convexes                  |
 
 ### 🔍 Détail des Algorithmes
 
 #### 1. K-Means
 
 **Quand l'utiliser ?**
+
 - ✅ Clusters sphériques et de taille similaire
 - ✅ Grandes données
 - ✅ K connu ou estimable
 - ✅ Besoin de rapidité
 
 **Quand ne PAS l'utiliser ?**
+
 - ❌ Clusters de formes arbitraires
 - ❌ Clusters de densités différentes
 - ❌ Outliers nombreux
 
 **Exemple d'usage :**
+
 ```python
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
@@ -618,16 +656,19 @@ labels = kmeans.fit_predict(X)
 #### 2. DBSCAN
 
 **Quand l'utiliser ?**
+
 - ✅ Clusters de formes arbitraires
 - ✅ Outliers à détecter
 - ✅ K inconnu
 - ✅ Densité variable
 
 **Paramètres critiques :**
+
 - `eps` : Rayon du voisinage
 - `min_samples` : Nombre minimum de points pour un cluster
 
 **Exemple d'usage :**
+
 ```python
 from sklearn.cluster import DBSCAN
 from sklearn.neighbors import NearestNeighbors
@@ -656,18 +697,21 @@ print(f"Clusters: {n_clusters}, Outliers: {n_outliers}")
 #### 3. Hierarchical Clustering
 
 **Quand l'utiliser ?**
+
 - ✅ Hiérarchie de clusters importante
 - ✅ Petites données (<10k)
 - ✅ Dendrogramme souhaité
 - ✅ K flexible après coup
 
 **Méthodes de linkage :**
+
 - `ward` : Minimise variance (recommandé)
 - `average` : Distance moyenne
 - `complete` : Distance maximale
 - `single` : Distance minimale
 
 **Exemple d'usage :**
+
 ```python
 from scipy.cluster.hierarchy import dendrogram, linkage
 from sklearn.cluster import AgglomerativeClustering
@@ -722,19 +766,20 @@ Objectif de RÉDUCTION DE DIMENSIONNALITÉ
 
 ### 📋 Comparaison des Techniques
 
-| Technique | Type | Usage Principal | Préserve | Vitesse |
-|-----------|------|-----------------|----------|---------|
-| **PCA** | Linéaire | Compression, preprocessing | Variance globale | Très rapide |
-| **t-SNE** | Non-linéaire | Visualisation | Structure locale | Lent |
-| **UMAP** | Non-linéaire | Visualisation, général | Structure locale+globale | Rapide |
-| **Autoencoder** | Non-linéaire | Compression, génération | Features apprises | Moyen |
-| **Kernel PCA** | Non-linéaire | Preprocessing | Variance (kernel space) | Lent |
+| Technique       | Type         | Usage Principal            | Préserve                 | Vitesse     |
+| --------------- | ------------ | -------------------------- | ------------------------ | ----------- |
+| **PCA**         | Linéaire     | Compression, preprocessing | Variance globale         | Très rapide |
+| **t-SNE**       | Non-linéaire | Visualisation              | Structure locale         | Lent        |
+| **UMAP**        | Non-linéaire | Visualisation, général     | Structure locale+globale | Rapide      |
+| **Autoencoder** | Non-linéaire | Compression, génération    | Features apprises        | Moyen       |
+| **Kernel PCA**  | Non-linéaire | Preprocessing              | Variance (kernel space)  | Lent        |
 
 ### 🔍 Quand Utiliser Quoi ?
 
 #### PCA (Principal Component Analysis)
 
 **Utiliser POUR :**
+
 - ✅ Compression de données
 - ✅ Réduction de bruit
 - ✅ Visualisation rapide
@@ -742,6 +787,7 @@ Objectif de RÉDUCTION DE DIMENSIONNALITÉ
 - ✅ Données avec variance linéaire
 
 **NE PAS utiliser pour :**
+
 - ❌ Données avec structure non-linéaire complexe
 - ❌ Visualisation fine de clusters
 - ❌ Interprétation sémantique des composantes
@@ -760,11 +806,13 @@ print(f"Variance expliquée: {pca.explained_variance_ratio_.sum():.2%}")
 #### t-SNE
 
 **Utiliser POUR :**
+
 - ✅ Visualisation 2D/3D de clusters
 - ✅ Exploration de données
 - ✅ Structure locale importante
 
 **NE PAS utiliser pour :**
+
 - ❌ Preprocessing pour ML (non déterministe)
 - ❌ Nouvelles données (pas de transform)
 - ❌ Grandes données (>50k, très lent)
@@ -790,6 +838,7 @@ plt.show()
 #### UMAP
 
 **Utiliser POUR :**
+
 - ✅ Visualisation (alternative à t-SNE)
 - ✅ Preprocessing pour ML
 - ✅ Structure globale ET locale
@@ -797,6 +846,7 @@ plt.show()
 - ✅ Peut transformer nouvelles données
 
 **NE PAS utiliser pour :**
+
 - ❌ Besoin d'interprétabilité des axes
 
 ```python
@@ -824,11 +874,13 @@ X_new_umap = reducer.transform(X_new)
 **Définition :** Algorithme d'optimisation pour minimiser une fonction de coût.
 
 **Principe :**
+
 $$
 \theta_{t+1} = \theta_t - \eta \nabla_\theta \mathcal{L}(\theta_t)
 $$
 
 où :
+
 - $\theta$ = paramètres du modèle
 - $\eta$ = learning rate
 - $\nabla_\theta \mathcal{L}$ = gradient de la fonction de coût
@@ -837,14 +889,14 @@ où :
 
 #### Modèles qui l'utilisent :
 
-| Modèle | Utilise Gradient Descent ? | Algorithme |
-|--------|----------------------------|------------|
-| **Linear Regression** | Non (solution analytique) | Normal Equation |
-| **Logistic Regression** | Oui | Gradient Descent, LBFGS, Newton |
-| **Neural Networks** | Oui | SGD, Adam, RMSprop |
-| **SVM** | Oui (si SGD) | SGD, SMO |
-| **XGBoost** | Non | Gradient Boosting (différent) |
-| **Decision Tree** | Non | Algorithme glouton |
+| Modèle                  | Utilise Gradient Descent ? | Algorithme                      |
+| ----------------------- | -------------------------- | ------------------------------- |
+| **Linear Regression**   | Non (solution analytique)  | Normal Equation                 |
+| **Logistic Regression** | Oui                        | Gradient Descent, LBFGS, Newton |
+| **Neural Networks**     | Oui                        | SGD, Adam, RMSprop              |
+| **SVM**                 | Oui (si SGD)               | SGD, SMO                        |
+| **XGBoost**             | Non                        | Gradient Boosting (différent)   |
+| **Decision Tree**       | Non                        | Algorithme glouton              |
 
 ### Types de Descente de Gradient
 
@@ -886,6 +938,7 @@ optimizer = RMSprop(learning_rate=0.001)
 ```
 
 **Guide de choix :**
+
 - **SGD** : Baseline simple
 - **SGD + Momentum** : Accélère la convergence
 - **Adam** : Recommandé par défaut (adaptatif)
@@ -897,22 +950,22 @@ optimizer = RMSprop(learning_rate=0.001)
 
 ### Tableau Récapitulatif Global
 
-| Situation | Technique Recommandée | Raison |
-|-----------|----------------------|--------|
-| **Baseline rapide** | Logistic Regression / Linear Regression | Simple, rapide, interprétable |
-| **Performance maximale sur tabulaire** | XGBoost / LightGBM | État de l'art pour données tabulaires |
-| **Images** | CNN (ResNet, EfficientNet) | Spécialisé pour images |
-| **Texte** | Transformers (BERT) / RNN | Spécialisé pour NLP |
-| **Séries temporelles** | LSTM, GRU, Prophet | Capture dépendances temporelles |
-| **Interprétabilité requise** | Logistic Regression, Decision Tree | Coefficients/règles clairs |
-| **Peu de données** | Linear models, Decision Tree, SVM | Évite overfitting |
-| **Beaucoup de données** | XGBoost, LightGBM, Deep Learning | Scalable, performant |
-| **Temps d'inférence critique** | Linear models, small trees | Prédictions instantanées |
-| **Classes déséquilibrées** | XGBoost + class_weight, SMOTE | Gère déséquilibre |
-| **Clustering avec K inconnu** | DBSCAN, HDBSCAN | K automatique |
-| **Visualisation** | t-SNE, UMAP | Excellente visualisation 2D/3D |
-| **Compression** | PCA, Autoencoder | Réduit dimensionnalité |
-| **Détection d'anomalies** | Isolation Forest, Autoencoder | Spécialisé pour outliers |
+| Situation                              | Technique Recommandée                   | Raison                                |
+| -------------------------------------- | --------------------------------------- | ------------------------------------- |
+| **Baseline rapide**                    | Logistic Regression / Linear Regression | Simple, rapide, interprétable         |
+| **Performance maximale sur tabulaire** | XGBoost / LightGBM                      | État de l'art pour données tabulaires |
+| **Images**                             | CNN (ResNet, EfficientNet)              | Spécialisé pour images                |
+| **Texte**                              | Transformers (BERT) / RNN               | Spécialisé pour NLP                   |
+| **Séries temporelles**                 | LSTM, GRU, Prophet                      | Capture dépendances temporelles       |
+| **Interprétabilité requise**           | Logistic Regression, Decision Tree      | Coefficients/règles clairs            |
+| **Peu de données**                     | Linear models, Decision Tree, SVM       | Évite overfitting                     |
+| **Beaucoup de données**                | XGBoost, LightGBM, Deep Learning        | Scalable, performant                  |
+| **Temps d'inférence critique**         | Linear models, small trees              | Prédictions instantanées              |
+| **Classes déséquilibrées**             | XGBoost + class_weight, SMOTE           | Gère déséquilibre                     |
+| **Clustering avec K inconnu**          | DBSCAN, HDBSCAN                         | K automatique                         |
+| **Visualisation**                      | t-SNE, UMAP                             | Excellente visualisation 2D/3D        |
+| **Compression**                        | PCA, Autoencoder                        | Réduit dimensionnalité                |
+| **Détection d'anomalies**              | Isolation Forest, Autoencoder           | Spécialisé pour outliers              |
 
 ---
 
@@ -921,6 +974,7 @@ optimizer = RMSprop(learning_rate=0.001)
 ---
 
 **Navigation :**
+
 - [⬅️ Guide Projet ML](00_Guide_Projet_ML.md)
 - [➡️ Workflows ML](00_Workflows_ML.md)
-- [🏠 Retour au Sommaire](README.md)
+- [🏠 Retour au Sommaire](README_ML.md)

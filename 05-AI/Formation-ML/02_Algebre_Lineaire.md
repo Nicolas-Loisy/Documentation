@@ -1,6 +1,7 @@
 # Module 2 : Algèbre Linéaire pour le Machine Learning
 
 ## 📋 Table des Matières
+
 1. [Introduction](#introduction)
 2. [Vecteurs](#vecteurs)
 3. [Opérations Vectorielles](#opérations-vectorielles)
@@ -21,6 +22,7 @@
 ## Introduction
 
 L'**algèbre linéaire** est le fondement mathématique du Machine Learning. Elle permet de :
+
 - Représenter et manipuler des datasets (matrices de données)
 - Effectuer des transformations linéaires
 - Résoudre des systèmes d'équations
@@ -28,6 +30,7 @@ L'**algèbre linéaire** est le fondement mathématique du Machine Learning. Ell
 - Comprendre les réseaux de neurones (multiplication matricielle)
 
 **Pourquoi est-ce crucial pour le ML ?**
+
 - Les données sont représentées sous forme de vecteurs et matrices
 - Les modèles ML effectuent des opérations matricielles
 - L'optimisation repose sur le calcul vectoriel
@@ -80,6 +83,7 @@ print(f"Dimension: {x_col.shape}")  # (5, 1)
 ```
 
 **Résultat :**
+
 ```
 Vecteur x:
 [1 2 3 4 5]
@@ -202,6 +206,7 @@ $$
 où $\theta$ est l'angle entre les deux vecteurs.
 
 **Propriété importante** :
+
 $$
 \|\mathbf{x}\|_2 = \sqrt{\mathbf{x}^t \mathbf{x}} = \sqrt{\mathbf{x} \cdot \mathbf{x}}
 $$
@@ -209,14 +214,17 @@ $$
 ### Inégalités Importantes
 
 **Inégalité de Cauchy-Schwarz** :
+
 $$
 |\mathbf{x} \cdot \mathbf{y}| \leq \|\mathbf{x}\| \|\mathbf{y}\|
 $$
 
 **Relations entre normes** :
+
 $$
 \|\mathbf{x}\|_2 \leq \|\mathbf{x}\|_1 \leq \sqrt{p} \|\mathbf{x}\|_2
 $$
+
 $$
 \|\mathbf{x}\|_\infty \leq \|\mathbf{x}\|_2 \leq \|\mathbf{x}\|_1 \leq p \|\mathbf{x}\|_\infty
 $$
@@ -462,6 +470,7 @@ $$
 Une matrice est **symétrique** si $\mathbf{X} = \mathbf{X}^t$
 
 **Propriétés importantes** :
+
 - Les valeurs propres sont réelles
 - Les vecteurs propres sont orthogonaux
 - Diagonalisable dans une base orthonormée
@@ -477,6 +486,7 @@ $$
 $$
 
 **Conséquences** :
+
 - $\mathbf{Q}^{-1} = \mathbf{Q}^t$ (inverse = transposée)
 - Les lignes sont orthonormales
 - Les colonnes sont orthonormales
@@ -564,6 +574,7 @@ $$
 **Condition d'existence** : $\det(\mathbf{X}) \neq 0$ (matrice inversible/non-singulière)
 
 **Propriétés** :
+
 - $(\mathbf{X}^{-1})^{-1} = \mathbf{X}$
 - $(\mathbf{XY})^{-1} = \mathbf{Y}^{-1} \mathbf{X}^{-1}$
 - $(\mathbf{X}^t)^{-1} = (\mathbf{X}^{-1})^t$
@@ -653,6 +664,7 @@ $$
 
 1. Une matrice $n \times n$ a $n$ valeurs propres (comptées avec multiplicité)
 2. Pour matrice **symétrique** :
+
    - Toutes les valeurs propres sont **réelles**
    - Les vecteurs propres sont **orthogonaux**
    - La matrice est **diagonalisable**
@@ -670,6 +682,7 @@ $$
 $$
 
 où :
+
 - $\mathbf{P}$ : matrice des vecteurs propres (colonnes)
 - $\boldsymbol{\Lambda}$ : matrice diagonale des valeurs propres
 
@@ -801,6 +814,7 @@ $$
 $$
 
 où :
+
 - $\mathbf{U} \in \mathbb{R}^{n \times n}$ : matrice orthogonale (vecteurs singuliers à gauche)
 - $\boldsymbol{\Sigma} \in \mathbb{R}^{n \times p}$ : matrice "diagonale" (valeurs singulières $\sigma_i \geq 0$)
 - $\mathbf{V} \in \mathbb{R}^{p \times p}$ : matrice orthogonale (vecteurs singuliers à droite)
@@ -948,6 +962,7 @@ $$
 $$
 
 **Propriétés** :
+
 1. $\mathbf{P}$ est **symétrique** : $\mathbf{P}^t = \mathbf{P}$
 2. $\mathbf{P}$ est **idempotente** : $\mathbf{P}^2 = \mathbf{P}$
 3. $\mathbf{P}$ est **carrée** de dimension $n \times n$
@@ -1004,6 +1019,7 @@ print(f"||proj||² + ||orth||² = {np.linalg.norm(proj_x)**2 + np.linalg.norm(or
 ### 1. Représentation des Données
 
 **Dataset** : matrice $\mathbf{X} \in \mathbb{R}^{n \times p}$
+
 - $n$ : nombre d'exemples (lignes)
 - $p$ : nombre de features (colonnes)
 
@@ -1021,6 +1037,7 @@ X = np.array([
 **Modèle** : $\mathbf{y} = \mathbf{X}\boldsymbol{\theta}$
 
 **Solution (moindres carrés)** :
+
 $$
 \boldsymbol{\theta}^* = (\mathbf{X}^t \mathbf{X})^{-1} \mathbf{X}^t \mathbf{y}
 $$
@@ -1044,6 +1061,7 @@ print("Prédictions:", y_pred)
 **Objectif** : Réduire la dimensionnalité en trouvant les directions de variance maximale
 
 **Algorithme** :
+
 1. Centrer les données : $\mathbf{X}_c = \mathbf{X} - \bar{\mathbf{X}}$
 2. Calculer matrice de covariance : $\mathbf{C} = \frac{1}{n-1} \mathbf{X}_c^t \mathbf{X}_c$
 3. Trouver vecteurs propres de $\mathbf{C}$ (composantes principales)
@@ -1122,6 +1140,7 @@ $$
 $$
 
 Calculer :
+
 1. $\mathbf{A} + \mathbf{B}$
 2. $3\mathbf{A}$
 3. $\mathbf{A}\mathbf{v}$
@@ -1303,31 +1322,37 @@ print(f"Réduction: {(1 - compression_ratio):.2%}")
 1. **Vecteurs et Matrices** : Représentation fondamentale des données en ML
 
 2. **Opérations essentielles** :
+
    - Addition, multiplication scalaire
    - Produit scalaire et matriciel
    - Transposée
 
 3. **Normes** :
+
    - L1 (Manhattan) : régularisation Lasso
    - L2 (Euclidienne) : distance, régularisation Ridge
    - L∞ (Maximum)
 
 4. **Matrices spéciales** :
+
    - Identité : $\mathbf{I}$
    - Diagonale : calculs simplifiés
    - Symétrique : covariance, valeurs propres réelles
    - Orthogonale : rotations, PCA
 
 5. **Déterminant et Rang** :
+
    - $\det(\mathbf{A}) \neq 0 \Leftrightarrow$ matrice inversible
    - Rang = nombre de lignes/colonnes indépendantes
 
 6. **Valeurs et Vecteurs Propres** :
+
    - $\mathbf{Av} = \lambda \mathbf{v}$
    - Diagonalisation : $\mathbf{A} = \mathbf{P}\boldsymbol{\Lambda}\mathbf{P}^{-1}$
    - Applications : PCA, analyse de stabilité
 
 7. **SVD** :
+
    - $\mathbf{X} = \mathbf{U}\boldsymbol{\Sigma}\mathbf{V}^t$
    - Réduction de dimensionnalité, compression
    - Toujours possible (contrairement à la diagonalisation)
@@ -1338,15 +1363,15 @@ print(f"Réduction: {(1 - compression_ratio):.2%}")
 
 ### Applications ML Essentielles
 
-| Concept | Application ML |
-|---------|---------------|
-| Produit matrice-vecteur | Prédictions modèle linéaire |
-| Inversion matricielle | Régression linéaire (moindres carrés) |
-| Valeurs propres | PCA, analyse de stabilité |
-| SVD | Réduction de dimensionnalité, recommandation |
-| Normes | Régularisation (L1, L2), distance |
-| Produit scalaire | Similarité cosinus, kernel methods |
-| Projection | Réduction de dimension, features engineering |
+| Concept                 | Application ML                               |
+| ----------------------- | -------------------------------------------- |
+| Produit matrice-vecteur | Prédictions modèle linéaire                  |
+| Inversion matricielle   | Régression linéaire (moindres carrés)        |
+| Valeurs propres         | PCA, analyse de stabilité                    |
+| SVD                     | Réduction de dimensionnalité, recommandation |
+| Normes                  | Régularisation (L1, L2), distance            |
+| Produit scalaire        | Similarité cosinus, kernel methods           |
+| Projection              | Réduction de dimension, features engineering |
 
 ### Checklist de Compétences
 
@@ -1395,15 +1420,18 @@ np.linalg.pinv(A)          # Pseudo-inverse
 ### Ressources Complémentaires
 
 **Livres** :
+
 - "Introduction to Linear Algebra" - Gilbert Strang
 - "Linear Algebra and Its Applications" - David Lay
 - "Matrix Computations" - Golub & Van Loan
 
 **Cours en ligne** :
+
 - [MIT 18.06 - Linear Algebra (Gilbert Strang)](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/)
 - [3Blue1Brown - Essence of Linear Algebra (YouTube)](https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab)
 
 **Documentation** :
+
 - [NumPy Linear Algebra](https://numpy.org/doc/stable/reference/routines.linalg.html)
 - [SciPy Linear Algebra](https://docs.scipy.org/doc/scipy/reference/linalg.html)
 
@@ -1414,6 +1442,7 @@ np.linalg.pinv(A)          # Pseudo-inverse
 ---
 
 **Navigation :**
+
 - [⬅️ Module 1 : Introduction](01_Introduction_et_Motivation.md)
-- [🏠 Retour au Sommaire](README.md)
+- [🏠 Retour au Sommaire](README_ML.md)
 - [➡️ Module 3 : Probabilités](03_Probabilites.md)

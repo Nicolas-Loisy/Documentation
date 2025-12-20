@@ -1,6 +1,7 @@
 # Module 5 : Optimisation Numérique
 
 ## 📋 Table des Matières
+
 1. [Introduction](#introduction)
 2. [Fondements Mathématiques](#fondements-mathématiques)
 3. [Gradient et Dérivées](#gradient-et-dérivées)
@@ -26,6 +27,7 @@ $$
 $$
 
 où :
+
 - $f : \mathbb{R}^n \to \mathbb{R}$ est la **fonction objectif** (ou fonction de coût)
 - $\mathbf{x}$ est le vecteur de **paramètres** à optimiser
 - Le minimum recherché est $\mathbf{x}^* = \arg\min_{\mathbf{x}} f(\mathbf{x})$
@@ -39,18 +41,19 @@ En Machine Learning, l'optimisation permet de :
 3. **Ajuster les hyperparamètres** : Optimiser les performances
 
 **Exemples** :
+
 - **Régression linéaire** : Minimiser l'erreur quadratique moyenne (MSE)
 - **Régression logistique** : Minimiser la cross-entropy
 - **Réseaux de neurones** : Minimiser la fonction de perte par backpropagation
 
 ### Types d'Optimisation
 
-| Type | Description | Exemples |
-|------|-------------|----------|
-| **Sans contraintes** | $\min f(\mathbf{x})$ | Descente de gradient |
+| Type                 | Description                                         | Exemples                       |
+| -------------------- | --------------------------------------------------- | ------------------------------ |
+| **Sans contraintes** | $\min f(\mathbf{x})$                                | Descente de gradient           |
 | **Avec contraintes** | $\min f(\mathbf{x})$ sujet à $g(\mathbf{x}) \leq 0$ | SVM, programmation quadratique |
-| **Convexe** | $f$ est convexe | Régression linéaire |
-| **Non-convexe** | $f$ n'est pas convexe | Réseaux de neurones profonds |
+| **Convexe**          | $f$ est convexe                                     | Régression linéaire            |
+| **Non-convexe**      | $f$ n'est pas convexe                               | Réseaux de neurones profonds   |
 
 ```python
 import numpy as np
@@ -82,6 +85,7 @@ $$
 Si $\nabla f(\mathbf{x}^*) = \mathbf{0}$ et la matrice hessienne $H(\mathbf{x}^*)$ est **définie positive**, alors $\mathbf{x}^*$ est un minimum local.
 
 **Matrice hessienne** :
+
 $$
 H_{ij} = \frac{\partial^2 f}{\partial x_i \partial x_j}
 $$
@@ -160,6 +164,7 @@ $$
 $$
 
 **Propriétés** :
+
 - Le gradient **pointe dans la direction de plus forte croissance**
 - $-\nabla f(\mathbf{x})$ pointe vers la **direction de plus forte décroissance**
 - Le gradient est **perpendiculaire aux lignes de niveau**
@@ -173,6 +178,7 @@ f(x) = x^2 - 4x + 4 = (x-2)^2
 $$
 
 **Gradient** :
+
 $$
 \nabla f(x) = \frac{df}{dx} = 2x - 4 = 2(x-2)
 $$
@@ -230,6 +236,7 @@ f(x, y) = x^2 + y^2 - 2x - 4y + 5
 $$
 
 **Gradient** :
+
 $$
 \nabla f(x, y) = \begin{bmatrix}
 \frac{\partial f}{\partial x} \\
@@ -241,6 +248,7 @@ $$
 $$
 
 **Minimum** : $\nabla f = \mathbf{0}$ :
+
 - $2x - 2 = 0 \Rightarrow x^* = 1$
 - $2y - 4 = 0 \Rightarrow y^* = 2$
 
@@ -314,6 +322,7 @@ $$
 $$
 
 où :
+
 - $\alpha > 0$ est le **taux d'apprentissage** (learning rate)
 - $\nabla f(\mathbf{x}_k)$ est le gradient au point $\mathbf{x}_k$
 
@@ -334,6 +343,7 @@ Sortie: x* (minimum approximatif)
 ```
 
 **Critères d'arrêt** :
+
 - **Nombre d'itérations** : $k \geq M$
 - **Précision** : $\|\nabla f(\mathbf{x}_k)\| < \varepsilon$
 - **Changement minimal** : $\|\mathbf{x}_{k+1} - \mathbf{x}_k\| < \varepsilon$
@@ -527,10 +537,12 @@ $$
 $$
 
 **Avantages** :
+
 - Convergence stable
 - Garantie de convergence vers minimum global (si fonction convexe)
 
 **Inconvénients** :
+
 - Lent pour gros datasets
 - Peut être piégé dans des minima locaux (non-convexe)
 
@@ -545,11 +557,13 @@ $$
 où $i$ est tiré aléatoirement.
 
 **Avantages** :
+
 - Très rapide
 - Peut échapper aux minima locaux (bruit)
 - Permet apprentissage en ligne
 
 **Inconvénients** :
+
 - Convergence bruitée
 - Nécessite un bon réglage du learning rate
 
@@ -564,6 +578,7 @@ $$
 **Taille de batch typique** : 32, 64, 128, 256
 
 **Avantages** :
+
 - Bon compromis vitesse/stabilité
 - Utilise efficacement le hardware (GPU)
 - Convergence plus stable que SGD
@@ -680,6 +695,7 @@ $$
 où $\beta \in [0, 1]$ (typiquement 0.9) est le coefficient de momentum.
 
 **Avantages** :
+
 - Accélère la convergence
 - Réduit les oscillations
 - Aide à sortir des minima locaux peu profonds
@@ -759,6 +775,7 @@ s_{k+1} &= \beta s_k + (1-\beta) (\nabla f(\mathbf{w}_k))^2 \\
 $$
 
 **Avantages** :
+
 - Learning rate adaptatif
 - Fonctionne bien sur problèmes non-stationnaires
 
@@ -777,12 +794,14 @@ v_{k+1} &= \beta_2 v_k + (1-\beta_2) (\nabla f(\mathbf{w}_k))^2 \\
 $$
 
 **Hyperparamètres typiques** :
+
 - $\beta_1 = 0.9$
 - $\beta_2 = 0.999$
 - $\epsilon = 10^{-8}$
 - $\alpha = 0.001$
 
 **Avantages** :
+
 - Très performant en pratique
 - Peu sensible aux hyperparamètres
 - Algorithme par défaut pour Deep Learning
@@ -863,14 +882,17 @@ plt.show()
 Le **learning rate** $\alpha$ est crucial :
 
 **$\alpha$ trop petit** :
+
 - Convergence très lente
 - Peut stagner avant le minimum
 
 **$\alpha$ trop grand** :
+
 - Divergence
 - Oscillations autour du minimum
 
 **$\alpha$ optimal** :
+
 - Convergence rapide et stable
 
 ```python
@@ -974,6 +996,7 @@ $$
 ### Méthode de Lagrange
 
 **Lagrangien** :
+
 $$
 \mathcal{L}(\mathbf{x}, \boldsymbol{\lambda}, \boldsymbol{\mu}) = f(\mathbf{x}) + \sum_{i=1}^{m} \lambda_i g_i(\mathbf{x}) + \sum_{j=1}^{p} \mu_j h_j(\mathbf{x})
 $$
@@ -1010,11 +1033,13 @@ print(f"Intercept: {model.intercept_}")
 ### 1. Régression Linéaire
 
 **Fonction de coût (MSE)** :
+
 $$
 J(\mathbf{w}) = \frac{1}{2N} \sum_{i=1}^{N} (h_{\mathbf{w}}(\mathbf{x}_i) - y_i)^2
 $$
 
 **Gradient** :
+
 $$
 \nabla J(\mathbf{w}) = \frac{1}{N} \mathbf{X}^T (\mathbf{X}\mathbf{w} - \mathbf{y})
 $$
@@ -1022,6 +1047,7 @@ $$
 ### 2. Régression Logistique
 
 **Fonction de coût (Cross-Entropy)** :
+
 $$
 J(\mathbf{w}) = -\frac{1}{N} \sum_{i=1}^{N} \left[ y_i \log(h_{\mathbf{w}}(\mathbf{x}_i)) + (1-y_i) \log(1 - h_{\mathbf{w}}(\mathbf{x}_i)) \right]
 $$
@@ -1039,6 +1065,7 @@ où $h_{\mathbf{w}}(\mathbf{x}) = \sigma(\mathbf{w}^T \mathbf{x})$ et $\sigma(z)
 ### Exercice 1 : Optimisation Analytique
 
 **Énoncé** : Résoudre analytiquement :
+
 $$
 \min_{x} f(x) = x^2 - 4x + 4
 $$
@@ -1249,33 +1276,35 @@ plt.show()
 
 #### 1. Optimisation
 
-| Concept | Description |
-|---------|-------------|
-| **Problème** | $\min_{\mathbf{x}} f(\mathbf{x})$ |
-| **Gradient** | Direction de plus forte croissance |
-| **Minimum** | $\nabla f(\mathbf{x}^*) = \mathbf{0}$ |
-| **Convexité** | Minimum local = minimum global |
+| Concept       | Description                           |
+| ------------- | ------------------------------------- |
+| **Problème**  | $\min_{\mathbf{x}} f(\mathbf{x})$     |
+| **Gradient**  | Direction de plus forte croissance    |
+| **Minimum**   | $\nabla f(\mathbf{x}^*) = \mathbf{0}$ |
+| **Convexité** | Minimum local = minimum global        |
 
 #### 2. Descente de Gradient
 
 **Formule** :
+
 $$
 \mathbf{x}_{k+1} = \mathbf{x}_k - \alpha \nabla f(\mathbf{x}_k)
 $$
 
 **Paramètres** :
+
 - $\alpha$ : Learning rate (crucial!)
 - Critère d'arrêt : Nb itérations ou $\|\nabla f\| < \varepsilon$
 
 #### 3. Variantes
 
-| Méthode | Mise à jour | Avantage |
-|---------|-------------|----------|
-| **Batch GD** | Toutes les données | Stable |
-| **SGD** | 1 donnée aléatoire | Rapide |
-| **Mini-Batch** | Petit batch | Compromis |
-| **Momentum** | Accumule vitesse | Accélère |
-| **Adam** | Adaptatif | Performant |
+| Méthode        | Mise à jour        | Avantage   |
+| -------------- | ------------------ | ---------- |
+| **Batch GD**   | Toutes les données | Stable     |
+| **SGD**        | 1 donnée aléatoire | Rapide     |
+| **Mini-Batch** | Petit batch        | Compromis  |
+| **Momentum**   | Accumule vitesse   | Accélère   |
+| **Adam**       | Adaptatif          | Performant |
 
 #### 4. Learning Rate
 
@@ -1286,11 +1315,11 @@ $$
 
 #### 5. Applications ML
 
-| Modèle | Fonction de Coût |
-|--------|------------------|
-| Régression linéaire | MSE : $\frac{1}{2N}\sum(h(\mathbf{x}_i) - y_i)^2$ |
-| Régression logistique | Cross-Entropy |
-| Réseaux de neurones | Backpropagation |
+| Modèle                | Fonction de Coût                                  |
+| --------------------- | ------------------------------------------------- |
+| Régression linéaire   | MSE : $\frac{1}{2N}\sum(h(\mathbf{x}_i) - y_i)^2$ |
+| Régression logistique | Cross-Entropy                                     |
+| Réseaux de neurones   | Backpropagation                                   |
 
 ### Formules Essentielles
 
@@ -1334,6 +1363,7 @@ from sklearn.linear_model import *  # Modèles ML avec optimisation
 ---
 
 **Navigation :**
+
 - [⬅️ Module 4 : Statistiques Descriptives](04_Statistiques_Descriptives.md)
-- [🏠 Retour au Sommaire](README.md)
+- [🏠 Retour au Sommaire](README_ML.md)
 - [➡️ Module 6 : Apprentissage Supervisé](06_Apprentissage_Supervise.md)

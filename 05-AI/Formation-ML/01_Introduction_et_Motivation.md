@@ -1,6 +1,7 @@
 # Module 1 : Introduction et Motivation au Machine Learning
 
 ## 📋 Table des Matières
+
 1. [Qu'est-ce que le Machine Learning ?](#quest-ce-que-le-machine-learning-)
 2. [Applications Concrètes](#applications-concrètes)
 3. [Types d'Apprentissage](#types-dapprentissage)
@@ -18,6 +19,7 @@
 Le **Machine Learning (ML)** ou **Apprentissage Automatique** est un sous-domaine de l'Intelligence Artificielle (IA) qui permet aux ordinateurs d'apprendre à partir de données sans être explicitement programmés pour chaque tâche.
 
 **Position dans l'écosystème technologique :**
+
 ```
 Intelligence Artificielle (IA)
     ├── Machine Learning (ML)
@@ -33,11 +35,13 @@ Intelligence Artificielle (IA)
 ### Approche Traditionnelle vs Machine Learning
 
 **Programmation Traditionnelle :**
+
 ```
 Données + Programme → Résultats
 ```
 
 **Machine Learning :**
+
 ```
 Données + Résultats attendus → Programme (Modèle)
 ```
@@ -45,6 +49,7 @@ Données + Résultats attendus → Programme (Modèle)
 ### Disciplines Connexes
 
 Le Machine Learning se situe à l'intersection de plusieurs domaines :
+
 - **Statistiques** : Théorie des probabilités, inférence statistique
 - **Mathématiques** : Algèbre linéaire, calcul différentiel, optimisation
 - **Informatique** : Algorithmes, structures de données, complexité
@@ -62,6 +67,7 @@ Le Machine Learning se situe à l'intersection de plusieurs domaines :
 **Exemple** : Distinguer un chien d'un chat dans une photo
 
 **Applications industrielles :**
+
 - Diagnostic médical automatisé (détection de tumeurs, rétinopathie diabétique)
 - Voitures autonomes (détection de piétons, panneaux de signalisation)
 - Contrôle qualité industriel
@@ -76,6 +82,7 @@ Le Machine Learning se situe à l'intersection de plusieurs domaines :
 **Exemple** : Transcrire "Welcome to this course" à partir d'un enregistrement audio
 
 **Applications industrielles :**
+
 - Assistants vocaux (Siri, Alexa, Google Assistant)
 - Transcription automatique de réunions
 - Sous-titrage automatique de vidéos
@@ -90,6 +97,7 @@ Le Machine Learning se situe à l'intersection de plusieurs domaines :
 **Exemple** : Prévoir la température, précipitations, et vent pour demain
 
 **Applications industrielles :**
+
 - Agriculture de précision
 - Gestion de l'énergie (éolien, solaire)
 - Aviation et transport maritime
@@ -104,6 +112,7 @@ Le Machine Learning se situe à l'intersection de plusieurs domaines :
 **Exemple** : Chatbots conversationnels, assistants virtuels
 
 **Applications industrielles :**
+
 - Service client automatisé
 - Assistants médicaux virtuels
 - Moteurs de recherche intelligents
@@ -128,6 +137,7 @@ Le Machine Learning se situe à l'intersection de plusieurs domaines :
 **Principe** : Apprendre à partir d'exemples étiquetés (données + réponses attendues)
 
 **Processus :**
+
 ```
 Données d'entraînement (X, Y) → Modèle → Prédictions sur nouvelles données
 ```
@@ -135,6 +145,7 @@ Données d'entraînement (X, Y) → Modèle → Prédictions sur nouvelles donn�
 **Deux catégories principales :**
 
 #### a) Régression
+
 - **Objectif** : Prédire une valeur continue
 - **Exemples** :
   - Prédire le prix d'une maison
@@ -142,6 +153,7 @@ Données d'entraînement (X, Y) → Modèle → Prédictions sur nouvelles donn�
   - Prédire le chiffre d'affaires
 
 #### b) Classification
+
 - **Objectif** : Attribuer une catégorie/classe
 - **Exemples** :
   - Email spam ou non spam (classification binaire)
@@ -149,6 +161,7 @@ Données d'entraînement (X, Y) → Modèle → Prédictions sur nouvelles donn�
   - Diagnostic médical (malade/sain)
 
 **Algorithmes courants :**
+
 - Régression linéaire / logistique
 - Arbres de décision
 - Forêts aléatoires (Random Forest)
@@ -160,6 +173,7 @@ Données d'entraînement (X, Y) → Modèle → Prédictions sur nouvelles donn�
 **Principe** : Découvrir des structures cachées dans des données non étiquetées
 
 **Processus :**
+
 ```
 Données non étiquetées (X) → Modèle → Patterns / Groupes / Structure
 ```
@@ -167,6 +181,7 @@ Données non étiquetées (X) → Modèle → Patterns / Groupes / Structure
 **Principales tâches :**
 
 #### a) Clustering (Regroupement)
+
 - **Objectif** : Grouper des données similaires ensemble
 - **Exemples** :
   - Segmentation de clientèle
@@ -174,11 +189,13 @@ Données non étiquetées (X) → Modèle → Patterns / Groupes / Structure
   - Détection d'anomalies
 
 **Algorithmes courants :**
+
 - K-means
 - DBSCAN
 - Clustering hiérarchique
 
 #### b) Réduction de Dimensionnalité
+
 - **Objectif** : Réduire le nombre de variables tout en préservant l'information
 - **Exemples** :
   - Visualisation de données haute dimension
@@ -186,6 +203,7 @@ Données non étiquetées (X) → Modèle → Patterns / Groupes / Structure
   - Extraction de features
 
 **Algorithmes courants :**
+
 - PCA (Principal Component Analysis)
 - t-SNE
 - Autoencodeurs
@@ -195,17 +213,20 @@ Données non étiquetées (X) → Modèle → Patterns / Groupes / Structure
 **Principe** : Apprendre par interaction avec un environnement via récompenses/punitions
 
 **Processus :**
+
 ```
 Agent → Action → Environnement → Récompense → Agent (apprentissage)
 ```
 
 **Exemples :**
+
 - Jeux (AlphaGo, jeux vidéo)
 - Robotique
 - Gestion de ressources
 - Trading automatisé
 
 **Algorithmes courants :**
+
 - Q-Learning
 - Deep Q-Networks (DQN)
 - Policy Gradient
@@ -218,12 +239,14 @@ Agent → Action → Environnement → Récompense → Agent (apprentissage)
 ### Problématiques ML
 
 #### 1. Régression
+
 - **Définition** : Prédiction de valeurs continues
 - **Variable cible** : Numérique continue (ℝ)
 - **Exemples** : Prix, température, âge, distance
 - **Métriques** : MSE, RMSE, MAE, R²
 
 #### 2. Classification
+
 - **Définition** : Attribution de catégories/classes
 - **Variable cible** : Catégorique discrète
 - **Types** :
@@ -233,6 +256,7 @@ Agent → Action → Environnement → Récompense → Agent (apprentissage)
 - **Métriques** : Accuracy, Précision, Recall, F1-Score, AUC-ROC
 
 #### 3. Clustering
+
 - **Définition** : Regroupement automatique de données similaires
 - **Caractéristique** : Pas de labels pré-définis
 - **Exemples** : Segmentation client, détection de communautés
@@ -265,6 +289,7 @@ Agent → Action → Environnement → Récompense → Agent (apprentissage)
 ### Compétences Techniques Requises
 
 #### Manipulation de Données
+
 - **Chargement** : CSV, JSON, bases de données
 - **Exploration** : Statistiques descriptives, distributions
 - **Visualisation** : Graphiques, corrélations
@@ -274,6 +299,7 @@ Agent → Action → Environnement → Récompense → Agent (apprentissage)
 **Bibliothèques** : Pandas, NumPy, Matplotlib, Seaborn
 
 #### Modélisation
+
 - **Chargement de modèles** : Pré-entraînés ou à entraîner
 - **Entraînement** : Fit du modèle sur données d'entraînement
 - **Évaluation** : Métriques de performance
@@ -284,12 +310,14 @@ Agent → Action → Environnement → Récompense → Agent (apprentissage)
 ### Prérequis Mathématiques
 
 #### 1. Algèbre Linéaire
+
 - Vecteurs et matrices
 - Produit scalaire et matriciel
 - Valeurs/vecteurs propres
 - Décomposition SVD
 
 #### 2. Probabilités et Statistiques
+
 - Variables aléatoires
 - Lois de probabilité
 - Espérance, variance
@@ -297,12 +325,14 @@ Agent → Action → Environnement → Récompense → Agent (apprentissage)
 - Tests statistiques
 
 #### 3. Optimisation Numérique
+
 - Gradient et dérivées
 - Descente de gradient
 - Optimiseurs (SGD, Adam)
 - Fonction de coût
 
 #### 4. Programmation Python
+
 - Bases du langage
 - Structures de données
 - Programmation orientée objet
@@ -317,15 +347,18 @@ Agent → Action → Environnement → Récompense → Agent (apprentissage)
 #### Option 1 : Anaconda (Recommandé)
 
 **Avantages** :
+
 - Distribution complète avec toutes les bibliothèques scientifiques
 - Gestion d'environnements virtuels avec `conda`
 - Jupyter Notebook inclus
 - Compatible Windows, macOS, Linux
 
 **Installation** :
+
 1. Télécharger depuis [anaconda.com](https://www.anaconda.com/download)
 2. Installer la version Python 3.10+ recommandée
 3. Vérifier l'installation :
+
 ```bash
 conda --version
 python --version
@@ -334,11 +367,13 @@ python --version
 #### Option 2 : Miniconda
 
 **Avantages** :
+
 - Version légère d'Anaconda
 - Ne nécessite pas de privilèges administrateur
 - Installation manuelle des packages nécessaires
 
 **Installation** :
+
 ```bash
 # Créer un environnement virtuel
 conda create -n ml_env python=3.10
@@ -355,17 +390,20 @@ conda install numpy pandas matplotlib seaborn scikit-learn jupyter
 #### 1. Jupyter Notebook (Recommandé pour l'apprentissage)
 
 **Caractéristiques** :
+
 - Interface web interactive
 - Combine code, visualisations et texte
 - Idéal pour l'exploration de données
 - Format `.ipynb`
 
 **Lancement** :
+
 ```bash
 jupyter notebook
 ```
 
 **Avantages** :
+
 - Exécution cellule par cellule
 - Visualisations inline
 - Documentation intégrée (Markdown)
@@ -374,24 +412,28 @@ jupyter notebook
 #### 2. PyCharm
 
 **Caractéristiques** :
+
 - IDE complet pour Python
 - Débogueur puissant
 - Autocomplétion intelligente
 - Intégration Git
 
 **Versions** :
+
 - Community (gratuite) : Suffisante pour le ML
 - Professional (payante) : Support Jupyter, DataFrames viewer
 
 #### 3. Spyder
 
 **Caractéristiques** :
+
 - IDE scientifique
 - Interface similaire à MATLAB
 - Éditeur + Console IPython
 - Explorateur de variables
 
 **Installation** :
+
 ```bash
 conda install spyder
 ```
@@ -399,12 +441,14 @@ conda install spyder
 #### 4. VS Code
 
 **Caractéristiques** :
+
 - Éditeur léger et puissant
 - Extensions pour Python, Jupyter
 - Intégration Git
 - Débogueur intégré
 
 **Extensions recommandées** :
+
 - Python (Microsoft)
 - Jupyter
 - Pylance
@@ -412,6 +456,7 @@ conda install spyder
 ### Bibliothèques Essentielles
 
 #### Installation Complète
+
 ```bash
 # Via conda (recommandé)
 conda install numpy pandas matplotlib seaborn scikit-learn
@@ -424,41 +469,51 @@ pip install numpy pandas matplotlib seaborn scikit-learn tensorflow keras
 ```
 
 #### NumPy
+
 ```python
 import numpy as np
 ```
+
 - Calcul numérique performant
 - Manipulation de tableaux multidimensionnels
 - Fonctions mathématiques optimisées
 
 #### Pandas
+
 ```python
 import pandas as pd
 ```
+
 - Manipulation de données tabulaires
 - DataFrames (similaire aux tableaux Excel)
 - Import/Export CSV, JSON, SQL
 
 #### Matplotlib
+
 ```python
 import matplotlib.pyplot as plt
 ```
+
 - Visualisation de base
 - Graphiques 2D/3D
 - Personnalisation complète
 
 #### Seaborn
+
 ```python
 import seaborn as sns
 ```
+
 - Visualisation statistique
 - Graphiques esthétiques par défaut
 - Intégration avec Pandas
 
 #### Scikit-learn
+
 ```python
 from sklearn import ...
 ```
+
 - Algorithmes de ML classiques
 - Prétraitement de données
 - Métriques d'évaluation
@@ -527,6 +582,7 @@ print(f"\nPrix prédit pour une maison de 120m² : {prix_predit[0]:.2f} €")
 ```
 
 **Résultat attendu :**
+
 ```
 Coefficient (pente) : 2010.34 €/m²
 Intercept (ordonnée à l'origine) : 48523.12 €
@@ -583,6 +639,7 @@ for email, pred in zip(nouveaux_emails, predictions):
 ```
 
 **Résultat attendu :**
+
 ```
 'Offre spéciale pour vous' → SPAM
 'Réunion annulée' → NON SPAM
@@ -633,17 +690,20 @@ for i, center in enumerate(kmeans.cluster_centers_):
 1. **Machine Learning** : Apprentissage automatique à partir de données sans programmation explicite
 
 2. **Trois paradigmes principaux** :
+
    - **Supervisé** : Données étiquetées (régression, classification)
    - **Non supervisé** : Découverte de patterns (clustering, réduction de dimensionnalité)
    - **Renforcement** : Apprentissage par interaction et récompenses
 
 3. **Applications omniprésentes** :
+
    - Vision par ordinateur
    - Traitement du langage naturel
    - Prévisions et forecasting
    - Systèmes de recommandation
 
 4. **Compétences requises** :
+
    - **Mathématiques** : Algèbre linéaire, probabilités, optimisation
    - **Programmation** : Python, NumPy, Pandas
    - **Outils** : Scikit-learn, TensorFlow, Jupyter
@@ -663,16 +723,19 @@ for i, center in enumerate(kmeans.cluster_centers_):
 ### Ressources Complémentaires
 
 **Documentation officielle :**
+
 - [Scikit-learn](https://scikit-learn.org/)
 - [NumPy](https://numpy.org/doc/)
 - [Pandas](https://pandas.pydata.org/docs/)
 - [Matplotlib](https://matplotlib.org/)
 
 **Tutoriels :**
+
 - [Kaggle Learn](https://www.kaggle.com/learn)
 - [Google's Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course)
 
 **Forums :**
+
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/machine-learning)
 - [Cross Validated](https://stats.stackexchange.com/)
 
@@ -683,5 +746,6 @@ for i, center in enumerate(kmeans.cluster_centers_):
 ---
 
 **Navigation :**
-- [⬅️ Retour au Sommaire](README.md)
+
+- [⬅️ Retour au Sommaire](README_ML.md)
 - [➡️ Module 2 : Algèbre Linéaire](02_Algebre_Lineaire.md)

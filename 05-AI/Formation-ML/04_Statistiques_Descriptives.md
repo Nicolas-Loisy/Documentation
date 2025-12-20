@@ -1,6 +1,7 @@
 # Module 4 : Statistiques Descriptives
 
 ## 📋 Table des Matières
+
 1. [Introduction](#introduction)
 2. [Manipulation de Données avec Pandas](#manipulation-de-données-avec-pandas)
 3. [Mesures de Tendance Centrale](#mesures-de-tendance-centrale)
@@ -28,11 +29,13 @@ Les **statistiques descriptives** constituent la première étape essentielle da
 ### Deux Grands Types de Statistiques
 
 **Statistiques descriptives** :
+
 - Résument et décrivent les données observées
 - Mesures de tendance centrale, dispersion, forme
 - Visualisations (histogrammes, boxplots, etc.)
 
 **Statistiques inférentielles** :
+
 - Font des inférences sur une population à partir d'un échantillon
 - Tests d'hypothèses, intervalles de confiance
 - Prédictions et généralisations
@@ -59,6 +62,7 @@ plt.rcParams['figure.figsize'] = (10, 6)
 **Pandas** est la bibliothèque Python incontournable pour la manipulation et l'analyse de données structurées.
 
 **Structures de données principales** :
+
 - **Series** : Tableau 1D indexé
 - **DataFrame** : Tableau 2D (lignes × colonnes), similaire à une table SQL ou un tableur Excel
 
@@ -90,6 +94,7 @@ print(df)
 ```
 
 **Sortie** :
+
 ```
        Nom  Age      Ville  Salaire
 0    Alice   25      Paris    45000
@@ -286,6 +291,7 @@ $$
 $$
 
 **Propriétés** :
+
 - Sensible aux valeurs extrêmes (outliers)
 - Utilisée pour des données numériques continues
 - Minimise la somme des écarts au carré
@@ -319,6 +325,7 @@ print(f"Moyenne avec outlier: {np.mean(data_with_outlier)}")  # 220.0
 - Si $n$ est pair : médiane = moyenne des deux valeurs centrales
 
 **Propriétés** :
+
 - **Robuste** aux valeurs extrêmes
 - Utilisée pour des données ordinales ou continues
 - 50ème percentile
@@ -342,6 +349,7 @@ print(f"Médiane: {np.median(data_with_outlier)}")  # 30.0 (robuste!)
 **Définition** : Valeur qui apparaît le plus fréquemment.
 
 **Propriétés** :
+
 - Peut être utilisé pour données catégorielles
 - Peut avoir plusieurs modes (distribution multimodale)
 
@@ -398,6 +406,7 @@ print(f"Écart: {abs(mean_val - median_val):.2f}")
 ```
 
 **Interprétation** :
+
 - Distribution **symétrique** : moyenne ≈ médiane
 - Distribution **asymétrique à droite** (skew positif) : moyenne > médiane
 - Distribution **asymétrique à gauche** (skew négatif) : moyenne < médiane
@@ -434,11 +443,13 @@ range_pd = df["valeurs"].max() - df["valeurs"].min()
 **Définition** : Moyenne des écarts au carré par rapport à la moyenne.
 
 **Variance de la population** :
+
 $$
 \sigma^2 = \frac{1}{n} \sum_{i=1}^{n} (x_i - \mu)^2
 $$
 
 **Variance de l'échantillon** (estimateur non biaisé) :
+
 $$
 s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2
 $$
@@ -460,6 +471,7 @@ print(f"Variance (Pandas): {var_pd}")  # 250.0
 ```
 
 **Propriétés** :
+
 - Toujours positive ou nulle
 - Unité : carré de l'unité des données
 - Sensible aux outliers
@@ -487,6 +499,7 @@ std_pd = pd.Series(data).std()
 **Avantage** : Même unité que les données (contrairement à la variance).
 
 **Interprétation** :
+
 - Écart-type faible : données concentrées autour de la moyenne
 - Écart-type élevé : données dispersées
 
@@ -511,11 +524,13 @@ print(f"Coefficient de variation: {cv:.2f}%")
 ### 5. Quartiles et Quantiles
 
 **Quartiles** :
+
 - **Q1** (1er quartile, 25ème percentile) : 25% des données sont en dessous
 - **Q2** (2ème quartile, médiane, 50ème percentile) : 50% en dessous
 - **Q3** (3ème quartile, 75ème percentile) : 75% en dessous
 
 **Interquartile Range (IQR)** :
+
 $$
 IQR = Q3 - Q1
 $$
@@ -542,6 +557,7 @@ print(df["valeurs"].quantile([0.25, 0.5, 0.75]))
 ```
 
 **Détection d'outliers avec IQR** :
+
 - **Outliers modérés** : valeurs < Q1 - 1.5×IQR ou > Q3 + 1.5×IQR
 - **Outliers extrêmes** : valeurs < Q1 - 3×IQR ou > Q3 + 3×IQR
 
@@ -572,6 +588,7 @@ print(df.describe())
 ```
 
 **Output de `describe()`** :
+
 ```
        valeurs
 count  1000.000000
@@ -599,11 +616,13 @@ $$
 $$
 
 **Interprétation** :
+
 - **Skewness = 0** : Distribution symétrique (normale)
 - **Skewness > 0** : Distribution asymétrique à droite (queue à droite, valeurs élevées)
 - **Skewness < 0** : Distribution asymétrique à gauche (queue à gauche, valeurs faibles)
 
 **Règles pratiques** :
+
 - $|\text{Skewness}| < 0.5$ : Approximativement symétrique
 - $0.5 < |\text{Skewness}| < 1$ : Modérément asymétrique
 - $|\text{Skewness}| > 1$ : Fortement asymétrique
@@ -671,6 +690,7 @@ $$
 $$
 
 **Interprétation** (kurtosis "excess", -3 pour centrer sur 0) :
+
 - **Kurtosis = 0** : Distribution mesokurtique (normale)
 - **Kurtosis > 0** : Distribution leptokurtique (queues lourdes, pic pointu)
 - **Kurtosis < 0** : Distribution platykurtique (queues légères, pic aplati)
@@ -719,11 +739,13 @@ La **corrélation** mesure la force et la direction de la relation linéaire ent
 ### Coefficient de Corrélation de Pearson
 
 **Définition** :
+
 $$
 r = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^{n}(x_i - \bar{x})^2} \sqrt{\sum_{i=1}^{n}(y_i - \bar{y})^2}}
 $$
 
 **Propriétés** :
+
 - $r \in [-1, 1]$
 - $r = 1$ : Corrélation positive parfaite
 - $r = -1$ : Corrélation négative parfaite
@@ -886,6 +908,7 @@ plt.show()
 **Utilité** : Résumé visuel de la distribution (quartiles, médiane, outliers).
 
 **Composantes** :
+
 - **Boîte** : De Q1 à Q3 (IQR)
 - **Ligne dans la boîte** : Médiane
 - **Moustaches** : Jusqu'à 1.5×IQR
@@ -1388,27 +1411,31 @@ plt.show()
 ### Points Clés à Retenir
 
 #### 1. Pandas DataFrame
+
 - Structure de données 2D pour analyse de données
 - Opérations : `head()`, `info()`, `describe()`, `shape`, `columns`
 - Sélection : `df["col"]`, `df.iloc[]`, `df.loc[]`, filtrage conditionnel
 - Valeurs manquantes : `isna()`, `dropna()`, `fillna()`
 
 #### 2. Mesures de Tendance Centrale
-| Mesure | Formule | Propriété |
-|--------|---------|-----------|
-| **Moyenne** | $\bar{x} = \frac{1}{n}\sum x_i$ | Sensible aux outliers |
-| **Médiane** | Valeur centrale | Robuste aux outliers |
-| **Mode** | Valeur la plus fréquente | Applicable au catégoriel |
+
+| Mesure      | Formule                         | Propriété                |
+| ----------- | ------------------------------- | ------------------------ |
+| **Moyenne** | $\bar{x} = \frac{1}{n}\sum x_i$ | Sensible aux outliers    |
+| **Médiane** | Valeur centrale                 | Robuste aux outliers     |
+| **Mode**    | Valeur la plus fréquente        | Applicable au catégoriel |
 
 #### 3. Mesures de Dispersion
-| Mesure | Formule | Interprétation |
-|--------|---------|----------------|
-| **Étendue** | max - min | Sensible aux extrêmes |
-| **Variance** | $s^2 = \frac{1}{n-1}\sum(x_i - \bar{x})^2$ | Unité au carré |
-| **Écart-type** | $s = \sqrt{s^2}$ | Même unité que données |
-| **IQR** | Q3 - Q1 | Robuste aux outliers |
+
+| Mesure         | Formule                                    | Interprétation         |
+| -------------- | ------------------------------------------ | ---------------------- |
+| **Étendue**    | max - min                                  | Sensible aux extrêmes  |
+| **Variance**   | $s^2 = \frac{1}{n-1}\sum(x_i - \bar{x})^2$ | Unité au carré         |
+| **Écart-type** | $s = \sqrt{s^2}$                           | Même unité que données |
+| **IQR**        | Q3 - Q1                                    | Robuste aux outliers   |
 
 #### 4. Mesures de Forme
+
 - **Skewness** : Asymétrie
   - > 0 : Queue à droite
   - < 0 : Queue à gauche
@@ -1419,18 +1446,20 @@ plt.show()
   - ≈ 0 : Normale
 
 #### 5. Corrélation
+
 - **Pearson** : $r \in [-1, 1]$
 - Corrélation ≠ Causalité
 - Matrice de corrélation : visualiser toutes les relations
 
 #### 6. Visualisations Essentielles
-| Type | Utilité |
-|------|---------|
-| **Histogramme** | Distribution d'une variable |
-| **Boxplot** | Quartiles, médiane, outliers |
-| **Scatter plot** | Relation entre 2 variables |
-| **Heatmap** | Matrice de corrélation |
-| **Pairplot** | Relations multiples |
+
+| Type             | Utilité                      |
+| ---------------- | ---------------------------- |
+| **Histogramme**  | Distribution d'une variable  |
+| **Boxplot**      | Quartiles, médiane, outliers |
+| **Scatter plot** | Relation entre 2 variables   |
+| **Heatmap**      | Matrice de corrélation       |
+| **Pairplot**     | Relations multiples          |
 
 ### Bibliothèques Python
 
@@ -1472,6 +1501,7 @@ Outliers: < Q₁ - 1.5×IQR ou > Q₃ + 1.5×IQR
 ---
 
 **Navigation :**
+
 - [⬅️ Module 3 : Probabilités](03_Probabilites.md)
-- [🏠 Retour au Sommaire](README.md)
+- [🏠 Retour au Sommaire](README_ML.md)
 - [➡️ Module 5 : Optimisation Numérique](05_Optimisation_Numerique.md)

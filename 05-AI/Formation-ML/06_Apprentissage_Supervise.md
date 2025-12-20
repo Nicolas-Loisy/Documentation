@@ -1,6 +1,7 @@
 # Module 6 : Apprentissage Supervisé
 
 ## 📋 Table des Matières
+
 1. [Introduction](#introduction)
 2. [Régression Linéaire](#régression-linéaire)
 3. [Régression Logistique](#régression-logistique)
@@ -22,19 +23,21 @@ L'**apprentissage supervisé** consiste à entraîner un modèle sur des donnée
 ### Définition
 
 Étant donné un dataset $\mathcal{D} = \{(\mathbf{x}_i, y_i)\}_{i=1}^N$ où :
+
 - $\mathbf{x}_i \in \mathbb{R}^d$ : vecteur de features (caractéristiques)
 - $y_i$ : label/cible
 
 **Objectif** : Apprendre une fonction $f : \mathbb{R}^d \to \mathcal{Y}$ telle que :
+
 $$
 f(\mathbf{x}) \approx y
 $$
 
 ### Types de Problèmes
 
-| Type | Cible | Exemples |
-|------|-------|----------|
-| **Régression** | Continue ($\mathcal{Y} = \mathbb{R}$) | Prix immobilier, température |
+| Type               | Cible                                           | Exemples                               |
+| ------------------ | ----------------------------------------------- | -------------------------------------- |
+| **Régression**     | Continue ($\mathcal{Y} = \mathbb{R}$)           | Prix immobilier, température           |
 | **Classification** | Discrète ($\mathcal{Y} = \{c_1, \ldots, c_K\}$) | Spam/non-spam, reconnaissance d'images |
 
 ### Workflow ML Supervisé
@@ -84,18 +87,22 @@ $$
 $$
 
 où :
+
 - $\mathbf{w} \in \mathbb{R}^d$ : poids (coefficients)
 - $b \in \mathbb{R}$ : biais (intercept)
 
 **Forme vectorielle** :
+
 $$
 \hat{y} = \mathbf{w}^T \mathbf{x}
 $$
+
 (en incluant $b$ dans $\mathbf{w}$ et ajoutant une feature constante = 1)
 
 ### Fonction de Coût (MSE)
 
 **Mean Squared Error** :
+
 $$
 \mathcal{L}(\mathbf{w}) = \frac{1}{2N} \sum_{i=1}^{N} (y_i - \hat{y}_i)^2 = \frac{1}{2N} \|\mathbf{y} - \mathbf{X}\mathbf{w}\|^2
 $$
@@ -109,10 +116,12 @@ $$
 $$
 
 **Avantages** :
+
 - Solution exacte en une étape
 - Pas de learning rate
 
 **Inconvénients** :
+
 - Coûteux si $d$ grand (inversion de matrice $O(d^3)$)
 - Nécessite $\mathbf{X}^T \mathbf{X}$ inversible
 
@@ -123,6 +132,7 @@ $$
 $$
 
 **Gradient** :
+
 $$
 \nabla \mathcal{L}(\mathbf{w}) = \frac{1}{N} \mathbf{X}^T (\mathbf{X}\mathbf{w} - \mathbf{y})
 $$
@@ -292,6 +302,7 @@ $$
 $$
 
 **Propriétés** :
+
 - $\sigma(z) \in (0, 1)$
 - $\sigma(0) = 0.5$
 - $\sigma(-z) = 1 - \sigma(z)$
@@ -411,6 +422,7 @@ Pour prédire $y$ pour un nouveau point $\mathbf{x}$ :
 3. **Régression** : Moyenne des $k$ voisins
 
 **Distance** : Euclidienne (par défaut)
+
 $$
 d(\mathbf{x}, \mathbf{x}') = \|\mathbf{x} - \mathbf{x}'\| = \sqrt{\sum_{i=1}^{d} (x_i - x_i')^2}
 $$
@@ -489,10 +501,12 @@ plt.show()
 ```
 
 **Avantages** :
+
 - Simple, pas d'entraînement
 - Non-paramétrique, flexible
 
 **Inconvénients** :
+
 - Lent en prédiction (O(N))
 - Sensible à la dimensionnalité (curse of dimensionality)
 - Nécessite normalisation des features
@@ -531,11 +545,13 @@ Les **arbres de décision** divisent récursivement l'espace des features.
 - **Régression** : MSE
 
 **Gini Impurity** :
+
 $$
 \text{Gini}(S) = 1 - \sum_{k=1}^{K} p_k^2
 $$
 
 **Entropie** :
+
 $$
 H(S) = -\sum_{k=1}^{K} p_k \log_2(p_k)
 $$
@@ -589,21 +605,23 @@ plt.show()
 
 ### Hyperparamètres Importants
 
-| Paramètre | Description |
-|-----------|-------------|
-| `max_depth` | Profondeur maximale de l'arbre |
-| `min_samples_split` | Nombre minimum d'échantillons pour diviser |
-| `min_samples_leaf` | Nombre minimum d'échantillons dans une feuille |
-| `max_features` | Nombre maximum de features à considérer |
-| `criterion` | Critère de division (gini, entropy, mse) |
+| Paramètre           | Description                                    |
+| ------------------- | ---------------------------------------------- |
+| `max_depth`         | Profondeur maximale de l'arbre                 |
+| `min_samples_split` | Nombre minimum d'échantillons pour diviser     |
+| `min_samples_leaf`  | Nombre minimum d'échantillons dans une feuille |
+| `max_features`      | Nombre maximum de features à considérer        |
+| `criterion`         | Critère de division (gini, entropy, mse)       |
 
 **Avantages** :
+
 - Interprétable
 - Pas besoin de normalisation
 - Gère features catégorielles
 - Capture relations non-linéaires
 
 **Inconvénients** :
+
 - Tendance à l'overfitting
 - Instable (petite variation → arbre différent)
 - Biais si classes déséquilibrées
@@ -617,6 +635,7 @@ plt.show()
 ### Principe (Classification Binaire)
 
 **Hyperplan séparateur** :
+
 $$
 \mathbf{w}^T \mathbf{x} + b = 0
 $$
@@ -624,6 +643,7 @@ $$
 **Marge** : Distance minimale entre l'hyperplan et les points les plus proches.
 
 **Objectif** : Maximiser la marge
+
 $$
 \min_{\mathbf{w}, b} \frac{1}{2} \|\mathbf{w}\|^2 \quad \text{sujet à} \quad y_i(\mathbf{w}^T \mathbf{x}_i + b) \geq 1
 $$
@@ -637,6 +657,7 @@ $$
 $$
 
 où :
+
 - $\xi_i$ : variables de relâchement (slack variables)
 - $C$ : paramètre de régularisation (trade-off marge/erreurs)
 
@@ -646,10 +667,10 @@ Pour problèmes non-linéaires, projeter dans un espace de dimension supérieure
 
 **Kernels courants** :
 
-| Kernel | Formule |
-|--------|---------|
-| **Linéaire** | $K(\mathbf{x}, \mathbf{x}') = \mathbf{x}^T \mathbf{x}'$ |
-| **Polynomial** | $K(\mathbf{x}, \mathbf{x}') = (\gamma \mathbf{x}^T \mathbf{x}' + r)^d$ |
+| Kernel             | Formule                                                                   |
+| ------------------ | ------------------------------------------------------------------------- |
+| **Linéaire**       | $K(\mathbf{x}, \mathbf{x}') = \mathbf{x}^T \mathbf{x}'$                   |
+| **Polynomial**     | $K(\mathbf{x}, \mathbf{x}') = (\gamma \mathbf{x}^T \mathbf{x}' + r)^d$    |
 | **RBF (Gaussien)** | $K(\mathbf{x}, \mathbf{x}') = e^{-\gamma \|\mathbf{x} - \mathbf{x}'\|^2}$ |
 
 ### Implémentation
@@ -699,11 +720,13 @@ plt.show()
 ```
 
 **Avantages** :
+
 - Performant en haute dimension
 - Efficace en mémoire (seuls les support vectors)
 - Kernels pour non-linéarité
 
 **Inconvénients** :
+
 - Lent sur gros datasets
 - Sensible au choix du kernel et des hyperparamètres
 - Difficile à interpréter
@@ -717,6 +740,7 @@ Les **méthodes d'ensemble** combinent plusieurs modèles pour améliorer les pe
 ### 1. Bagging (Bootstrap Aggregating)
 
 **Principe** :
+
 1. Créer $B$ sous-ensembles par bootstrap (tirage avec remise)
 2. Entraîner un modèle sur chaque sous-ensemble
 3. Agréger les prédictions (vote ou moyenne)
@@ -762,6 +786,7 @@ F_m(\mathbf{x}) = F_{m-1}(\mathbf{x}) + \eta h_m(\mathbf{x})
 $$
 
 où :
+
 - $h_m$ : modèle faible (souvent un arbre peu profond)
 - $\eta$ : learning rate
 
@@ -796,6 +821,7 @@ print(f"Accuracy (XGBoost): {accuracy_score(y_test, y_pred):.4f}")
 ### 3. Stacking
 
 **Principe** :
+
 1. Diviser les données en K folds
 2. Entraîner plusieurs modèles de base (niveau 1) avec validation croisée
 3. Utiliser les prédictions comme features pour un méta-modèle (niveau 2)
@@ -899,10 +925,12 @@ print(f"Accuracy sur test: {accuracy_score(y_test, y_pred):.4f}")
 ```
 
 **Avantages** :
+
 - Exhaustif
 - Simple
 
 **Inconvénients** :
+
 - Très coûteux si grille large
 - Croissance exponentielle avec le nombre de paramètres
 
@@ -940,6 +968,7 @@ print(f"Meilleure accuracy (CV): {random_search.best_score_:.4f}")
 ```
 
 **Avantages** :
+
 - Plus rapide que Grid Search
 - Explore mieux l'espace
 
@@ -977,10 +1006,12 @@ print(f"Meilleure accuracy (CV): {bayes_search.best_score_:.4f}")
 ```
 
 **Avantages** :
+
 - Plus efficace que Random Search
 - Explore intelligemment
 
 **Inconvénients** :
+
 - Plus complexe
 - Nécessite une librairie externe (scikit-optimize)
 
@@ -990,13 +1021,13 @@ print(f"Meilleure accuracy (CV): {bayes_search.best_score_:.4f}")
 
 ### Métriques de Régression
 
-| Métrique | Formule | Description |
-|----------|---------|-------------|
-| **MSE** | $\frac{1}{N}\sum(y_i - \hat{y}_i)^2$ | Erreur quadratique moyenne |
-| **RMSE** | $\sqrt{MSE}$ | Même unité que $y$ |
-| **MAE** | $\frac{1}{N}\sum|y_i - \hat{y}_i|$ | Erreur absolue moyenne |
-| **MAPE** | $\frac{1}{N}\sum\frac{|y_i - \hat{y}_i|}{y_i}$ | Erreur en pourcentage |
-| **R²** | $1 - \frac{SS_{res}}{SS_{tot}}$ | Coefficient de détermination |
+| Métrique | Formule                              | Description                  |
+| -------- | ------------------------------------ | ---------------------------- | ------- | ---------------------- |
+| **MSE**  | $\frac{1}{N}\sum(y_i - \hat{y}_i)^2$ | Erreur quadratique moyenne   |
+| **RMSE** | $\sqrt{MSE}$                         | Même unité que $y$           |
+| **MAE**  | $\frac{1}{N}\sum                     | y_i - \hat{y}\_i             | $       | Erreur absolue moyenne |
+| **MAPE** | $\frac{1}{N}\sum\frac{               | y_i - \hat{y}\_i             | }{y_i}$ | Erreur en pourcentage  |
+| **R²**   | $1 - \frac{SS_{res}}{SS_{tot}}$      | Coefficient de détermination |
 
 ```python
 from sklearn.metrics import mean_squared_error, mean_absolute_error, mean_absolute_percentage_error, r2_score
@@ -1027,13 +1058,13 @@ Vrai Positif (TP)       FN                TP
 
 **Métriques** :
 
-| Métrique | Formule | Description |
-|----------|---------|-------------|
-| **Accuracy** | $\frac{TP + TN}{TP + TN + FP + FN}$ | Proportion correcte |
-| **Precision** | $\frac{TP}{TP + FP}$ | Parmi prédits positifs, % vrais |
-| **Recall (Sensitivity)** | $\frac{TP}{TP + FN}$ | Parmi vrais positifs, % détectés |
-| **F1-Score** | $\frac{2 \cdot Precision \cdot Recall}{Precision + Recall}$ | Moyenne harmonique |
-| **Specificity** | $\frac{TN}{TN + FP}$ | Parmi vrais négatifs, % détectés |
+| Métrique                 | Formule                                                     | Description                      |
+| ------------------------ | ----------------------------------------------------------- | -------------------------------- |
+| **Accuracy**             | $\frac{TP + TN}{TP + TN + FP + FN}$                         | Proportion correcte              |
+| **Precision**            | $\frac{TP}{TP + FP}$                                        | Parmi prédits positifs, % vrais  |
+| **Recall (Sensitivity)** | $\frac{TP}{TP + FN}$                                        | Parmi vrais positifs, % détectés |
+| **F1-Score**             | $\frac{2 \cdot Precision \cdot Recall}{Precision + Recall}$ | Moyenne harmonique               |
+| **Specificity**          | $\frac{TN}{TN + FP}$                                        | Parmi vrais négatifs, % détectés |
 
 ```python
 from sklearn.metrics import confusion_matrix, classification_report, roc_auc_score, roc_curve
@@ -1390,35 +1421,35 @@ plt.show()
 
 #### 1. Types de Problèmes
 
-| Type | Objectif | Métriques |
-|------|----------|-----------|
-| **Régression** | Prédire valeur continue | MSE, RMSE, MAE, MAPE, R² |
-| **Classification** | Prédire classe | Accuracy, Precision, Recall, F1, AUC |
+| Type               | Objectif                | Métriques                            |
+| ------------------ | ----------------------- | ------------------------------------ |
+| **Régression**     | Prédire valeur continue | MSE, RMSE, MAE, MAPE, R²             |
+| **Classification** | Prédire classe          | Accuracy, Precision, Recall, F1, AUC |
 
 #### 2. Modèles Linéaires
 
-| Modèle | Usage | Régularisation |
-|--------|-------|----------------|
-| **Régression Linéaire** | Régression | - |
-| **Ridge** | Régression | L2 ($\lambda \|\mathbf{w}\|^2$) |
-| **Lasso** | Régression + sélection | L1 ($\lambda \|\mathbf{w}\|_1$) |
-| **Régression Logistique** | Classification binaire | - |
+| Modèle                    | Usage                  | Régularisation                  |
+| ------------------------- | ---------------------- | ------------------------------- |
+| **Régression Linéaire**   | Régression             | -                               |
+| **Ridge**                 | Régression             | L2 ($\lambda \|\mathbf{w}\|^2$) |
+| **Lasso**                 | Régression + sélection | L1 ($\lambda \|\mathbf{w}\|_1$) |
+| **Régression Logistique** | Classification binaire | -                               |
 
 #### 3. Modèles Non-Linéaires
 
-| Modèle | Principe | Avantages | Inconvénients |
-|--------|----------|-----------|---------------|
-| **KNN** | Proximité | Simple, non-paramétrique | Lent, sensible à dim. |
-| **Arbres de Décision** | Divisions récursives | Interprétable | Overfitting |
-| **SVM** | Maximisation marge | Haute dim. | Lent, choix kernel |
+| Modèle                 | Principe             | Avantages                | Inconvénients         |
+| ---------------------- | -------------------- | ------------------------ | --------------------- |
+| **KNN**                | Proximité            | Simple, non-paramétrique | Lent, sensible à dim. |
+| **Arbres de Décision** | Divisions récursives | Interprétable            | Overfitting           |
+| **SVM**                | Maximisation marge   | Haute dim.               | Lent, choix kernel    |
 
 #### 4. Méthodes d'Ensemble
 
-| Méthode | Stratégie | Algorithmes |
-|---------|-----------|-------------|
-| **Bagging** | Réduire variance | Random Forest |
-| **Boosting** | Réduire biais | Gradient Boosting, XGBoost |
-| **Stacking** | Combiner modèles | Méta-modèle |
+| Méthode      | Stratégie        | Algorithmes                |
+| ------------ | ---------------- | -------------------------- |
+| **Bagging**  | Réduire variance | Random Forest              |
+| **Boosting** | Réduire biais    | Gradient Boosting, XGBoost |
+| **Stacking** | Combiner modèles | Méta-modèle                |
 
 #### 5. Workflow ML
 
@@ -1436,6 +1467,7 @@ plt.show()
 ### Métriques Essentielles
 
 **Régression** :
+
 ```python
 from sklearn.metrics import mean_squared_error, mean_absolute_error, mean_absolute_percentage_error, r2_score
 
@@ -1446,6 +1478,7 @@ R2 = r2_score(y_true, y_pred)
 ```
 
 **Classification** :
+
 ```python
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score
 
@@ -1499,6 +1532,7 @@ from sklearn.metrics import *
 ---
 
 **Navigation :**
+
 - [⬅️ Module 5 : Optimisation Numérique](05_Optimisation_Numerique.md)
-- [🏠 Retour au Sommaire](README.md)
+- [🏠 Retour au Sommaire](README_ML.md)
 - [➡️ Module 7 : Réseaux de Neurones Profonds](07_Reseaux_Neurones_Profonds.md)

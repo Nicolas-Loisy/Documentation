@@ -1,6 +1,7 @@
 # Module 9 : Apprentissage Non Supervisé
 
 ## 📋 Table des Matières
+
 1. [Introduction](#introduction)
 2. [Clustering](#clustering)
 3. [Réduction de Dimensionnalité](#réduction-de-dimensionnalité)
@@ -19,21 +20,21 @@ L'**apprentissage non supervisé** consiste à découvrir des structures cachée
 
 ### Différence avec l'Apprentissage Supervisé
 
-| Aspect | Supervisé | Non Supervisé |
-|--------|-----------|---------------|
-| **Données** | $\{(\mathbf{x}_i, y_i)\}$ (avec labels) | $\{\mathbf{x}_i\}$ (sans labels) |
-| **Objectif** | Prédire $y$ | Découvrir structure |
-| **Exemples** | Classification, régression | Clustering, réduction dim. |
+| Aspect       | Supervisé                               | Non Supervisé                    |
+| ------------ | --------------------------------------- | -------------------------------- |
+| **Données**  | $\{(\mathbf{x}_i, y_i)\}$ (avec labels) | $\{\mathbf{x}_i\}$ (sans labels) |
+| **Objectif** | Prédire $y$                             | Découvrir structure              |
+| **Exemples** | Classification, régression              | Clustering, réduction dim.       |
 
 ### Applications
 
-| Domaine | Tâche | Exemple |
-|---------|-------|---------|
+| Domaine                 | Tâche                      | Exemple         |
+| ----------------------- | -------------------------- | --------------- |
 | **Segmentation client** | Grouper clients similaires | Marketing ciblé |
-| **Compression** | Réduire dimensionnalité | Images, données |
-| **Détection anomalies** | Identifier outliers | Fraude, défauts |
-| **Recommandation** | Produits similaires | Netflix, Amazon |
-| **Visualisation** | Projeter données 2D/3D | t-SNE, UMAP |
+| **Compression**         | Réduire dimensionnalité    | Images, données |
+| **Détection anomalies** | Identifier outliers        | Fraude, défauts |
+| **Recommandation**      | Produits similaires        | Netflix, Amazon |
+| **Visualisation**       | Projeter données 2D/3D     | t-SNE, UMAP     |
 
 ```python
 import numpy as np
@@ -56,6 +57,7 @@ Le **clustering** consiste à regrouper des données similaires en **clusters** 
 ### Objectif
 
 Partitionner $\mathcal{D} = \{\mathbf{x}_1, \ldots, \mathbf{x}_N\}$ en $K$ clusters tels que :
+
 - **Intra-cluster** : Points dans même cluster sont similaires
 - **Inter-cluster** : Points de clusters différents sont dissimilaires
 
@@ -266,11 +268,11 @@ plt.show()
 
 ### Comparaison des Méthodes
 
-| Méthode | Avantages | Inconvénients | Usage |
-|---------|-----------|---------------|-------|
-| **K-Means** | Rapide, scalable | Clusters sphériques, $K$ fixe | Grandes données, clusters sphériques |
-| **DBSCAN** | Formes arbitraires, outliers | Sensible à eps/MinPts | Densité variable, outliers |
-| **Hiérarchique** | Pas de $K$, dendrogramme | Lent ($O(n^2)$) | Petites données, hiérarchie |
+| Méthode          | Avantages                    | Inconvénients                 | Usage                                |
+| ---------------- | ---------------------------- | ----------------------------- | ------------------------------------ |
+| **K-Means**      | Rapide, scalable             | Clusters sphériques, $K$ fixe | Grandes données, clusters sphériques |
+| **DBSCAN**       | Formes arbitraires, outliers | Sensible à eps/MinPts         | Densité variable, outliers           |
+| **Hiérarchique** | Pas de $K$, dendrogramme     | Lent ($O(n^2)$)               | Petites données, hiérarchie          |
 
 ---
 
@@ -281,6 +283,7 @@ plt.show()
 ### Pourquoi Réduire la Dimensionnalité ?
 
 **Motivations** :
+
 - **Visualisation** : Projeter en 2D/3D
 - **Curse of dimensionality** : Performances dégradées en haute dim.
 - **Compression** : Réduire stockage
@@ -389,10 +392,12 @@ print(f"Composantes pour 95% variance: {n_components_95}")
 **Principe** : Préserver les similarités locales.
 
 **Avantages** :
+
 - Excellente visualisation
 - Capture structure non-linéaire
 
 **Inconvénients** :
+
 - Lent ($O(n^2)$)
 - Non déterministe
 - Pas pour réduction générale (seulement visualisation)
@@ -426,6 +431,7 @@ plt.show()
 ### 3. UMAP (Uniform Manifold Approximation and Projection)
 
 **Alternative moderne à t-SNE** :
+
 - **Plus rapide**
 - **Préserve structure globale et locale**
 - **Déterministe** (avec seed)
@@ -472,6 +478,7 @@ Input (x) → Encoder → Latent Code (z) → Decoder → Reconstruction (x̂)
 ```
 
 **Objectif** : Minimiser la reconstruction error
+
 $$
 \mathcal{L} = \|\mathbf{x} - \hat{\mathbf{x}}\|^2
 $$
@@ -723,6 +730,7 @@ print(f"Anomalies (Autoencodeur): {(y_pred_ae == -1).sum()}")
 **Principe** : Utiliser les **préférences d'utilisateurs similaires**.
 
 **Approches** :
+
 - **User-based** : Utilisateurs similaires aiment items similaires
 - **Item-based** : Items similaires sont aimés par utilisateurs similaires
 
@@ -958,28 +966,28 @@ plt.show()
 
 #### Clustering
 
-| Méthode | Type | Avantages | Limites |
-|---------|------|-----------|---------|
-| **K-Means** | Partitionnement | Rapide, scalable | Clusters sphériques, $K$ fixe |
-| **DBSCAN** | Densité | Formes arbitraires, outliers | Sensible aux paramètres |
-| **Hiérarchique** | Hiérarchie | Dendrogramme, pas de $K$ | Lent |
+| Méthode          | Type            | Avantages                    | Limites                       |
+| ---------------- | --------------- | ---------------------------- | ----------------------------- |
+| **K-Means**      | Partitionnement | Rapide, scalable             | Clusters sphériques, $K$ fixe |
+| **DBSCAN**       | Densité         | Formes arbitraires, outliers | Sensible aux paramètres       |
+| **Hiérarchique** | Hiérarchie      | Dendrogramme, pas de $K$     | Lent                          |
 
 #### Réduction Dimensionnalité
 
-| Méthode | Type | Usage | Préserve |
-|---------|------|-------|----------|
-| **PCA** | Linéaire | Compression, preprocessing | Variance globale |
-| **t-SNE** | Non-linéaire | Visualisation | Structure locale |
-| **UMAP** | Non-linéaire | Visualisation, général | Structure locale+globale |
-| **Autoencodeur** | Neural | Compression, génération | Features apprises |
+| Méthode          | Type         | Usage                      | Préserve                 |
+| ---------------- | ------------ | -------------------------- | ------------------------ |
+| **PCA**          | Linéaire     | Compression, preprocessing | Variance globale         |
+| **t-SNE**        | Non-linéaire | Visualisation              | Structure locale         |
+| **UMAP**         | Non-linéaire | Visualisation, général     | Structure locale+globale |
+| **Autoencodeur** | Neural       | Compression, génération    | Features apprises        |
 
 #### Détection Anomalies
 
-| Méthode | Principe |
-|---------|----------|
-| **Isolation Forest** | Isolation plus facile |
-| **One-Class SVM** | Frontière distribution |
-| **Autoencodeur** | Reconstruction error |
+| Méthode              | Principe               |
+| -------------------- | ---------------------- |
+| **Isolation Forest** | Isolation plus facile  |
+| **One-Class SVM**    | Frontière distribution |
+| **Autoencodeur**     | Reconstruction error   |
 
 ### Workflow Type
 
@@ -1012,13 +1020,13 @@ anomalies = iso.fit_predict(X)
 
 ### Applications Réelles
 
-| Domaine | Technique | Exemple |
-|---------|-----------|---------|
-| **Marketing** | Clustering | Segmentation client |
-| **Finance** | Détection anomalies | Fraude bancaire |
-| **Vision** | Autoencodeur | Compression, débruitage |
-| **Biologie** | PCA, clustering | Analyse génomique |
-| **Recommandation** | Matrix factorization | Netflix, Spotify |
+| Domaine            | Technique            | Exemple                 |
+| ------------------ | -------------------- | ----------------------- |
+| **Marketing**      | Clustering           | Segmentation client     |
+| **Finance**        | Détection anomalies  | Fraude bancaire         |
+| **Vision**         | Autoencodeur         | Compression, débruitage |
+| **Biologie**       | PCA, clustering      | Analyse génomique       |
+| **Recommandation** | Matrix factorization | Netflix, Spotify        |
 
 ---
 
@@ -1027,5 +1035,6 @@ anomalies = iso.fit_predict(X)
 ---
 
 **Navigation :**
+
 - [⬅️ Module 8 : CNN](08_CNN.md)
-- [🏠 Retour au Sommaire](README.md)
+- [🏠 Retour au Sommaire](README_ML.md)

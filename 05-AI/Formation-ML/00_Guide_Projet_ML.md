@@ -1,6 +1,7 @@
 # Guide Complet : Démarrer un Projet Machine Learning
 
 ## 📋 Table des Matières
+
 1. [Checklist Complète d'un Projet ML](#checklist-complète-dun-projet-ml)
 2. [Phase 1 : Compréhension du Problème](#phase-1--compréhension-du-problème)
 3. [Phase 2 : Collecte et Exploration des Données](#phase-2--collecte-et-exploration-des-données)
@@ -16,6 +17,7 @@
 ## Checklist Complète d'un Projet ML
 
 ### ✅ Phase 1 : Compréhension du Problème
+
 - [ ] Définir la problématique métier clairement
 - [ ] Identifier les objectifs mesurables
 - [ ] Déterminer le type de problème ML
@@ -25,6 +27,7 @@
 - [ ] Comprendre l'impact business
 
 ### ✅ Phase 2 : Collecte et Exploration des Données
+
 - [ ] Identifier les sources de données disponibles
 - [ ] Collecter les données nécessaires
 - [ ] Vérifier la qualité des données
@@ -35,6 +38,7 @@
 - [ ] Analyser les corrélations entre variables
 
 ### ✅ Phase 3 : Préparation des Données
+
 - [ ] Traiter les valeurs manquantes
 - [ ] Gérer les outliers
 - [ ] Encoder les variables catégorielles
@@ -45,6 +49,7 @@
 - [ ] Gérer le déséquilibre des classes (si nécessaire)
 
 ### ✅ Phase 4 : Modélisation
+
 - [ ] Choisir les modèles candidats
 - [ ] Définir la baseline
 - [ ] Entraîner les modèles
@@ -55,6 +60,7 @@
 - [ ] Analyser les erreurs
 
 ### ✅ Phase 5 : Évaluation
+
 - [ ] Évaluer sur le test set
 - [ ] Calculer les métriques appropriées
 - [ ] Analyser la matrice de confusion (classification)
@@ -64,6 +70,7 @@
 - [ ] Documenter les résultats
 
 ### ✅ Phase 6 : Déploiement
+
 - [ ] Préparer le modèle pour production
 - [ ] Créer une API ou interface
 - [ ] Mettre en place le monitoring
@@ -81,6 +88,7 @@
 #### 1. Quelle est la problématique métier ?
 
 **Template de problématique :**
+
 ```
 Contexte : [Décrire la situation actuelle]
 Problème : [Quel problème cherche-t-on à résoudre ?]
@@ -89,6 +97,7 @@ Solution envisagée : [Comment le ML peut-il aider ?]
 ```
 
 **Exemple :**
+
 ```
 Contexte : Une banque reçoit des milliers de demandes de crédit par jour
 Problème : Le processus d'évaluation manuel est lent et coûteux
@@ -98,20 +107,21 @@ Solution envisagée : Système automatisé de prédiction de défaut de paiement
 
 #### 2. Quel est le type de problème ML ?
 
-| Type | Description | Exemples |
-|------|-------------|----------|
-| **Classification binaire** | 2 classes | Spam/Non-spam, Fraude/Légitime |
-| **Classification multi-classe** | >2 classes | Reconnaissance de chiffres, Catégorisation de produits |
-| **Régression** | Prédiction valeur continue | Prix immobilier, Température |
-| **Clustering** | Groupement sans labels | Segmentation client |
-| **Détection d'anomalies** | Identifier les outliers | Fraude, Défauts industriels |
-| **Séries temporelles** | Prédiction temporelle | Prévision des ventes, Prix boursiers |
-| **NLP** | Traitement du langage | Analyse de sentiment, Traduction |
-| **Vision** | Traitement d'images | Détection d'objets, Classification d'images |
+| Type                            | Description                | Exemples                                               |
+| ------------------------------- | -------------------------- | ------------------------------------------------------ |
+| **Classification binaire**      | 2 classes                  | Spam/Non-spam, Fraude/Légitime                         |
+| **Classification multi-classe** | >2 classes                 | Reconnaissance de chiffres, Catégorisation de produits |
+| **Régression**                  | Prédiction valeur continue | Prix immobilier, Température                           |
+| **Clustering**                  | Groupement sans labels     | Segmentation client                                    |
+| **Détection d'anomalies**       | Identifier les outliers    | Fraude, Défauts industriels                            |
+| **Séries temporelles**          | Prédiction temporelle      | Prévision des ventes, Prix boursiers                   |
+| **NLP**                         | Traitement du langage      | Analyse de sentiment, Traduction                       |
+| **Vision**                      | Traitement d'images        | Détection d'objets, Classification d'images            |
 
 #### 3. Quels sont les objectifs mesurables ?
 
 **Template d'objectifs :**
+
 ```
 Objectif principal : [Métrique cible]
   - Actuel : [Valeur baseline]
@@ -124,6 +134,7 @@ Objectifs secondaires :
 ```
 
 **Exemple :**
+
 ```
 Objectif principal : Réduire le taux de défaut de paiement
   - Actuel : 15% des crédits accordés
@@ -139,25 +150,27 @@ Objectifs secondaires :
 
 **Contraintes à identifier :**
 
-| Type | Questions |
-|------|-----------|
-| **Temps** | Quelle est la deadline ? Temps d'inférence acceptable ? |
-| **Budget** | Ressources de calcul disponibles ? Budget cloud ? |
-| **Données** | Quantité de données disponibles ? Qualité ? Labels ? |
-| **Interprétabilité** | Le modèle doit-il être explicable ? (médical, finance) |
-| **Précision** | Quelle précision minimale ? Quel type d'erreur est acceptable ? |
-| **Déploiement** | Edge device ? Cloud ? On-premise ? |
-| **Légal** | RGPD ? Autres réglementations ? |
+| Type                 | Questions                                                       |
+| -------------------- | --------------------------------------------------------------- |
+| **Temps**            | Quelle est la deadline ? Temps d'inférence acceptable ?         |
+| **Budget**           | Ressources de calcul disponibles ? Budget cloud ?               |
+| **Données**          | Quantité de données disponibles ? Qualité ? Labels ?            |
+| **Interprétabilité** | Le modèle doit-il être explicable ? (médical, finance)          |
+| **Précision**        | Quelle précision minimale ? Quel type d'erreur est acceptable ? |
+| **Déploiement**      | Edge device ? Cloud ? On-premise ?                              |
+| **Légal**            | RGPD ? Autres réglementations ?                                 |
 
 #### 5. Définir les critères de succès
 
 **Critères techniques :**
+
 - Métriques de performance (accuracy, F1, RMSE, etc.)
 - Temps d'inférence
 - Taille du modèle
 - Robustesse
 
 **Critères business :**
+
 - ROI attendu
 - Réduction des coûts
 - Amélioration de l'expérience utilisateur
@@ -172,6 +185,7 @@ Objectifs secondaires :
 #### 1. Quelles données sont disponibles ?
 
 **Checklist des données :**
+
 ```python
 # Template d'inventaire des données
 donnees_disponibles = {
@@ -198,16 +212,16 @@ donnees_disponibles = {
 
 #### 2. Quel est le type de données ?
 
-| Type | Exemples | Préparation |
-|------|----------|-------------|
-| **Numériques continues** | Prix, température, âge | Normalisation, standardisation |
-| **Numériques discrètes** | Nombre de produits, compteurs | Binning possible |
-| **Catégorielles ordinales** | Niveau d'éducation, taille (S/M/L) | Ordinal encoding |
-| **Catégorielles nominales** | Couleur, ville, catégorie | One-hot encoding, target encoding |
-| **Temporelles** | Date, heure, timestamp | Feature engineering (jour, mois, etc.) |
-| **Texte** | Avis, descriptions | TF-IDF, embeddings |
-| **Images** | Photos, scans | Normalisation, augmentation |
-| **Audio** | Voix, sons | Spectrogrammes, MFCC |
+| Type                        | Exemples                           | Préparation                            |
+| --------------------------- | ---------------------------------- | -------------------------------------- |
+| **Numériques continues**    | Prix, température, âge             | Normalisation, standardisation         |
+| **Numériques discrètes**    | Nombre de produits, compteurs      | Binning possible                       |
+| **Catégorielles ordinales** | Niveau d'éducation, taille (S/M/L) | Ordinal encoding                       |
+| **Catégorielles nominales** | Couleur, ville, catégorie          | One-hot encoding, target encoding      |
+| **Temporelles**             | Date, heure, timestamp             | Feature engineering (jour, mois, etc.) |
+| **Texte**                   | Avis, descriptions                 | TF-IDF, embeddings                     |
+| **Images**                  | Photos, scans                      | Normalisation, augmentation            |
+| **Audio**                   | Voix, sons                         | Spectrogrammes, MFCC                   |
 
 #### 3. Analyse Exploratoire des Données (EDA)
 
@@ -893,14 +907,14 @@ def evaluation_classification(y_true, y_pred, y_proba=None):
 
 **Guide de choix de métriques :**
 
-| Contexte | Métrique Principale | Raison |
-|----------|---------------------|--------|
-| **Classes équilibrées** | Accuracy | Simple et suffisant |
-| **Classes déséquilibrées** | F1-Score, ROC-AUC | Prend en compte le déséquilibre |
-| **Coût des faux négatifs élevé** (ex: cancer) | Recall | Minimiser les cas manqués |
-| **Coût des faux positifs élevé** (ex: spam) | Precision | Minimiser les fausses alarmes |
-| **Trade-off** | F1-Score | Équilibre precision/recall |
-| **Ranking/probabilités** | ROC-AUC | Évalue qualité des scores |
+| Contexte                                      | Métrique Principale | Raison                          |
+| --------------------------------------------- | ------------------- | ------------------------------- |
+| **Classes équilibrées**                       | Accuracy            | Simple et suffisant             |
+| **Classes déséquilibrées**                    | F1-Score, ROC-AUC   | Prend en compte le déséquilibre |
+| **Coût des faux négatifs élevé** (ex: cancer) | Recall              | Minimiser les cas manqués       |
+| **Coût des faux positifs élevé** (ex: spam)   | Precision           | Minimiser les fausses alarmes   |
+| **Trade-off**                                 | F1-Score            | Équilibre precision/recall      |
+| **Ranking/probabilités**                      | ROC-AUC             | Évalue qualité des scores       |
 
 #### Régression
 
@@ -972,13 +986,13 @@ def evaluation_regression(y_true, y_pred):
 
 **Guide de choix de métriques :**
 
-| Métrique | Caractéristiques | Usage |
-|----------|------------------|-------|
-| **MSE** | Pénalise fortement grandes erreurs | Quand grandes erreurs inacceptables |
-| **RMSE** | Même unité que la cible | Interprétation facile |
-| **MAE** | Robuste aux outliers | Quand outliers dans les erreurs |
-| **R²** | Proportion de variance expliquée | Comparaison de modèles |
-| **MAPE** | Erreur en pourcentage | Quand échelles variables |
+| Métrique | Caractéristiques                   | Usage                               |
+| -------- | ---------------------------------- | ----------------------------------- |
+| **MSE**  | Pénalise fortement grandes erreurs | Quand grandes erreurs inacceptables |
+| **RMSE** | Même unité que la cible            | Interprétation facile               |
+| **MAE**  | Robuste aux outliers               | Quand outliers dans les erreurs     |
+| **R²**   | Proportion de variance expliquée   | Comparaison de modèles              |
+| **MAPE** | Erreur en pourcentage              | Quand échelles variables            |
 
 ---
 
@@ -987,6 +1001,7 @@ def evaluation_regression(y_true, y_pred):
 ### Checklist de Déploiement
 
 - [ ] **Sérialiser le modèle**
+
   ```python
   import joblib
   joblib.dump(model, 'model.pkl')
@@ -1012,11 +1027,13 @@ def evaluation_regression(y_true, y_pred):
 ### Avant de Commencer
 
 1. **Le ML est-il nécessaire ?**
+
    - Peut-on résoudre avec des règles simples ?
    - Y a-t-il assez de données ?
    - Le ROI justifie-t-il l'investissement ?
 
 2. **Les données sont-elles de qualité ?**
+
    - Représentatives de la population cible ?
    - Récentes et à jour ?
    - Suffisamment volumineuses ?
@@ -1030,11 +1047,13 @@ def evaluation_regression(y_true, y_pred):
 ### Pendant le Projet
 
 4. **Le modèle apprend-il correctement ?**
+
    - Overfitting ? (train >> val)
    - Underfitting ? (train et val faibles)
    - Convergence atteinte ?
 
 5. **Les performances sont-elles suffisantes ?**
+
    - Meilleures que la baseline ?
    - Atteignent les objectifs ?
    - Généralisent sur nouvelles données ?
@@ -1047,6 +1066,7 @@ def evaluation_regression(y_true, y_pred):
 ### Avant Déploiement
 
 7. **Le modèle est-il robuste ?**
+
    - Testé sur cas limites ?
    - Gère les données manquantes ?
    - Stable dans le temps ?
@@ -1066,73 +1086,96 @@ def evaluation_regression(y_true, y_pred):
 # Rapport Projet ML : [Nom du Projet]
 
 ## 1. Résumé Exécutif
+
 - Problématique : [...]
 - Solution : [...]
 - Résultats : [...]
 - Impact : [...]
 
 ## 2. Contexte et Objectifs
+
 ### 2.1 Contexte
+
 [Description du contexte métier]
 
 ### 2.2 Problématique
+
 [Problème à résoudre]
 
 ### 2.3 Objectifs
+
 - Objectif principal : [...]
 - Objectifs secondaires : [...]
 - Critères de succès : [...]
 
 ## 3. Données
+
 ### 3.1 Sources
+
 [Sources de données utilisées]
 
 ### 3.2 Description
+
 - Volume : [...]
 - Période : [...]
 - Features : [...]
 
 ### 3.3 Qualité
+
 - Valeurs manquantes : [...]
 - Outliers : [...]
 - Distribution : [...]
 
 ## 4. Méthodologie
+
 ### 4.1 Préparation des Données
+
 [Étapes de preprocessing]
 
 ### 4.2 Feature Engineering
+
 [Features créées]
 
 ### 4.3 Modélisation
+
 - Modèles testés : [...]
 - Modèle sélectionné : [...]
 - Hyperparamètres : [...]
 
 ## 5. Résultats
+
 ### 5.1 Performances
+
 - Métrique principale : [...]
 - Métriques secondaires : [...]
 - Comparaison baseline : [...]
 
 ### 5.2 Analyse
+
 [Analyse des résultats, features importantes, etc.]
 
 ## 6. Déploiement
+
 ### 6.1 Architecture
+
 [Schéma de déploiement]
 
 ### 6.2 Monitoring
+
 [Métriques suivies]
 
 ## 7. Conclusion et Recommandations
+
 ### 7.1 Conclusion
+
 [Synthèse]
 
 ### 7.2 Limitations
+
 [Limitations identifiées]
 
 ### 7.3 Perspectives
+
 [Améliorations futures]
 ```
 
@@ -1166,6 +1209,7 @@ def evaluation_regression(y_true, y_pred):
 ---
 
 **Navigation :**
+
 - [➡️ Guide de Décision ML](00_Guide_Decision_ML.md)
 - [➡️ Workflows ML](00_Workflows_ML.md)
-- [🏠 Retour au Sommaire](README.md)
+- [🏠 Retour au Sommaire](README_ML.md)
