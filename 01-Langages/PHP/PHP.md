@@ -1,7 +1,5 @@
 # Commandes Console PHP
 
----
-
 1. **Accéder au container** :
    ```bash
    docker exec -ti projet_test /bin/bash
