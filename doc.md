@@ -401,3 +401,52 @@ public override void OnPageRequest()
             }
         }
 ```
+
+
+```
+using System.IO;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Sinequa.Configuration;
+using Sinequa.Plugins;
+
+namespace Sinequa.Plugin
+{
+    public class MyDownloadPlugin : HttpEndpointBuilderPlugin
+    {
+        public override void Configure(IApplicationBuilder app)
+        {
+            // Définit l'URL d'accès : /api/custom/download
+            app.Map("/api/custom/download", HandleDownload);
+        }
+
+        private static async void HandleDownload(IApplicationBuilder app)
+        {
+            app.Run(async context =>
+            {
+                // 1. Récupération du nom de fichier
+                string fileName = context.Request.Query["file"];
+                
+                // 2. Sécurisation du chemin (A adapter !)
+                string baseDir = @"C:\sinequa\data\mon_dossier_partage\"; 
+                string filePath = Path.Combine(baseDir, fileName);
+
+                // Vérification basique de sécurité
+                if (File.Exists(filePath) && Path.GetFullPath(filePath).StartsWith(baseDir))
+                {
+                    // 3. Envoi du fichier
+                    context.Response.ContentType = "application/octet-stream";
+                    context.Response.Headers.Append("Content-Disposition", $"attachment; filename=\"{fileName}\"");
+                    await context.Response.SendFileAsync(filePath);
+                }
+                else
+                {
+                    context.Response.StatusCode = 404;
+                    await context.Response.WriteAsync("Fichier non trouvé.");
+                }
+            });
+        }
+    }
+}
+```
