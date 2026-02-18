@@ -349,3 +349,55 @@ for i, prompt in enumerate(test_prompts, 1):
 
 print(f"\nDone!")
 ```
+
+
+
+
+
+
+
+
+```
+public override void OnPageRequest()
+        {
+            // 2. Accès via Hm.Context pour Request et Response
+            var context = this.Hm.Context;
+            var request = context.Request;
+            var response = context.Response;
+
+            // Récupération du paramètre (ex: ?file=mon_doc.pdf)
+            string fileName = request.Query["file"];
+            
+            // Sécurisation basique du chemin (A ADAPTER selon votre dossier réel)
+            string baseDir = @"C:\sinequa\data\mon_dossier_partage\";
+            string filePath = Path.Combine(baseDir, fileName);
+
+            // Vérification de sécurité (empêcher de remonter dans l'arborescence)
+            if (!File.Exists(filePath) || !Path.GetFullPath(filePath).StartsWith(baseDir))
+            {
+                response.StatusCode = 404;
+                // En .NET Core, on écrit sur le body de manière asynchrone idéalement, 
+                // mais dans une méthode void, on écrit directement.
+                // Hm.Write gère l'écriture safe dans le flux de sortie.
+                this.Hm.Write("Fichier non trouvé ou accès interdit.");
+                return;
+            }
+
+            // Configuration de la réponse pour le téléchargement
+            response.Clear();
+            response.ContentType = "application/octet-stream"; // Ou type spécifique
+            
+            // Syntax Headers.Append en .NET Core
+            response.Headers.Append("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
+
+            // Envoi du fichier
+            try 
+            {
+                response.SendFileAsync(filePath).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                Sys.Log("Erreur téléchargement : " + ex.Message);
+            }
+        }
+```
