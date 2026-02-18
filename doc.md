@@ -513,3 +513,24 @@ namespace Sinequa.Plugin
     }
 }
 ```
+
+
+
+```
+ var response = this.Ctxt.Hm.Response;
+                    
+                    // 1. Nettoyer la réponse existante
+                    response.Clear();
+                    
+                    // 2. Définir le type MIME (Binaire générique ou spécifique ex: application/pdf)
+                    response.ContentType = "application/octet-stream";
+                    
+                    // 3. Forcer l'en-tête "Attachment" pour que le navigateur télécharge
+                    response.AddHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
+                    
+                    // 4. Envoyer le fichier
+                    response.BinaryWrite(fileBytes);
+                    
+                    // 5. Couper court pour que Sinequa n'ajoute rien d'autre (JSON, etc.)
+                    response.End();
+```
