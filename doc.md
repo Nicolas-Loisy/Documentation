@@ -450,3 +450,66 @@ namespace Sinequa.Plugin
     }
 }
 ```
+
+
+
+```
+using System;
+using System.IO;
+using Sinequa.Common;
+using Sinequa.Plugins;
+
+namespace Sinequa.Plugin
+{
+    public class DownloadFilePlugin : JsonMethodPlugin
+    {
+        // 1. Configuration du format de sortie (Indispensable)
+        // D'après la source [2], cela indique que la sortie est un Blob (binaire)
+        public override bool OnInitJsonFormat()
+        {
+            Method.MethodFormat = JsonMethodFormat.Post_Json_To_Blob;
+            return true;
+        }
+
+        // 2. Gestion des droits (Source [3])
+        // Permettre aux utilisateurs (pas seulement admins) de télécharger
+        public override JsonMethodAuthLevel GetRequiredAuthLevel()
+        {
+            return JsonMethodAuthLevel.User;
+        }
+
+        // 3. Logique principale
+        public override void OnPluginMethod()
+        {
+            // Récupérer le nom du fichier depuis l'URL (ex: &file=mondoc.pdf)
+            // Note : En GET, les paramètres sont dans JsonRequest (Source [4])
+            string fileName = this.JsonRequest.ValueStr("file");
+            
+            // ATTENTION : Sécurisez ce chemin pour éviter les failles de sécurité !
+            string baseDir = @"C:\sinequa\data\docs\"; 
+            string filePath = Path.Combine(baseDir, fileName);
+
+            if (File.Exists(filePath))
+            {
+                // Lecture du fichier en octets
+                byte[] fileBytes = File.ReadAllBytes(filePath);
+
+                // D'après la source [2] :
+                // On assigne le contenu binaire à l'objet BlobResponse géré par Sinequa
+                Method.BlobResponse = new Blob(fileBytes);
+                
+                // On définit le nom qui apparaîtra lors du téléchargement
+                Method.BlobResponseFilename = fileName; 
+                
+                // On force le navigateur à télécharger le fichier (pas d'affichage dans l'onglet)
+                Method.BlobResponseForceDownload = true; 
+            }
+            else
+            {
+                Sys.Log("Fichier introuvable : " + filePath);
+                // En cas d'erreur, le retour sera vide ou une erreur HTTP générique
+            }
+        }
+    }
+}
+```
