@@ -1,4 +1,315 @@
 ```
+#nullable enable
+
+using System;
+using System.IO;
+using System.Linq;
+using System.Collections.Concurrent;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Text;
+using System.Text.Json;
+
+using Sinequa.Common;
+using Sinequa.Plugin;
+using static Sinequa.Plugin.SinequaAssistant;
+
+namespace Sinequa.Plugin
+{
+    public class GenerateAndSaveFileStep : StepPlugin
+    {
+        public new static string Name => "GenerateAndSaveFileStep";
+
+        public override async Task<bool> ExecutePlugin(
+            ConcurrentDictionary<string, object?> parameters,
+            SinequaAssistant assistant,
+            string logPrefix,
+            DebugDisplayItemList debugDisplayItemList,
+            CancellationToken cancellationToken)
+        {
+            try
+            {
+                //--------------------------------------------------
+                // GET JSON
+                //--------------------------------------------------
+
+                if (!parameters.TryGetValue("LlmOutputJson", out object? obj))
+                    throw new Exception("Missing LlmOutputJson");
+
+                if (obj is not string jsonString)
+                    throw new Exception("Invalid JSON format");
+
+
+                using JsonDocument doc =
+                    JsonDocument.Parse(jsonString);
+
+                JsonElement root =
+                    doc.RootElement;
+
+
+                //--------------------------------------------------
+                // GET filename
+                //--------------------------------------------------
+
+                string fileName =
+                    root.GetProperty("filename")
+                    .GetString() ?? "Export.docx";
+
+
+                fileName =
+                    Path.GetFileName(fileName);
+
+
+                string extension =
+                    Path.GetExtension(fileName)
+                    .ToLower()
+                    .Replace(".", "");
+
+
+                //--------------------------------------------------
+                // SECURITY
+                //--------------------------------------------------
+
+                string[] allowed =
+                {
+                    "pdf",
+                    "docx",
+                    "xlsx",
+                    "pptx"
+                };
+
+                if (!allowed.Contains(extension))
+                    throw new Exception("Invalid extension");
+
+
+                //--------------------------------------------------
+                // CONTENT
+                //--------------------------------------------------
+
+                string content =
+                    root.GetProperty("content")
+                    .GetString() ?? "";
+
+
+                //--------------------------------------------------
+                // PATH
+                //--------------------------------------------------
+
+                string baseDir =
+                    Path.Combine(
+                        Sys.RootDir,
+                        "data",
+                        "assistant");
+
+                Directory.CreateDirectory(baseDir);
+
+
+                string filePath =
+                    Path.Combine(baseDir, fileName);
+
+
+                //--------------------------------------------------
+                // MARKDOWN -> WORD
+                //--------------------------------------------------
+
+                byte[] bytes =
+                    Encoding.UTF8.GetBytes(content);
+
+                using MemoryStream mdStream =
+                    new MemoryStream(bytes);
+
+                Aspose.Words.LoadOptions loadOptions =
+                    new Aspose.Words.LoadOptions
+                    {
+                        LoadFormat =
+                        Aspose.Words.LoadFormat.Markdown
+                    };
+
+                using Aspose.Words.Document wordDoc =
+                    new Aspose.Words.Document(
+                        mdStream,
+                        loadOptions);
+
+
+                //--------------------------------------------------
+                // PDF
+                //--------------------------------------------------
+
+                if (extension == "pdf")
+                {
+                    wordDoc.Save(
+                        filePath,
+                        Aspose.Words.SaveFormat.Pdf);
+                }
+
+
+                //--------------------------------------------------
+                // DOCX
+                //--------------------------------------------------
+
+                else if (extension == "docx")
+                {
+                    wordDoc.Save(
+                        filePath,
+                        Aspose.Words.SaveFormat.Docx);
+                }
+
+
+                //--------------------------------------------------
+                // XLSX
+                //--------------------------------------------------
+
+                else if (extension == "xlsx")
+                {
+                    using MemoryStream htmlStream =
+                        new MemoryStream();
+
+                    wordDoc.Save(
+                        htmlStream,
+                        Aspose.Words.SaveFormat.Html);
+
+                    htmlStream.Position = 0;
+
+
+                    Aspose.Cells.HtmlLoadOptions opts =
+                        new Aspose.Cells.HtmlLoadOptions(
+                            Aspose.Cells.LoadFormat.Html);
+
+
+                    using Aspose.Cells.Workbook wb =
+                        new Aspose.Cells.Workbook(
+                            htmlStream,
+                            opts);
+
+
+                    wb.Save(
+                        filePath,
+                        Aspose.Cells.SaveFormat.Xlsx);
+                }
+
+
+                //--------------------------------------------------
+                // PPTX MULTI SLIDE
+                //--------------------------------------------------
+
+                else if (extension == "pptx")
+                {
+                    string[] slides =
+                        content.Split(
+                            new string[]
+                            {
+                                "---slide---"
+                            },
+                            StringSplitOptions
+                            .RemoveEmptyEntries);
+
+
+                    using Aspose.Slides.Presentation pres =
+                        new Aspose.Slides.Presentation();
+
+                    pres.Slides.RemoveAt(0);
+
+
+                    foreach (string slideMd in slides)
+                    {
+                        byte[] slideBytes =
+                            Encoding.UTF8.GetBytes(slideMd);
+
+                        using MemoryStream slideStream =
+                            new MemoryStream(slideBytes);
+
+                        using Aspose.Words.Document slideDoc =
+                            new Aspose.Words.Document(
+                                slideStream,
+                                loadOptions);
+
+                        using MemoryStream htmlStream =
+                            new MemoryStream();
+
+                        slideDoc.Save(
+                            htmlStream,
+                            Aspose.Words.SaveFormat.Html);
+
+                        htmlStream.Position = 0;
+
+                        string html =
+                            new StreamReader(htmlStream)
+                            .ReadToEnd();
+
+
+                        var layout =
+                            pres.LayoutSlides[0];
+
+                        var slide =
+                            pres.Slides
+                            .AddEmptySlide(layout);
+
+
+                        var shape =
+                            slide.Shapes.AddAutoShape(
+                                Aspose.Slides.ShapeType.Rectangle,
+                                20,
+                                20,
+                                700,
+                                500);
+
+
+                        shape.TextFrame.Text = "";
+
+                        shape.TextFrame.Paragraphs.Clear();
+
+                        shape.TextFrame.Paragraphs
+                        .AddFromHtml(html);
+                    }
+
+
+                    pres.Save(
+                        filePath,
+                        Aspose.Slides.Export
+                        .SaveFormat.Pptx);
+                }
+
+
+
+                //--------------------------------------------------
+                // RETURN PARAMETERS
+                //--------------------------------------------------
+
+                parameters["SavedFilePath"] =
+                    filePath;
+
+                parameters["SavedFileName"] =
+                    fileName;
+
+
+
+                //--------------------------------------------------
+                // LOG
+                //--------------------------------------------------
+
+                Sys.Log(
+                    $"{logPrefix} File saved: {filePath}");
+
+
+
+                return true;
+            }
+
+            catch (Exception ex)
+            {
+                Sys.Log(
+                    $"{logPrefix} ERROR: {ex}");
+
+                return false;
+            }
+        }
+    }
+}
+```
+
+
+
+```
 !pip install openai markdown html2docx weasyprint pandas openpyxl python-pptx htmldocx
 ```
 
