@@ -1,4 +1,5 @@
 3. Créer DocAITest/DocAITest.csproj
+```
 
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
@@ -12,8 +13,10 @@
     <Compile Include="..\DocumentAIProcessor.cs" Link="DocumentAIProcessor.cs" />
   </ItemGroup>
 </Project>
+```
 4. Créer DocAITest/Program.cs
 
+```
 using DocAI;
 
 var inputFile = args.Length > 0 ? args[0] : @"..\Docs\test.docx";
@@ -22,6 +25,7 @@ var instruction = args.Length > 2 ? args[2] : "corrige les erreurs";
 var mode = args.Length > 3 && args[3] == "s" ? ProcessingMode.Suggestion : ProcessingMode.Modification;
 
 await Test.RunAsync(inputFile, outputFile, instruction, mode);
+```
 5. Installer et lancer
 
 cd DocAITest
