@@ -1,3 +1,67 @@
+{
+    "action": "context",
+    "app": "nlo_mint",
+    "query": {
+        "name": "_mint_query",
+        "text": "sinequa"
+    },
+    "contextOptions": {
+        "metadataOptions": {
+            "fromTopDocuments": 3,
+            "docColumnsMapping": {
+                "title": "title",
+                "modified": "modified"
+            }
+        },
+        "fullDocumentsOptions": {
+            "fromTopDocuments": 0
+        },
+        "topPassagesOptions": {
+            "textChunkOptions": {
+                "extendMode": "Sentences",
+                "extendScope": 2
+            },
+            "topPassages": 3,
+            "topPassagesMinScore": 0
+        },
+        "matchingPassagesOptions": {
+            "textChunkOptions": {
+                "extendMode": "Sentences",
+                "extendScope": 2
+            },
+            "matchingPassagesPerDoc": 2,
+            "fromTopDocuments": 2,
+            "matchingPassagesMinScore": 0
+        },
+        "relevantExtractsOptions": {
+            "textChunkOptions": {
+                "extendMode": "Sentences",
+                "extendScope": 4
+            },
+            "fromTopDocuments": 3,
+            "topRelevantExtractsPerDoc": 3
+        },
+        "textChunkFillGaps": 150,
+        "htmlOptions": {
+            "images": true,
+            "links": true,
+            "tables": true,
+            "extendToWholeTables": false,
+            "ignoreDoIndexNoIndex": true
+        },
+        "queryExpansionOptions": {
+            "synonyms": true
+        },
+            "multimodalOptions": {
+            "includePages": false,
+            "pageSelectionQuery": "",
+            "embeddedImages": false
+        },
+        "maximumTokenCount": null
+    }
+}
+
+
 ```
 #nullable enable
 
