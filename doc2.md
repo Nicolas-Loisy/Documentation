@@ -1,3 +1,4 @@
+```
 import os
 import httpx
 import mistralai.workflows as workflows
@@ -28,3 +29,4 @@ class MyWorkflow:
     async def run(self, params: MyParams) -> MyResult:
         email = await get_triggering_user_email(workflows.get_execution_id())
         ...
+```
