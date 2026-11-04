@@ -1,129 +1,30 @@
-{
-    "action": "context",
-    "app": "nlo_mint",
-    "query": {
-        "name": "_mint_query",
-        "text": "sinequa"
-    },
-    "contextOptions": {
-        "metadataOptions": {
-            "fromTopDocuments": 3,
-            "docColumnsMapping": {
-                "title": "title",
-                "modified": "modified"
-            }
-        },
-        "fullDocumentsOptions": {
-            "fromTopDocuments": 0
-        },
-        "topPassagesOptions": {
-            "textChunkOptions": {
-                "extendMode": "Sentences",
-                "extendScope": 2
-            },
-            "topPassages": 3,
-            "topPassagesMinScore": 0
-        },
-        "matchingPassagesOptions": {
-            "textChunkOptions": {
-                "extendMode": "Sentences",
-                "extendScope": 2
-            },
-            "matchingPassagesPerDoc": 2,
-            "fromTopDocuments": 2,
-            "matchingPassagesMinScore": 0
-        },
-        "relevantExtractsOptions": {
-            "textChunkOptions": {
-                "extendMode": "Sentences",
-                "extendScope": 4
-            },
-            "fromTopDocuments": 3,
-            "topRelevantExtractsPerDoc": 3
-        },
-        "textChunkFillGaps": 150,
-        "htmlOptions": {
-            "images": true,
-            "links": true,
-            "tables": true,
-            "extendToWholeTables": false,
-            "ignoreDoIndexNoIndex": true
-        },
-        "queryExpansionOptions": {
-            "synonyms": true
-        },
-            "multimodalOptions": {
-            "includePages": false,
-            "pageSelectionQuery": "",
-            "embeddedImages": false
-        },
-        "maximumTokenCount": null
-    }
-}
+import os
+import httpx
+import mistralai.workflows as workflows
+
+API = "https://api.mistral.ai/v1"
+
+@workflows.activity.define(name="get_triggering_user_email")   # appels HTTP = dans une activité
+async def get_triggering_user_email(execution_id: str) -> str | None:
+    async with httpx.AsyncClient(timeout=10) as c:
+        # 1. Qui a lancé l'exécution ?
+        r = await c.get(f"{API}/workflows/executions/{execution_id}",
+                        headers={"Authorization": f"Bearer {os.environ['MISTRAL_API_KEY']}"})
+        r.raise_for_status()
+        user_id = r.json().get("user_id")
+        if not user_id:
+            return None  # ex. lancé par un schedule ou un service account
+
+        # 2. Son email (clé admin requise)
+        r = await c.get(f"{API}/admin/users/{user_id}",
+                        headers={"Authorization": f"Bearer {os.environ['MISTRAL_ADMIN_API_KEY']}"})
+        r.raise_for_status()
+        return r.json().get("email")
 
 
-```
-#nullable enable
-
-using Assistant.Agentic.Workflow;
-using Assistant.Agentic.Workflow.Executors;
-using Microsoft.Agents.AI.Workflows;
-using System;
-using System.Text.Json;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace Sinequa.Plugin
-{
-    /// <summary>
-    /// Example of a workflow plugin executor.
-    /// It can read variables from the workflow, inspect the workflow state, and write a result for the next executor.
-    /// </summary>
-    public class MyDebugExecutorPlugin : AgentWorkflowExecutorPlugin
-    {
-        public MyDebugExecutorPlugin(string id) : base(id)
-        {
-        }
-
-        public override async ValueTask ExecuteAsync(ExecutorPluginInput input, ExecutorPluginOutput output, IWorkflowContext workflowContext, CancellationToken cancellationToken = default)
-        {
-            Console.WriteLine($"[MyDebugExecutorPlugin] Start - pluginId={Id}, pluginName={PluginName}");
-
-            // Example 1: read data already stored in the workflow by upstream executors
-            var userQuery = await input.GetValueAsync<string>("userQuery").ConfigureAwait(false);
-            var retryCount = await input.GetValueAsync<int?>("retryCount").ConfigureAwait(false);
-            var payload = await input.GetValueAsync<JsonElement>("payload").ConfigureAwait(false);
-
-            Console.WriteLine($"userQuery={userQuery ?? "<null>"}");
-            Console.WriteLine($"retryCount={retryCount?.ToString() ?? "<null>"}");
-            Console.WriteLine($"payload={payload.ToString()}");
-
-            DebugDisplayMessage.AddDisplayItem("userQuery", userQuery ?? "<null>");
-            DebugDisplayMessage.AddDisplayItem("retryCount", retryCount?.ToString() ?? "<null>");
-            DebugDisplayMessage.AddDisplayItem("payload", payload.ValueKind != JsonValueKind.Undefined ? payload.ToString() : "<null>");
-
-            // Example 2: inspect workflow state keys
-            var workflowKeys = await workflowContext.ReadStateKeysAsync(scopeName: "_workflowScope", cancellationToken: cancellationToken).ConfigureAwait(false);
-            Console.WriteLine("Workflow keys:");
-            foreach (var key in workflowKeys)
-            {
-                Console.WriteLine($" - {key}");
-            }
-
-            DebugDisplayMessage.AddDisplayItem("Workflow keys", string.Join(", ", workflowKeys));
-
-            // Example 3: output a value for next executor(s)
-            await output.SetValueAsync("debugPluginResult", new
-            {
-                plugin = PluginName ?? nameof(MyDebugExecutorPlugin),
-                userQuery,
-                retryCount,
-                keys = workflowKeys
-            }).ConfigureAwait(false);
-
-            Console.WriteLine($"[MyDebugExecutorPlugin] End - result stored under 'debugPluginResult'");
-        }
-    }
-}
-
-```
+@workflows.workflow.define(name="my_workflow")
+class MyWorkflow:
+    @workflows.workflow.entrypoint
+    async def run(self, params: MyParams) -> MyResult:
+        email = await get_triggering_user_email(workflows.get_execution_id())
+        ...
